@@ -71,6 +71,8 @@
     height: 340px;
     perspective: 1200px;
     flex: 0 0 calc((100% - 60px) / 3);
+    scroll-snap-align: start; /*new*/
+
 
 }
 
@@ -130,15 +132,23 @@
     position: relative;
     display: flex;
     align-items: center;
-    
+        
 }
 
 .carousel-track {
     display: flex;
     gap: 30px;
-    overflow: hidden;
-    scroll-behavior: smooth;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     padding: 20px;
+    /*overflow: hidden;
+    scroll-behavior: smooth;
+    padding: 20px;*/
+}
+.carousel-track::-webkit-scrollbar {
+    display: none;
 }
 
 .carousel-btn {

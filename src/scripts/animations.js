@@ -21,18 +21,18 @@ document.querySelectorAll('.animate-on-scroll, .slide-in-right').forEach((el) =>
 });
 
 async function RenderizarCardsEquipe() {
-  const container = document.getElementById('team-grid');
+    const container = document.getElementById('team-grid');
 
-  const res = await fetch('src/db/data.json');
-  const data = await res.json();
+    const res = await fetch('src/db/data.json');
+    const data = await res.json();
 
-  const equipe = data.equipe;
+    const equipe = data.equipe;
 
-  let cards = '';
+    let cards = '';
 
-  equipe.forEach((d, i) => {
-    cards += `
-      <div class="team-card animate-on-scroll" style="transition-delay: 0.${i+1}s;">
+    equipe.forEach((d, i) => {
+        cards += `
+      <div class="team-card animate-on-scroll" style="transition-delay: 0.${i + 1}s;">
         <div class="card-inner">
 
           <div class="card-front">
@@ -49,13 +49,14 @@ async function RenderizarCardsEquipe() {
         </div>
       </div>
     `;
-  });
+    });
 
-  container.innerHTML = cards;
+    container.innerHTML = cards;
 
-  ativarAnimacaoScroll();
-  ativarFlipMobile();
-  ativarCarousel();
+    ativarAnimacaoScroll();
+    ativarFlipMobile();
+    ativarCarousel();
+    ativarDrag();
 }
 
 RenderizarCardsEquipe();
@@ -63,75 +64,98 @@ RenderizarCardsEquipe();
 
 // ================= ANIMAÇÃO SCROLL =================
 function ativarAnimacaoScroll() {
-  const elements = document.querySelectorAll('.animate-on-scroll');
+    const elements = document.querySelectorAll('.animate-on-scroll');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
     });
-  });
 
-  elements.forEach(el => observer.observe(el));
+    elements.forEach(el => observer.observe(el));
 }
 
 
 // ================= FLIP MOBILE =================
 function ativarFlipMobile() {
-  document.querySelectorAll('.team-card').forEach(card => {
-    card.addEventListener('click', () => {
-      card.querySelector('.card-inner').classList.toggle('flip');
+    document.querySelectorAll('.team-card').forEach(card => {
+        card.addEventListener('click', () => {
+            card.querySelector('.card-inner').classList.toggle('flip');
+        });
     });
-  });
 }
 
 
 // ================= CARROSSEL =================
 function ativarCarousel() {
+    const track = document.querySelector('.carousel-track');
+    const next = document.querySelector('.next');
+    const prev = document.querySelector('.prev');
+
+    function getCardWidth() {
+        const card = track.querySelector('.team-card');
+        const gap = 30; // igual ao CSS
+        return card.offsetWidth + gap;
+    }
+
+    next.addEventListener('click', () => {
+        track.scrollBy({
+            left: getCardWidth() * getCardsPerView(),
+            behavior: 'smooth'
+        });
+    });
+
+    prev.addEventListener('click', () => {
+        track.scrollBy({
+            left: -getCardWidth() * getCardsPerView(),
+            behavior: 'smooth'
+        });
+    });
+
+    /*FUNCIONAL, CARROSSEL V1.0
+    const cardWidth = 320; // largura + gap
+    let scrollAmount = 0;
+  
+    next.addEventListener('click', () => {
+      scrollAmount += cardWidth * 3;
+      track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    });
+  
+    prev.addEventListener('click', () => {
+      scrollAmount -= cardWidth * 3;
+      track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    });*/
+}
+
+function getCardsPerView() {
+    if (window.innerWidth < 600) return 1;
+    if (window.innerWidth < 900) return 2;
+    return 3;
+}
+
+function ativarDrag() {
   const track = document.querySelector('.carousel-track');
-  const next = document.querySelector('.next');
-  const prev = document.querySelector('.prev');
 
-  const cardWidth = 320; // largura + gap
-  let scrollAmount = 0;
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-  next.addEventListener('click', () => {
-    scrollAmount += cardWidth * 3;
-    track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+  track.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
   });
 
-  prev.addEventListener('click', () => {
-    scrollAmount -= cardWidth * 3;
-    track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+  track.addEventListener('mouseleave', () => isDown = false);
+  track.addEventListener('mouseup', () => isDown = false);
+
+  track.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    track.scrollLeft = scrollLeft - walk;
   });
 }
-
-/*function RenderizarCardsEquipe(){
-    const container = document.getElementById('team-grid');
-      fetch ('src/db/data.json') // aqui ele faz uma requisição ao jsonServer, para pegar os filmes que estão em db.json
-        .then(res => res.json())
-        .then(data => {
-          let cards = '';
-          const equipe = data.equipe;
-
-          for (let i = 0; i < equipe.length; i++){ // percorre o array de filmes e adiciona cada filme do array a um card, de forma dinamica
-            let d = equipe[i]
-            console.log(d.nome);
-            cards += `
-              <div class="team-card animate-on-scroll" style="transition-delay: 0.${i+1}s;">
-                        <img src="${d.img}" alt="Julio Cesar" class="team-photo">
-                        <h3 class="team-name">${d.nome}</h3>
-                        <p class="team-role">${d.funcao}</p>
-                    </div>
-            `;
-              }
-            container.innerHTML = cards;
-            document.querySelectorAll('.animate-on-scroll, .slide-in-right').forEach((el) => {
-    observer.observe(el);
-});
-            }); 
-}
-
-
-RenderizarCardsEquipe();*/

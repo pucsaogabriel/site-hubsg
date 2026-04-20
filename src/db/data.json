@@ -1,36 +1,41 @@
 {
     "equipe": [
         {
-            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
-            "nome": "Kaua",
+            "img": "src/assets/images/equipe/kaua.jpeg",
+            "nome": "Kauã",
             "funcao": "programador"
         },
         {
-            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
-            "nome": "arthur",
+            "img": "src/assets/images/equipe/arthur.jpeg",
+            "nome": "Arthur",
             "funcao": "programador"
         },
         {
-            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
-            "nome": "marcos",
+            "img": "src/assets/images/equipe/marcos.jpeg",
+            "nome": "Marcos",
             "funcao": "programador"
         },
         {
-            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
-            "nome": "evelyn",
+            "img": "src/assets/images/equipe/evelyn.jpeg",
+            "nome": "Evelyn",
             "funcao": "programadora"
         },
-                {
+        {
+            "img": "src/assets/images/equipe/kaique.jpeg",
+            "nome": "Kaique",
+            "funcao": "programador"
+        },
+        {
             "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
-            "nome": "augusto",
+            "nome": "Augusto",
             "funcao": "engenheiro aeronauta"
         },
-                {
+        {
             "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
-            "nome": "lucas",
+            "nome": "Lucas",
             "funcao": "engenheiro aeronauta"
         },
-                {
+        {
             "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
             "nome": "Isaac",
             "funcao": "jurídico"
