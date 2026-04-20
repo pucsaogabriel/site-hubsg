@@ -4,7 +4,36 @@
             "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
             "nome": "Kaua",
             "funcao": "programador"
-
+        },
+        {
+            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
+            "nome": "arthur",
+            "funcao": "programador"
+        },
+        {
+            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
+            "nome": "marcos",
+            "funcao": "programador"
+        },
+        {
+            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
+            "nome": "evelyn",
+            "funcao": "programadora"
+        },
+                {
+            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
+            "nome": "augusto",
+            "funcao": "engenheiro aeronauta"
+        },
+                {
+            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
+            "nome": "lucas",
+            "funcao": "engenheiro aeronauta"
+        },
+                {
+            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
+            "nome": "Isaac",
+            "funcao": "jurídico"
         }
     ]
 }
