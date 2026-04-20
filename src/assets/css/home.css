@@ -1,0 +1,324 @@
+/* ================= Hero Section ================= */
+.hero {
+    background-color: var(--primary-blue);
+    padding: 60px 0 100px;
+}
+
+.hero-banner {
+    background-color: #EBE5D9;
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    min-height: 400px;
+}
+
+.hero-content {
+    flex: 1;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    color: var(--primary-blue);
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-title span {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-title span::after {
+    content: '';
+    position: absolute;
+    width: 105%;
+    height: 12px;
+    background-color: transparent;
+    border: 2px solid var(--orange);
+    border-radius: 20px;
+    top: 50%;
+    left: -2.5%;
+    transform: translateY(-50%) rotate(-2deg);
+    z-index: -1;
+}
+
+.hero-logo-text {
+    font-size: 50px;
+    font-weight: 800;
+    color: var(--primary-blue);
+    text-shadow: 2px 2px 0px var(--white);
+    line-height: 1;
+    margin-top: 10px;
+}
+
+.hero-logo-year {
+    font-size: 40px;
+    color: var(--orange);
+    font-weight: 800;
+    text-shadow: 2px 2px 0px var(--white);
+}
+
+.hero-visual {
+    flex: 1.2;
+    position: relative;
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay-logos {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 15px;
+    border-radius: 10px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.hero-overlay-logos img {
+    height: 30px;
+    width: auto;
+}
+
+.btn-inscreva {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--orange);
+    color: var(--white);
+    font-weight: 800;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 18px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+}
+
+.btn-inscreva:hover {
+    background-color: var(--orange-hover);
+    transform: translateY(-2px);
+}
+
+.hero-shape {
+    position: absolute;
+    bottom: -50px;
+    left: -50px;
+    width: 300px;
+    height: 300px;
+    background-color: var(--primary-blue);
+    transform: rotate(45deg);
+    z-index: 0;
+    opacity: 0.1;
+}
+
+/* ================= PUC Tech Intro Section ================= */
+.puc-tech {
+    background-color: var(--primary-blue);
+    padding: 100px 0;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.puc-tech-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.puc-tech-visual {
+    flex: 1;
+    position: relative;
+    min-height: 400px;
+}
+
+.abstract-shape {
+    position: absolute;
+    background-color: var(--orange);
+    width: 120%;
+    height: 140%;
+    top: -20%;
+    left: -10%;
+    clip-path: polygon(30% 0%, 100% 0%, 75% 45%, 95% 45%, 25% 100%, 45% 55%, 20% 55%);
+    z-index: 1;
+}
+
+.puc-tech-images {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 0;
+}
+
+.puc-tech-images img {
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+}
+
+.puc-tech-images img:nth-child(1) {
+    width: 80%;
+    align-self: flex-start;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+}
+
+.puc-tech-images img:nth-child(2) {
+    width: 70%;
+    align-self: flex-end;
+    margin-top: 0px;
+}
+
+.puc-tech-text {
+    flex: 1;
+}
+
+.puc-tech-text h2 {
+    font-size: 36px;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+.puc-tech-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: #E2E8F0;
+}
+
+.btn-saiba-mais {
+    display: inline-block;
+    background-color: var(--orange);
+    color: var(--white);
+    padding: 12px 32px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.btn-saiba-mais:hover {
+    background-color: var(--orange-hover);
+}
+
+/* ================= Parceiros Section ================= */
+.parceiros {
+    background-color: var(--light-gray);
+    padding: 70px 0;
+    text-align: center;
+}
+
+.logos-carousel {
+    margin-top: 40px;
+    overflow: hidden;
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+.logos-track {
+    display: flex;
+    align-items: center;
+    /* Aumentar a duração torna a animação mais suave e o loop imperceptível */
+    animation: scroll-carousel 60s linear infinite;
+}
+
+@keyframes scroll-carousel {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-20%);
+    }
+}
+
+.logos-track img {
+    height: 60px; /* Define uma altura fixa para normalizar o tamanho */
+    width: auto;  /* Garante que a largura se ajuste para manter a proporção */
+    opacity: 0.8;
+    transition: var(--transition);
+    flex-shrink: 0;
+    margin-right: 60px; /* Usar margem em vez de gap para um loop perfeito */
+}
+
+.logos-track img[alt="Logo Azul"] {
+    /* Ajuste para compensar o espaço em branco na imagem e alinhar visualmente com os outros */
+    height: 120px;
+}
+
+.logos-track img:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* ================= Pre-Footer ================= */
+.pre-footer {
+    background-color: var(--orange);
+    color: var(--white);
+    padding: 60px 0;
+}
+
+.pre-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.pre-footer h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    font-size: 18px;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background-color: var(--white);
+    color: var(--orange);
+}
+
+.address-text {
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.address-text strong {
+    display: block;
+    margin-bottom: 5px;
+}
