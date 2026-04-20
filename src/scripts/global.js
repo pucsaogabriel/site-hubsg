@@ -1,4 +1,4 @@
-// Controla a abertura e fechamento do menu de navegação em telas menores.
+// Abre e fecha o menu no mobile
 const menuToggle = document.getElementById('mobile-menu');
 const navLinks = document.getElementById('nav-links');
 

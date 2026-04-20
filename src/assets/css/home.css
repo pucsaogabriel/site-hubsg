@@ -1,4 +1,4 @@
-/* ================= Hero Section ================= */
+/* --- Hero --- */
 .hero {
     background-color: var(--primary-blue);
     padding: 60px 0 100px;
@@ -128,8 +128,8 @@
     opacity: 0.1;
 }
 
-/* ================= PUC Tech Intro Section ================= */
-.puc-tech {
+/* --- Introdução HubSG --- */
+.hubsg {
     background-color: var(--primary-blue);
     padding: 100px 0;
     color: var(--white);
@@ -137,7 +137,7 @@
     overflow: hidden;
 }
 
-.puc-tech-container {
+.hubsg-container {
     display: flex;
     align-items: center;
     gap: 60px;
@@ -145,7 +145,7 @@
     z-index: 2;
 }
 
-.puc-tech-visual {
+.hubsg-visual {
     flex: 1;
     position: relative;
     min-height: 400px;
@@ -162,7 +162,7 @@
     z-index: 1;
 }
 
-.puc-tech-images {
+.hubsg-images {
     position: relative;
     z-index: 2;
     display: flex;
@@ -171,34 +171,34 @@
     padding: 40px 0;
 }
 
-.puc-tech-images img {
+.hubsg-images img {
     border-radius: 12px;
     box-shadow: var(--card-shadow);
 }
 
-.puc-tech-images img:nth-child(1) {
+.hubsg-images img:nth-child(1) {
     width: 80%;
     align-self: flex-start;
     clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
 }
 
-.puc-tech-images img:nth-child(2) {
+.hubsg-images img:nth-child(2) {
     width: 70%;
     align-self: flex-end;
     margin-top: 0px;
 }
 
-.puc-tech-text {
+.hubsg-text {
     flex: 1;
 }
 
-.puc-tech-text h2 {
+.hubsg-text h2 {
     font-size: 36px;
     margin-bottom: 25px;
     font-weight: 700;
 }
 
-.puc-tech-text p {
+.hubsg-text p {
     font-size: 16px;
     line-height: 1.8;
     margin-bottom: 30px;
@@ -220,7 +220,7 @@
     background-color: var(--orange-hover);
 }
 
-/* ================= Parceiros Section ================= */
+/* --- Parceiros --- */
 .parceiros {
     background-color: var(--light-gray);
     padding: 70px 0;
@@ -240,7 +240,6 @@
 .logos-track {
     display: flex;
     align-items: center;
-    /* Aumentar a duração torna a animação mais suave e o loop imperceptível */
     animation: scroll-carousel 60s linear infinite;
 }
 
@@ -254,16 +253,15 @@
 }
 
 .logos-track img {
-    height: 60px; /* Define uma altura fixa para normalizar o tamanho */
-    width: auto;  /* Garante que a largura se ajuste para manter a proporção */
+    height: 60px;
+    width: auto;
     opacity: 0.8;
     transition: var(--transition);
     flex-shrink: 0;
-    margin-right: 60px; /* Usar margem em vez de gap para um loop perfeito */
+    margin-right: 60px;
 }
 
 .logos-track img[alt="Logo Azul"] {
-    /* Ajuste para compensar o espaço em branco na imagem e alinhar visualmente com os outros */
     height: 120px;
 }
 
@@ -272,7 +270,7 @@
     transform: scale(1.1);
 }
 
-/* ================= Pre-Footer ================= */
+/* --- Pré-rodapé --- */
 .pre-footer {
     background-color: var(--orange);
     color: var(--white);
