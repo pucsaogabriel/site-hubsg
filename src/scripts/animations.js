@@ -19,3 +19,32 @@ const observer = new IntersectionObserver((entries, observer) => {
 document.querySelectorAll('.animate-on-scroll, .slide-in-right').forEach((el) => {
     observer.observe(el);
 });
+
+function RenderizarCardsEquipe(){
+    const container = document.getElementById('team-grid');
+      fetch ('src/db/data.json') // aqui ele faz uma requisição ao jsonServer, para pegar os filmes que estão em db.json
+        .then(res => res.json())
+        .then(data => {
+          let cards = '';
+          const equipe = data.equipe;
+
+          for (let i = 0; i < equipe.length; i++){ // percorre o array de filmes e adiciona cada filme do array a um card, de forma dinamica
+            let d = equipe[i]
+            console.log(d.nome);
+            cards += `
+              <div class="team-card animate-on-scroll" style="transition-delay: 0.${i+1}s;">
+                        <img src="${d.img}" alt="Julio Cesar" class="team-photo">
+                        <h3 class="team-name">${d.nome}</h3>
+                        <p class="team-role">${d.funcao}</p>
+                    </div>
+            `;
+              }
+            container.innerHTML = cards;
+            document.querySelectorAll('.animate-on-scroll, .slide-in-right').forEach((el) => {
+    observer.observe(el);
+});
+            }); 
+}
+
+
+RenderizarCardsEquipe();
