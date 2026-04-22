@@ -240,7 +240,7 @@
 .logos-track {
     display: flex;
     align-items: center;
-    animation: scroll-carousel 60s linear infinite;
+    animation: scroll-carousel 20s linear infinite;
 }
 
 @keyframes scroll-carousel {
