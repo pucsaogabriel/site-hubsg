@@ -1,4 +1,4 @@
-/* ================= CSS Variables ================= */
+/* --- Variáveis --- */
 :root {
     --primary-blue: #0047AB;
     --dark-blue: #003380;
@@ -11,7 +11,7 @@
     --transition: all 0.3s ease;
 }
 
-/* ================= Reset & Global ================= */
+/* --- Reset e Estilos Globais --- */
 * {
     margin: 0;
     padding: 0;
@@ -51,7 +51,7 @@ img {
     margin: 0 auto;
 }
 
-/* ================= Animations ================= */
+/* --- Animações --- */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
@@ -74,7 +74,7 @@ img {
     transform: translateX(0);
 }
 
-/* ================= Header ================= */
+/* --- Cabeçalho (Header) --- */
 header {
     background-color: var(--primary-blue);
     color: var(--white);
@@ -133,153 +133,8 @@ header {
     cursor: pointer;
 }
 
-/* ================= PUC Tech Intro Section ================= */
-.puc-tech {
-    background-color: var(--primary-blue);
-    padding: 100px 0;
-    color: var(--white);
-    position: relative;
-    overflow: hidden;
-}
 
-.puc-tech-container {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    position: relative;
-    z-index: 2;
-}
-
-.puc-tech-visual {
-    flex: 1;
-    position: relative;
-    min-height: 400px;
-}
-
-.abstract-shape {
-    position: absolute;
-    background-color: var(--orange);
-    width: 120%;
-    height: 140%;
-    top: -20%;
-    left: -10%;
-    clip-path: polygon(30% 0%, 100% 0%, 75% 45%, 95% 45%, 25% 100%, 45% 55%, 20% 55%);
-    z-index: 1;
-}
-
-.puc-tech-images {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 40px 0;
-}
-
-.puc-tech-images img {
-    border-radius: 12px;
-    box-shadow: var(--card-shadow);
-}
-
-.puc-tech-images img:nth-child(1) {
-    width: 80%;
-    align-self: flex-start;
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-}
-
-.puc-tech-images img:nth-child(2) {
-    width: 70%;
-    align-self: flex-end;
-    margin-top: 0px;
-}
-
-.puc-tech-text {
-    flex: 1;
-}
-
-.puc-tech-text h2 {
-    font-size: 36px;
-    margin-bottom: 25px;
-    font-weight: 700;
-}
-
-.puc-tech-text p {
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    color: #E2E8F0;
-}
-
-.btn-saiba-mais {
-    display: inline-block;
-    background-color: var(--orange);
-    color: var(--white);
-    padding: 12px 32px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 16px;
-    transition: var(--transition);
-}
-
-.btn-saiba-mais:hover {
-    background-color: var(--orange-hover);
-}
-
-/* ================= Parceiros Section ================= */
-.parceiros {
-    background-color: var(--light-gray);
-    padding: 70px 0;
-    text-align: center;
-}
-
-.logos-carousel {
-    margin-top: 40px;
-    overflow: hidden;
-    position: relative;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    padding: 20px 40px;
-    box-sizing: border-box;
-}
-
-.logos-track {
-    display: flex;
-    align-items: center;
-    /* Aumentar a duração torna a animação mais suave e o loop imperceptível */
-    animation: scroll-carousel 60s linear infinite;
-}
-
-@keyframes scroll-carousel {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-20%);
-    }
-}
-
-
-
-.logos-track img {
-    height: 60px; /* Define uma altura fixa para normalizar o tamanho */
-    width: auto;  /* Garante que a largura se ajuste para manter a proporção */
-    opacity: 0.8;
-    transition: var(--transition);
-    flex-shrink: 0;
-    margin-right: 60px; /* Usar margem em vez de gap para um loop perfeito */
-}
-
-.logos-track img[alt="Logo Azul"] {
-    /* Ajuste para compensar o espaço em branco na imagem e alinhar visualmente com os outros */
-    height: 120px;
-}
-
-.logos-track img:hover {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-/* ================= Pre-Footer ================= */
+/* --- Pré-rodapé --- */
 .pre-footer {
     background-color: var(--orange);
     color: var(--white);
@@ -330,7 +185,7 @@ header {
     margin-bottom: 5px;
 }
 
-/* ================= Footer ================= */
+/* --- Rodapé --- */
 footer {
     background-color: var(--primary-blue);
     color: rgba(255, 255, 255, 0.7);
@@ -339,7 +194,7 @@ footer {
     font-size: 13px;
 }
 
-/* ================= Responsive Breakpoints ================= */
+/* --- Responsividade --- */
 @media (max-width: 992px) {
     .hero-banner {
         flex-direction: column;
@@ -350,11 +205,11 @@ footer {
         min-height: 300px;
     }
 
-    .puc-tech-container {
+    .hubsg-container {
         flex-direction: column;
     }
 
-    .puc-tech-visual {
+    .hubsg-visual {
         width: 100%;
     }
 

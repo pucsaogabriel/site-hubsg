@@ -1,324 +1,654 @@
-/* ================= Hero Section ================= */
+/* ================================================================
+   home.css — Estilos exclusivos da Home
+   Projeto: HubSG — Hub de Inovação PUC Minas São Gabriel
+   Padrão: Mobile-first · Reusa variáveis e utilitários de global.css
+================================================================ */
+
+
+/* ================================================================
+   KEYFRAMES GLOBAIS DA HOME
+================================================================ */
+
+/* Surgimento suave de baixo para cima */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pulso suave no selo flutuante */
+@keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 8px 32px rgba(245, 166, 35, 0.35); }
+    50%       { box-shadow: 0 12px 48px rgba(245, 166, 35, 0.65); }
+}
+
+/* Floating suave para formas decorativas */
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%       { transform: translateY(-18px) rotate(3deg); }
+}
+
+/* Scroll do carrossel de logos */
+@keyframes scroll-carousel {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+
+/* ================================================================
+   1. HERO SECTION
+================================================================ */
+
 .hero {
-    background-color: var(--primary-blue);
-    padding: 60px 0 100px;
-}
-
-.hero-banner {
-    background-color: #EBE5D9;
-    border-radius: 20px;
-    display: flex;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #002d7a 100%);
+    padding: 80px 0 0;
+    position: relative;
     overflow: hidden;
-    position: relative;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    min-height: 400px;
-}
-
-.hero-content {
-    flex: 1;
-    padding: 50px;
+    /* altura mínima generosa para a hero respirar */
+    min-height: 88vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-}
-
-.hero-title {
-    color: var(--primary-blue);
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 20px;
-}
-
-.hero-title span {
-    position: relative;
-    display: inline-block;
-}
-
-.hero-title span::after {
-    content: '';
-    position: absolute;
-    width: 105%;
-    height: 12px;
-    background-color: transparent;
-    border: 2px solid var(--orange);
-    border-radius: 20px;
-    top: 50%;
-    left: -2.5%;
-    transform: translateY(-50%) rotate(-2deg);
-    z-index: -1;
-}
-
-.hero-logo-text {
-    font-size: 50px;
-    font-weight: 800;
-    color: var(--primary-blue);
-    text-shadow: 2px 2px 0px var(--white);
-    line-height: 1;
-    margin-top: 10px;
-}
-
-.hero-logo-year {
-    font-size: 40px;
-    color: var(--orange);
-    font-weight: 800;
-    text-shadow: 2px 2px 0px var(--white);
-}
-
-.hero-visual {
-    flex: 1.2;
-    position: relative;
-    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
-}
-
-.hero-visual img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.hero-overlay-logos {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 10px 15px;
-    border-radius: 10px;
-    display: flex;
-    gap: 15px;
     align-items: center;
 }
 
-.hero-overlay-logos img {
-    height: 30px;
-    width: auto;
-}
-
-.btn-inscreva {
+/* --- Formas de fundo decorativas --- */
+.hero-bg-shapes {
     position: absolute;
-    bottom: 30px;
-    right: 30px;
-    background-color: var(--orange);
-    color: var(--white);
-    font-weight: 800;
-    padding: 12px 30px;
-    border-radius: 8px;
-    font-size: 18px;
-    text-transform: uppercase;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: var(--transition);
-}
-
-.btn-inscreva:hover {
-    background-color: var(--orange-hover);
-    transform: translateY(-2px);
-}
-
-.hero-shape {
-    position: absolute;
-    bottom: -50px;
-    left: -50px;
-    width: 300px;
-    height: 300px;
-    background-color: var(--primary-blue);
-    transform: rotate(45deg);
-    z-index: 0;
-    opacity: 0.1;
-}
-
-/* ================= PUC Tech Intro Section ================= */
-.puc-tech {
-    background-color: var(--primary-blue);
-    padding: 100px 0;
-    color: var(--white);
-    position: relative;
-    overflow: hidden;
-}
-
-.puc-tech-container {
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    position: relative;
-    z-index: 2;
-}
-
-.puc-tech-visual {
-    flex: 1;
-    position: relative;
-    min-height: 400px;
-}
-
-.abstract-shape {
-    position: absolute;
-    background-color: var(--orange);
-    width: 120%;
-    height: 140%;
-    top: -20%;
-    left: -10%;
-    clip-path: polygon(30% 0%, 100% 0%, 75% 45%, 95% 45%, 25% 100%, 45% 55%, 20% 55%);
+    inset: 0;
+    pointer-events: none;
     z-index: 1;
 }
 
-.puc-tech-images {
+.hero-bg-shapes .shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.hero-bg-shapes .shape-1 {
+    width: 520px;
+    height: 520px;
+    top: -180px;
+    right: -120px;
+    animation: float 9s ease-in-out infinite;
+}
+
+.hero-bg-shapes .shape-2 {
+    width: 280px;
+    height: 280px;
+    bottom: 60px;
+    left: -80px;
+    animation: float 12s ease-in-out infinite reverse;
+}
+
+.hero-bg-shapes .shape-3 {
+    width: 160px;
+    height: 160px;
+    top: 30%;
+    left: 38%;
+    animation: float 7s ease-in-out infinite;
+    background: rgba(245, 166, 35, 0.07);
+}
+
+/* --- Container principal da hero --- */
+.hero > .container {
     position: relative;
     z-index: 2;
+    width: 100%;
+}
+
+/* Layout em duas colunas: conteúdo | visual */
+.hero-banner {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    align-items: center;
+    gap: 48px;
+    animation: fadeInUp 0.9s ease-out both;
+}
+
+/* --- Coluna esquerda: texto --- */
+.hero-content {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 40px 0;
+    gap: 24px;
+    padding: 48px 0 80px;
 }
 
-.puc-tech-images img {
-    border-radius: 12px;
-    box-shadow: var(--card-shadow);
+/* Pílula de categoria acima do título */
+.hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245, 166, 35, 0.18);
+    color: var(--orange);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid rgba(245, 166, 35, 0.3);
+    width: fit-content;
 }
 
-.puc-tech-images img:nth-child(1) {
-    width: 80%;
-    align-self: flex-start;
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+.hero-tag i {
+    font-size: 0.7rem;
 }
 
-.puc-tech-images img:nth-child(2) {
-    width: 70%;
-    align-self: flex-end;
-    margin-top: 0px;
+/* Título principal */
+.hero-title {
+    color: var(--white);
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
 }
 
-.puc-tech-text {
+/* Destaque laranja com sublinhado decorativo */
+.hero-title .highlight {
+    color: var(--orange);
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.hero-title .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+    border-radius: 2px;
+}
+
+/* Subtítulo */
+.hero-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.75;
+    max-width: 480px;
+}
+
+/* Grupo de CTAs */
+.hero-cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Botão primário — laranja sólido com glow */
+.btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 14px 32px;
+    border-radius: 8px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    box-shadow: 0 6px 20px rgba(245, 166, 35, 0.4);
+}
+
+.btn-hero-primary:hover {
+    background: var(--orange-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(245, 166, 35, 0.55);
+}
+
+/* Botão secundário — contorno translúcido */
+.btn-hero-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 14px 28px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.25s;
+}
+
+.btn-hero-secondary:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+    background: rgba(245, 166, 35, 0.07);
+    transform: translateY(-2px);
+}
+
+/* --- Coluna direita: imagem com overlays --- */
+.hero-visual {
+    position: relative;
+    /* A imagem principal extravasa ligeiramente a hero */
+    height: 100%;
+    min-height: 480px;
+}
+
+/* Imagem principal da hero */
+.hero-visual__img {
+    width: 100%;
+    height: 100%;
+    min-height: 520px;
+    object-fit: cover;
+    border-radius: 24px 24px 0 0;
+    display: block;
+    /* recorte diagonal na base para transição suave */
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+}
+
+/* Overlay glassmorphism com o nome do hub */
+.hero-glass-badge {
+    position: absolute;
+    top: 28px;
+    left: -24px;                            /* sobrepõe a imagem */
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 16px;
+    padding: 18px 28px;
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 180px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.hero-glass-badge .badge-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.hero-glass-badge .badge-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+/* Selo flutuante com o ano — pulsante */
+.hero-year-badge {
+    position: absolute;
+    bottom: 80px;
+    right: -20px;
+    background: var(--orange);
+    color: var(--white);
+    border-radius: 14px;
+    padding: 14px 20px;
+    text-align: center;
+    font-weight: 800;
+    box-shadow: 0 8px 32px rgba(245, 166, 35, 0.35);
+    animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.hero-year-badge .badge-year {
+    font-size: 1.8rem;
+    line-height: 1;
+}
+
+.hero-year-badge .badge-tagline {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.85;
+    margin-top: 3px;
+}
+
+/* --- Divisor curvo SVG na base da Hero --- */
+.hero-wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 3;
+}
+
+.hero-wave svg {
+    display: block;
+    width: 100%;
+}
+
+
+/* ================================================================
+   2. SEÇÃO ECOSSISTEMA (Sobre / HubSG)
+================================================================ */
+
+.hubsg {
+    background-color: var(--primary-blue);
+    padding: 120px 0;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Padrão de pontos decorativo no fundo */
+.hubsg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+}
+
+.hubsg-container {
+    display: flex;
+    align-items: center;
+    gap: 72px;
+    position: relative;
+    z-index: 2;
+}
+
+/* --- Bloco visual (imagens sobrepostas) --- */
+.hubsg-visual {
+    flex: 1;
+    position: relative;
+    min-height: 460px;
+}
+
+/* Forma abstrata geométrica laranja ao fundo */
+.abstract-shape {
+    position: absolute;
+    background: linear-gradient(135deg, var(--orange) 0%, #c8790a 100%);
+    width: 78%;
+    height: 78%;
+    top: 0;
+    left: 0;
+    border-radius: 32px;
+    z-index: 1;
+    opacity: 0.9;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 70% 100%, 0 100%);
+}
+
+/* Imagens empilhadas com offset (efeito masonry) */
+.hubsg-images {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    min-height: 460px;
+}
+
+/* Imagem de cima — alinhada à esquerda */
+.hubsg-images img:nth-child(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72%;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+}
+
+/* Imagem de baixo — deslocada para a direita, sobrepõe */
+.hubsg-images img:nth-child(2) {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60%;
+    border-radius: 16px;
+    border: 4px solid var(--primary-blue);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+}
+
+/* Hover nas imagens: leve zoom + sombra profunda */
+.hubsg-images img:hover {
+    transform: scale(1.04) translateY(-4px);
+    box-shadow: 0 28px 72px rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+
+/* --- Bloco de texto --- */
+.hubsg-text {
     flex: 1;
 }
 
-.puc-tech-text h2 {
-    font-size: 36px;
-    margin-bottom: 25px;
-    font-weight: 700;
-}
-
-.puc-tech-text p {
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 30px;
-    color: #E2E8F0;
-}
-
-.btn-saiba-mais {
-    display: inline-block;
-    background-color: var(--orange);
-    color: var(--white);
-    padding: 12px 32px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 16px;
-    transition: var(--transition);
-}
-
-.btn-saiba-mais:hover {
-    background-color: var(--orange-hover);
-}
-
-/* ================= Parceiros Section ================= */
-.parceiros {
-    background-color: var(--light-gray);
-    padding: 70px 0;
-    text-align: center;
-}
-
-.logos-carousel {
-    margin-top: 40px;
-    overflow: hidden;
-    position: relative;
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    padding: 20px 40px;
-    box-sizing: border-box;
-}
-
-.logos-track {
-    display: flex;
+/* Pílula de categoria */
+.hubsg-text .section-tag {
+    display: inline-flex;
     align-items: center;
-    /* Aumentar a duração torna a animação mais suave e o loop imperceptível */
-    animation: scroll-carousel 60s linear infinite;
-}
-
-@keyframes scroll-carousel {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-20%);
-    }
-}
-
-.logos-track img {
-    height: 60px; /* Define uma altura fixa para normalizar o tamanho */
-    width: auto;  /* Garante que a largura se ajuste para manter a proporção */
-    opacity: 0.8;
-    transition: var(--transition);
-    flex-shrink: 0;
-    margin-right: 60px; /* Usar margem em vez de gap para um loop perfeito */
-}
-
-.logos-track img[alt="Logo Azul"] {
-    /* Ajuste para compensar o espaço em branco na imagem e alinhar visualmente com os outros */
-    height: 120px;
-}
-
-.logos-track img:hover {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-/* ================= Pre-Footer ================= */
-.pre-footer {
-    background-color: var(--orange);
-    color: var(--white);
-    padding: 60px 0;
-}
-
-.pre-footer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-}
-
-.pre-footer h3 {
-    font-size: 24px;
+    gap: 8px;
+    background: rgba(245, 166, 35, 0.18);
+    color: var(--orange);
+    font-size: 0.75rem;
     font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(245, 166, 35, 0.3);
     margin-bottom: 20px;
 }
 
-.social-links {
-    display: flex;
-    gap: 15px;
+.hubsg-text h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
-.social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--white);
-    border-radius: 50%;
-    font-size: 18px;
-    transition: var(--transition);
-}
-
-.social-links a:hover {
-    background-color: var(--white);
+.hubsg-text h2 em {
+    font-style: normal;
     color: var(--orange);
 }
 
-.address-text {
-    font-size: 15px;
-    line-height: 1.8;
+.hubsg-text p {
+    font-size: 1rem;
+    line-height: 1.9;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 36px;
 }
 
-.address-text strong {
-    display: block;
-    margin-bottom: 5px;
+/* Botão "Saiba mais" com micro-animação */
+.btn-saiba-mais {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: var(--white);
+    padding: 14px 34px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    box-shadow: 0 6px 20px rgba(245, 166, 35, 0.4);
+}
+
+.btn-saiba-mais:hover {
+    background: var(--orange-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(245, 166, 35, 0.55);
+}
+
+.btn-saiba-mais i {
+    transition: transform 0.25s ease;
+}
+
+.btn-saiba-mais:hover i {
+    transform: translateX(5px);
+}
+
+
+/* ================================================================
+   3. SEÇÃO PARCEIROS
+================================================================ */
+
+.parceiros {
+    background-color: var(--light-gray);
+    padding: 80px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Subtítulo descritivo abaixo do título da seção */
+.parceiros .section-subtitle {
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+/* Faixa de logos infinita */
+.logos-carousel {
+    margin-top: 48px;
+    overflow: hidden;
+    position: relative;
+    /* Fade nas bordas para um look mais premium */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    mask-image:         linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+}
+
+/* A track contém os logos duplicados para o loop infinito */
+.logos-track {
+    display: flex;
+    align-items: center;
+    /* A animação agora percorre -50% porque a track tem o conteúdo duplicado */
+    animation: scroll-carousel 28s linear infinite;
+    width: max-content;
+}
+
+/* Pausa ao passar o mouse na área do carrossel */
+.logos-carousel:hover .logos-track {
+    animation-play-state: paused;
+}
+
+/* Cada logo: começa cinza, ganha cor no hover */
+.logos-track img {
+    height: 56px;
+    width: auto;
+    flex-shrink: 0;
+    margin-right: 72px;
+    /* Filtro grayscale + opacidade reduzida para look clean */
+    filter: grayscale(100%) opacity(0.45);
+    transition: filter 0.4s ease, transform 0.3s ease;
+}
+
+/* Exceção: logo da Azul é maior */
+.logos-track img[alt="Logo Azul"] {
+    height: 100px;
+}
+
+/* No hover, o logo ganha cor e destaque */
+.logos-track img:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.1);
+}
+
+
+/* ================================================================
+   RESPONSIVIDADE
+================================================================ */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .hero-banner {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .hero-content {
+        padding: 60px 0 40px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-title .highlight::after {
+        display: none;
+    }
+
+    .hero-subtitle {
+        max-width: 100%;
+    }
+
+    .hero-cta-group {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        min-height: 340px;
+        display: none; /* Oculta a coluna de imagem em tablets pequenos */
+    }
+
+    .hero-glass-badge {
+        left: 12px;
+    }
+
+    .hubsg-container {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .hubsg-visual {
+        width: 100%;
+        min-height: 380px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: 60px 0 0;
+    }
+
+    .hero-content {
+        padding: 40px 0 32px;
+    }
+
+    .hero-title {
+        font-size: 1.9rem;
+    }
+
+    .hubsg {
+        padding: 80px 0;
+    }
+
+    .hubsg-images img:nth-child(1) {
+        position: relative;
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .hubsg-images img:nth-child(2) {
+        position: relative;
+        width: 70%;
+        margin-left: auto;
+    }
+
+    .hubsg-images {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .logos-track img {
+        height: 44px;
+        margin-right: 48px;
+    }
+
+    .logos-track img[alt="Logo Azul"] {
+        height: 80px;
+    }
 }
