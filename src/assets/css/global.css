@@ -1,4 +1,4 @@
-/* ================= CSS Variables ================= */
+/* --- Variáveis --- */
 :root {
     --primary-blue: #0047AB;
     --dark-blue: #003380;
@@ -11,7 +11,7 @@
     --transition: all 0.3s ease;
 }
 
-/* ================= Reset & Global ================= */
+/* --- Reset e Estilos Globais --- */
 * {
     margin: 0;
     padding: 0;
@@ -51,7 +51,7 @@ img {
     margin: 0 auto;
 }
 
-/* ================= Animations ================= */
+/* --- Animações --- */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
@@ -74,7 +74,7 @@ img {
     transform: translateX(0);
 }
 
-/* ================= Header ================= */
+/* --- Cabeçalho (Header) --- */
 header {
     background-color: var(--primary-blue);
     color: var(--white);
@@ -133,8 +133,8 @@ header {
     cursor: pointer;
 }
 
-/* ================= PUC Tech Intro Section ================= */
-.puc-tech {
+/* --- Introdução HubSG --- */
+.hubsg {
     background-color: var(--primary-blue);
     padding: 100px 0;
     color: var(--white);
@@ -142,7 +142,7 @@ header {
     overflow: hidden;
 }
 
-.puc-tech-container {
+.hubsg-container {
     display: flex;
     align-items: center;
     gap: 60px;
@@ -150,7 +150,7 @@ header {
     z-index: 2;
 }
 
-.puc-tech-visual {
+.hubsg-visual {
     flex: 1;
     position: relative;
     min-height: 400px;
@@ -167,7 +167,7 @@ header {
     z-index: 1;
 }
 
-.puc-tech-images {
+.hubsg-images {
     position: relative;
     z-index: 2;
     display: flex;
@@ -176,34 +176,34 @@ header {
     padding: 40px 0;
 }
 
-.puc-tech-images img {
+.hubsg-images img {
     border-radius: 12px;
     box-shadow: var(--card-shadow);
 }
 
-.puc-tech-images img:nth-child(1) {
+.hubsg-images img:nth-child(1) {
     width: 80%;
     align-self: flex-start;
     clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
 }
 
-.puc-tech-images img:nth-child(2) {
+.hubsg-images img:nth-child(2) {
     width: 70%;
     align-self: flex-end;
     margin-top: 0px;
 }
 
-.puc-tech-text {
+.hubsg-text {
     flex: 1;
 }
 
-.puc-tech-text h2 {
+.hubsg-text h2 {
     font-size: 36px;
     margin-bottom: 25px;
     font-weight: 700;
 }
 
-.puc-tech-text p {
+.hubsg-text p {
     font-size: 16px;
     line-height: 1.8;
     margin-bottom: 30px;
@@ -225,7 +225,7 @@ header {
     background-color: var(--orange-hover);
 }
 
-/* ================= Parceiros Section ================= */
+/* --- Parceiros --- */
 .parceiros {
     background-color: var(--light-gray);
     padding: 70px 0;
@@ -245,7 +245,6 @@ header {
 .logos-track {
     display: flex;
     align-items: center;
-    /* Aumentar a duração torna a animação mais suave e o loop imperceptível */
     animation: scroll-carousel 60s linear infinite;
 }
 
@@ -261,16 +260,15 @@ header {
 
 
 .logos-track img {
-    height: 60px; /* Define uma altura fixa para normalizar o tamanho */
-    width: auto;  /* Garante que a largura se ajuste para manter a proporção */
+    height: 60px;
+    width: auto;
     opacity: 0.8;
     transition: var(--transition);
     flex-shrink: 0;
-    margin-right: 60px; /* Usar margem em vez de gap para um loop perfeito */
+    margin-right: 60px;
 }
 
 .logos-track img[alt="Logo Azul"] {
-    /* Ajuste para compensar o espaço em branco na imagem e alinhar visualmente com os outros */
     height: 120px;
 }
 
@@ -279,7 +277,7 @@ header {
     transform: scale(1.1);
 }
 
-/* ================= Pre-Footer ================= */
+/* --- Pré-rodapé --- */
 .pre-footer {
     background-color: var(--orange);
     color: var(--white);
@@ -330,7 +328,7 @@ header {
     margin-bottom: 5px;
 }
 
-/* ================= Footer ================= */
+/* --- Rodapé --- */
 footer {
     background-color: var(--primary-blue);
     color: rgba(255, 255, 255, 0.7);
@@ -339,7 +337,7 @@ footer {
     font-size: 13px;
 }
 
-/* ================= Responsive Breakpoints ================= */
+/* --- Responsividade --- */
 @media (max-width: 992px) {
     .hero-banner {
         flex-direction: column;
@@ -350,11 +348,11 @@ footer {
         min-height: 300px;
     }
 
-    .puc-tech-container {
+    .hubsg-container {
         flex-direction: column;
     }
 
-    .puc-tech-visual {
+    .hubsg-visual {
         width: 100%;
     }
 

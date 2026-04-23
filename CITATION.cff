@@ -1,6 +1,6 @@
 cff-version: 1.0.1
 message: Site de um projeto de inovação e pesquisa universitária
-title: Portal PucTec
+title: Portal HubSG
 authors:
   - family-names: Gomes de Oliveira Lana
     given-names: Marcos
@@ -9,7 +9,7 @@ authors:
   - family-names: Soares Silva
     given-names: Kauã Felipe
   - name-suffix: Professor
-    affiliation: PUC Minas
+    affiliation: HubSG
     family-names: Rivero
     given-names: Ilo
 keywords:

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - HubSG | Hub de Inovação PUC Minas São Gabriel</title>
+    <meta name="description"
+        content="Descubra os próximos eventos do HubSG: workshops, palestras, hackathons e muito mais. Conecte-se, aprenda e inove com a comunidade de tecnologia da PUC Minas São Gabriel.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../src/assets/css/global.css">
+    <link rel="stylesheet" href="../src/assets/css/eventos.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+         HEADER (padrão global do projeto)
+    ============================================================ -->
+    <header>
+        <div class="container nav-container">
+            <a href="../index.html#inicio" class="logo">
+                <img src="../src/assets/images/hero/image 34.png" alt="Logo HubSG">
+            </a>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Abrir menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="nav-links" role="navigation" aria-label="Menu principal">
+                <li><a href="../index.html#inicio">Início</a></li>
+                <li><a href="eventos.html" aria-current="page">Eventos</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================================================
+             1. HERO SECTION
+             Fundo azul com título forte e divisor wave na base
+        ============================================================ -->
+        <section class="eventos-hero" aria-labelledby="eventos-hero-title">
+            <div class="eventos-hero-bg-shapes" aria-hidden="true">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            <div class="container eventos-hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-calendar-star"></i>
+                    <span>Agenda HubSG 2026</span>
+                </div>
+                <h1 id="eventos-hero-title" class="eventos-hero-title">
+                    Conecte-se.<br>
+                    Aprenda.<br>
+                    <span class="hero-title-accent">Inove.</span>
+                </h1>
+                <p class="eventos-hero-subtitle">
+                    Descubra os próximos eventos do HubSG e faça parte da maior comunidade de
+                    inovação e tecnologia da PUC Minas São Gabriel.
+                </p>
+                <div class="hero-stats" role="list" aria-label="Estatísticas de eventos">
+                    <div class="hero-stat" role="listitem">
+                        <strong>12+</strong>
+                        <span>Eventos em 2026</span>
+                    </div>
+                    <div class="hero-stat-divider" aria-hidden="true"></div>
+                    <div class="hero-stat" role="listitem">
+                        <strong>500+</strong>
+                        <span>Participantes</span>
+                    </div>
+                    <div class="hero-stat-divider" aria-hidden="true"></div>
+                    <div class="hero-stat" role="listitem">
+                        <strong>4</strong>
+                        <span>Categorias</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Divisor wave — consistente com a página Sobre -->
+            <div class="hero-wave" aria-hidden="true">
+                <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0,0 C320,100 420,120 720,80 C1020,40 1220,10 1440,60 L1440,120 L0,120 Z"
+                        fill="#F8F9FA" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             2. BARRA DE FILTROS
+             Pills horizontais com scroll em mobile
+        ============================================================ -->
+        <section class="filtros-section" aria-label="Filtrar eventos por categoria">
+            <div class="container">
+                <div class="filtros-wrapper" role="group" aria-label="Categorias de eventos">
+                    <button
+                        class="filtro-pill active"
+                        data-filtro="todos"
+                        id="filtro-todos"
+                        aria-pressed="true">
+                        <i class="fas fa-th-large"></i>
+                        Todos
+                    </button>
+                    <button
+                        class="filtro-pill"
+                        data-filtro="workshop"
+                        id="filtro-workshop"
+                        aria-pressed="false">
+                        <i class="fas fa-tools"></i>
+                        Workshops
+                    </button>
+                    <button
+                        class="filtro-pill"
+                        data-filtro="palestra"
+                        id="filtro-palestra"
+                        aria-pressed="false">
+                        <i class="fas fa-microphone-alt"></i>
+                        Palestras
+                    </button>
+                    <button
+                        class="filtro-pill"
+                        data-filtro="hackathon"
+                        id="filtro-hackathon"
+                        aria-pressed="false">
+                        <i class="fas fa-code"></i>
+                        Hackathons
+                    </button>
+                    <button
+                        class="filtro-pill"
+                        data-filtro="networking"
+                        id="filtro-networking"
+                        aria-pressed="false">
+                        <i class="fas fa-users"></i>
+                        Networking
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             3. GRID DE PRÓXIMOS EVENTOS
+             CSS Grid responsivo: 1 col (mobile) → 2 col (tablet) → 3 col (desktop)
+        ============================================================ -->
+        <section class="eventos-grid-section" aria-labelledby="proximos-eventos-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="proximos-eventos-title" class="section-title-eventos">Próximos Eventos</h2>
+                    <p class="section-subtitle">Inscreva-se agora e garanta sua vaga!</p>
+                </header>
+
+                <!-- Grid de Cards -->
+                <div class="eventos-grid" id="eventos-grid" role="list" aria-label="Lista de próximos eventos">
+
+                    <!-- ─── Card 1: Workshop ─── -->
+                    <article
+                        class="evento-card"
+                        data-categoria="workshop"
+                        role="listitem"
+                        aria-label="Workshop: Do Zero ao Deploy com React e Node.js">
+                        <div class="card-img-wrapper">
+                            <img
+                                src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=600&q=80"
+                                alt="Workshop React e Node.js — pessoas colaborando em frente a computadores"
+                                loading="lazy">
+                            <!-- Badge de categoria -->
+                            <span class="card-categoria-badge badge-workshop" aria-label="Categoria: Workshop">
+                                <i class="fas fa-tools"></i> Workshop
+                            </span>
+                        </div>
+                        <!-- Badge de data sobreposto -->
+                        <div class="card-date-badge" aria-label="Data: 10 de Maio">
+                            <span class="date-day">10</span>
+                            <span class="date-month">MAI</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Do Zero ao Deploy com React e Node.js</h3>
+                            <ul class="card-meta" aria-label="Detalhes do evento">
+                                <li>
+                                    <i class="fas fa-clock" aria-hidden="true"></i>
+                                    <time datetime="2026-05-10T09:00">09h00 – 17h00</time>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                    <span>Auditório PUC Minas São Gabriel</span>
+                                </li>
+                            </ul>
+                            <p class="card-desc">
+                                Aprenda a construir uma aplicação full-stack do zero, desde o back-end com Node.js até o
+                                deploy em produção. Vagas limitadas para garantir experiência hands-on.
+                            </p>
+                            <a href="#inscricao-workshop-react" class="btn-saiba-mais card-cta" id="cta-workshop-react"
+                                aria-label="Inscreva-se no Workshop React e Node.js">
+                                Inscreva-se
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- ─── Card 2: Palestra ─── -->
+                    <article
+                        class="evento-card"
+                        data-categoria="palestra"
+                        role="listitem"
+                        aria-label="Palestra: IA Generativa e o Futuro do Desenvolvimento">
+                        <div class="card-img-wrapper">
+                            <img
+                                src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80"
+                                alt="Palestra sobre Inteligência Artificial — robô e tecnologia futurista"
+                                loading="lazy">
+                            <span class="card-categoria-badge badge-palestra" aria-label="Categoria: Palestra">
+                                <i class="fas fa-microphone-alt"></i> Palestra
+                            </span>
+                        </div>
+                        <div class="card-date-badge" aria-label="Data: 18 de Maio">
+                            <span class="date-day">18</span>
+                            <span class="date-month">MAI</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">IA Generativa e o Futuro do Desenvolvimento</h3>
+                            <ul class="card-meta" aria-label="Detalhes do evento">
+                                <li>
+                                    <i class="fas fa-clock" aria-hidden="true"></i>
+                                    <time datetime="2026-05-18T19:00">19h00 – 21h00</time>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                    <span>Auditório PUC Minas São Gabriel</span>
+                                </li>
+                            </ul>
+                            <p class="card-desc">
+                                Como a IA generativa está transformando o dia a dia dos devs? Um especialista de mercado
+                                traz exemplos reais, ferramentas e reflexões sobre o impacto na carreira.
+                            </p>
+                            <a href="#inscricao-palestra-ia" class="btn-saiba-mais card-cta" id="cta-palestra-ia"
+                                aria-label="Inscreva-se na Palestra sobre IA Generativa">
+                                Inscreva-se
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- ─── Card 3: Hackathon ─── -->
+                    <article
+                        class="evento-card card-destaque"
+                        data-categoria="hackathon"
+                        role="listitem"
+                        aria-label="Hackathon HubSG 2026 — 48 horas de inovação">
+                        <div class="card-img-wrapper">
+                            <img
+                                src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+                                alt="Hackathon — equipes de desenvolvimento trabalhando intensamente"
+                                loading="lazy">
+                            <span class="card-categoria-badge badge-hackathon" aria-label="Categoria: Hackathon">
+                                <i class="fas fa-code"></i> Hackathon
+                            </span>
+                            <div class="card-destaque-tag" aria-label="Evento em destaque">
+                                <i class="fas fa-star"></i> Destaque
+                            </div>
+                        </div>
+                        <div class="card-date-badge" aria-label="Data: 06 de Junho">
+                            <span class="date-day">06</span>
+                            <span class="date-month">JUN</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">HubSG Hackathon 2026 — 48h de Inovação</h3>
+                            <ul class="card-meta" aria-label="Detalhes do evento">
+                                <li>
+                                    <i class="fas fa-clock" aria-hidden="true"></i>
+                                    <time datetime="2026-06-06T08:00">06/06 08h00 – 08/06 08h00</time>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                    <span>Campus PUC Minas São Gabriel</span>
+                                </li>
+                            </ul>
+                            <p class="card-desc">
+                                O maior hackathon do campus! 48 horas para criar soluções reais com impacto social.
+                                Premios, mentorias com empresas parceiras e muito networking.
+                            </p>
+                            <a href="#inscricao-hackathon-2026" class="btn-saiba-mais card-cta"
+                                id="cta-hackathon-2026" aria-label="Inscreva-se no HubSG Hackathon 2026">
+                                Inscreva-se
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- ─── Card 4: Networking ─── -->
+                    <article
+                        class="evento-card"
+                        data-categoria="networking"
+                        role="listitem"
+                        aria-label="Networking Night HubSG — conecte-se com profissionais do mercado">
+                        <div class="card-img-wrapper">
+                            <img
+                                src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=600&q=80"
+                                alt="Evento de networking — pessoas em conversa profissional"
+                                loading="lazy">
+                            <span class="card-categoria-badge badge-networking" aria-label="Categoria: Networking">
+                                <i class="fas fa-users"></i> Networking
+                            </span>
+                        </div>
+                        <div class="card-date-badge" aria-label="Data: 20 de Junho">
+                            <span class="date-day">20</span>
+                            <span class="date-month">JUN</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Networking Night HubSG</h3>
+                            <ul class="card-meta" aria-label="Detalhes do evento">
+                                <li>
+                                    <i class="fas fa-clock" aria-hidden="true"></i>
+                                    <time datetime="2026-06-20T18:30">18h30 – 21h30</time>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                    <span>Espaço de Convivência — São Gabriel</span>
+                                </li>
+                            </ul>
+                            <p class="card-desc">
+                                Uma noite descontraída para conectar estudantes, professores e profissionais do setor
+                                de tecnologia. Traga seu cartão de visitas e sua curiosidade!
+                            </p>
+                            <a href="#inscricao-networking-night" class="btn-saiba-mais card-cta"
+                                id="cta-networking-night" aria-label="Inscreva-se no Networking Night HubSG">
+                                Inscreva-se
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- ─── Card 5: Workshop ─── -->
+                    <article
+                        class="evento-card"
+                        data-categoria="workshop"
+                        role="listitem"
+                        aria-label="Workshop: Design de UX/UI para Desenvolvedores">
+                        <div class="card-img-wrapper">
+                            <img
+                                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80"
+                                alt="Workshop de Design UX/UI — prototipação em tablet"
+                                loading="lazy">
+                            <span class="card-categoria-badge badge-workshop" aria-label="Categoria: Workshop">
+                                <i class="fas fa-tools"></i> Workshop
+                            </span>
+                        </div>
+                        <div class="card-date-badge" aria-label="Data: 11 de Julho">
+                            <span class="date-day">11</span>
+                            <span class="date-month">JUL</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Design de UX/UI para Desenvolvedores</h3>
+                            <ul class="card-meta" aria-label="Detalhes do evento">
+                                <li>
+                                    <i class="fas fa-clock" aria-hidden="true"></i>
+                                    <time datetime="2026-07-11T14:00">14h00 – 18h00</time>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                    <span>Lab. de Informática — São Gabriel</span>
+                                </li>
+                            </ul>
+                            <p class="card-desc">
+                                Aprenda os princípios fundamentais de UX/UI e como aplicá-los diretamente no seu fluxo
+                                de desenvolvimento. Prática com Figma incluída.
+                            </p>
+                            <a href="#inscricao-workshop-uxui" class="btn-saiba-mais card-cta" id="cta-workshop-uxui"
+                                aria-label="Inscreva-se no Workshop de Design UX/UI">
+                                Inscreva-se
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- ─── Card 6: Palestra ─── -->
+                    <article
+                        class="evento-card"
+                        data-categoria="palestra"
+                        role="listitem"
+                        aria-label="Palestra: Mercado de Tecnologia em 2026 — Tendências e Oportunidades">
+                        <div class="card-img-wrapper">
+                            <img
+                                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80"
+                                alt="Palestra sobre mercado de tecnologia — auditório com plateia"
+                                loading="lazy">
+                            <span class="card-categoria-badge badge-palestra" aria-label="Categoria: Palestra">
+                                <i class="fas fa-microphone-alt"></i> Palestra
+                            </span>
+                        </div>
+                        <div class="card-date-badge" aria-label="Data: 25 de Julho">
+                            <span class="date-day">25</span>
+                            <span class="date-month">JUL</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">Mercado de Tech 2026 — Tendências e Oportunidades</h3>
+                            <ul class="card-meta" aria-label="Detalhes do evento">
+                                <li>
+                                    <i class="fas fa-clock" aria-hidden="true"></i>
+                                    <time datetime="2026-07-25T19:30">19h30 – 21h00</time>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                    <span>Auditório PUC Minas São Gabriel</span>
+                                </li>
+                            </ul>
+                            <p class="card-desc">
+                                Que habilidades o mercado valoriza em 2026? Profissionais sênior de grandes empresas
+                                compartilham sua visão sobre tendências, salários e o perfil do dev do futuro.
+                            </p>
+                            <a href="#inscricao-palestra-mercado" class="btn-saiba-mais card-cta"
+                                id="cta-palestra-mercado"
+                                aria-label="Inscreva-se na Palestra sobre Mercado de Tecnologia">
+                                Saiba Mais
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                </div><!-- /eventos-grid -->
+
+                <!-- Mensagem de nenhum resultado (para o filtro via JS) -->
+                <div class="no-results" id="no-results" aria-live="polite" hidden>
+                    <i class="fas fa-calendar-times"></i>
+                    <p>Nenhum evento encontrado nesta categoria. Confira em breve!</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ============================================================
+             4. CALL TO ACTION — SUGERIR EVENTO
+             Fundo escuro (primary-blue) contrastando com a seção anterior
+        ============================================================ -->
+        <section class="cta-sugerir" aria-labelledby="cta-sugerir-title">
+            <div class="cta-sugerir-shapes" aria-hidden="true">
+                <div class="cta-shape cta-shape-1"></div>
+                <div class="cta-shape cta-shape-2"></div>
+            </div>
+            <div class="container cta-sugerir-content">
+                <div class="cta-icon-wrapper" aria-hidden="true">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h2 id="cta-sugerir-title" class="cta-sugerir-title">
+                    Quer organizar um evento<br>com a gente?
+                </h2>
+                <p class="cta-sugerir-text">
+                    Tem uma ideia brilhante para um workshop, palestra ou hackathon? O HubSG acredita no
+                    protagonismo estudantil — proponha seu evento e nós te ajudamos a tirar do papel!
+                </p>
+                <div class="cta-sugerir-actions">
+                    <a href="#sugerir-evento" class="btn-sugerir" id="btn-sugerir-evento"
+                        aria-label="Clique para sugerir um evento ao HubSG">
+                        <i class="fas fa-paper-plane"></i>
+                        Sugerir Evento
+                    </a>
+                    <a href="sobre.html" class="btn-sugerir-outline" id="btn-saiba-mais-hubsg"
+                        aria-label="Saiba mais sobre o HubSG">
+                        Saiba mais sobre o HubSG
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============================================================
+         PRÉ-RODAPÉ (padrão global do projeto)
+    ============================================================ -->
+    <section class="pre-footer">
+        <div class="container pre-footer-grid">
+            <div class="pre-footer-col">
+                <h3>Fique por dentro!</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="YouTube do HubSG"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Instagram do HubSG"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Telegram do HubSG"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
+            <div class="pre-footer-col">
+                <h3>Unidade</h3>
+                <div class="address-text">
+                    <strong>São Gabriel</strong>
+                    R. Walter Ianni, 255<br>
+                    São Gabriel - Belo Horizonte - CEP 31980-110
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         RODAPÉ (padrão global do projeto)
+    ============================================================ -->
+    <footer>
+        <div class="container">
+            © 2026 HubSG | Todos os direitos reservados
+        </div>
+    </footer>
+
+    <script src="../src/scripts/global.js" defer></script>
+    <script src="../src/scripts/eventos.js" defer></script>
+
+</body>
+
+</html>

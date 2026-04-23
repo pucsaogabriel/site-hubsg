@@ -1,0 +1,780 @@
+/* ================================================================
+   eventos.css — Estilos exclusivos da página de Eventos
+   Projeto: HubSG — Hub de Inovação PUC Minas São Gabriel
+   Autor: Desenvolvedor Front-end Sênior
+   Padrão: Mobile-first, reutiliza variáveis e utilitários de global.css
+================================================================ */
+
+
+/* ================================================================
+   1. HERO SECTION
+================================================================ */
+
+.eventos-hero {
+    position: relative;
+    background-color: var(--primary-blue);
+    padding: 100px 0 0;
+    overflow: hidden;
+    color: var(--white);
+}
+
+/* --- Formas decorativas de fundo (polígonos/circles abstratos) --- */
+.eventos-hero-bg-shapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.08;
+    background: var(--white);
+}
+
+.shape-1 {
+    width: 520px;
+    height: 520px;
+    top: -200px;
+    right: -100px;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    bottom: 60px;
+    left: -80px;
+    opacity: 0.05;
+}
+
+.shape-3 {
+    width: 180px;
+    height: 180px;
+    top: 60px;
+    left: 40%;
+    background: var(--orange);
+    opacity: 0.15;
+}
+
+/* --- Conteúdo do hero --- */
+.eventos-hero-content {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 60px;
+}
+
+/* Badge de topo ("Agenda HubSG 2026") */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--white);
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    backdrop-filter: blur(6px);
+}
+
+.hero-badge i {
+    color: var(--orange);
+    font-size: 0.85rem;
+}
+
+/* Título principal */
+.eventos-hero-title {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Destaque laranja na palavra "Inove." */
+.hero-title-accent {
+    color: var(--orange);
+    display: inline-block;
+    position: relative;
+}
+
+/* Linha decorativa abaixo de "Inove." */
+.hero-title-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--orange);
+    border-radius: 2px;
+    opacity: 0.6;
+}
+
+/* Subtítulo */
+.eventos-hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    line-height: 1.75;
+    max-width: 580px;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 48px;
+}
+
+/* --- Estatísticas do hero --- */
+.hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    row-gap: 20px;
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column;
+    padding: 0 28px;
+}
+
+.hero-stat:first-child {
+    padding-left: 0;
+}
+
+.hero-stat strong {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.hero-stat span {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 600;
+}
+
+/* Divisor vertical entre estatísticas */
+.hero-stat-divider {
+    width: 1px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+}
+
+/* --- Divisor wave (consistente com sobre.css) --- */
+.hero-wave {
+    position: relative;
+    bottom: -5px;
+    width: 100%;
+    line-height: 0;
+}
+
+.hero-wave svg {
+    display: block;
+    width: 100%;
+    height: clamp(60px, 10vw, 120px);
+}
+
+
+/* ================================================================
+   2. BARRA DE FILTROS
+   Scroll horizontal em mobile via overflow-x + flex sem wrap
+================================================================ */
+
+.filtros-section {
+    background-color: var(--light-gray);
+    padding: 36px 0 0;
+    /* Sem padding inferior — a section de grid vem logo em seguida */
+}
+
+/*
+  TÉCNICA MOBILE-FIRST:
+  O wrapper usa overflow-x: auto + flex sem wrap para criar
+  scroll horizontal invisível em telas pequenas.
+  No desktop (≥768px), os pills se centralizam naturalmente.
+*/
+.filtros-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+    scrollbar-width: none;           /* Firefox — oculta barra de scroll */
+    -ms-overflow-style: none;        /* IE/Edge — oculta barra de scroll */
+    flex-wrap: nowrap;
+}
+
+.filtros-wrapper::-webkit-scrollbar {
+    display: none;                   /* Chrome/Safari — oculta barra de scroll */
+}
+
+/* --- Pill individual --- */
+.filtro-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    background-color: var(--white);
+    color: var(--dark-text);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;             /* Impede quebra de linha no pill */
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    flex-shrink: 0;                  /* Mantém largura do pill em scroll */
+}
+
+.filtro-pill i {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    transition: var(--transition);
+}
+
+.filtro-pill:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+    box-shadow: 0 4px 14px rgba(245, 166, 35, 0.2);
+    transform: translateY(-1px);
+}
+
+.filtro-pill:hover i {
+    opacity: 1;
+}
+
+/* Estado ativo (selecionado) — fundo laranja */
+.filtro-pill.active {
+    background-color: var(--orange);
+    color: var(--white);
+    border-color: var(--orange);
+    box-shadow: 0 4px 14px rgba(245, 166, 35, 0.35);
+}
+
+.filtro-pill.active i {
+    opacity: 1;
+}
+
+.filtro-pill:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 2px;
+}
+
+
+/* ================================================================
+   3. GRID DE PRÓXIMOS EVENTOS
+================================================================ */
+
+.eventos-grid-section {
+    background-color: var(--light-gray);
+    padding: 48px 0 80px;
+}
+
+/* --- Cabeçalho da seção --- */
+.section-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.section-title-eventos {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    color: var(--dark-text);
+    margin-bottom: 10px;
+    letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/*
+  GRID RESPONSIVO — Mobile-first:
+  - Mobile  (<576px):  1 coluna
+  - Tablet  (≥576px):  2 colunas
+  - Desktop (≥992px):  3 colunas
+
+  Usamos minmax com fr para que os cards
+  preencham o espaço disponível proporcionalmente.
+*/
+.eventos-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+}
+
+/* Tablet ≥ 576px */
+@media (min-width: 576px) {
+    .eventos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop ≥ 992px */
+@media (min-width: 992px) {
+    .eventos-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* --- Mensagem de "sem resultados" (exibida via JS) --- */
+.no-results {
+    grid-column: 1 / -1;         /* Ocupa toda a largura do grid */
+    text-align: center;
+    padding: 60px 20px;
+    color: #6c757d;
+}
+
+.no-results i {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    opacity: 0.4;
+    display: block;
+}
+
+.no-results p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+
+/* ================================================================
+   CARD DE EVENTO — Anatomia completa
+   ┌────────────────────────────────┐
+   │  [Imagem com badge categoria]  │
+   │  [Badge de Data] ← sobreposto  │
+   │────────────────────────────────│
+   │  Título                        │
+   │  Meta (ícone horário + local)  │
+   │  Descrição curta               │
+   │  [CTA Inscreva-se]             │
+   └────────────────────────────────┘
+================================================================ */
+
+.evento-card {
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;                /* Imagem não vazará para fora do radius */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;             /* Âncora para o badge de data sobreposto */
+}
+
+/* Efeito hover de elevação — transmite "clicabilidade" */
+.evento-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.13);
+}
+
+/* Card em destaque: borda superior laranja */
+.evento-card.card-destaque {
+    border-top: 4px solid var(--orange);
+}
+
+/* --- Wrapper da imagem --- */
+.card-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+    display: block;
+}
+
+/* Zoom sutil na imagem ao hover no card */
+.evento-card:hover .card-img-wrapper img {
+    transform: scale(1.06);
+}
+
+/* --- Badge de categoria (sobreposto à imagem) --- */
+.card-categoria-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Cores específicas por categoria */
+.badge-workshop  { background-color: rgba(0, 71, 171, 0.85); color: var(--white); }
+.badge-palestra  { background-color: rgba(51, 51, 51, 0.8);  color: var(--white); }
+.badge-hackathon { background-color: rgba(245, 166, 35, 0.9); color: var(--white); }
+.badge-networking{ background-color: rgba(20, 150, 100, 0.85);color: var(--white); }
+
+/* --- Tag "Destaque" no card especial --- */
+.card-destaque-tag {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-color: var(--orange);
+    color: var(--white);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 3px 10px rgba(245, 166, 35, 0.4);
+}
+
+/*
+  BADGE DE DATA — posicionado logo abaixo da imagem,
+  "flutuando" entre a imagem e o corpo do card com
+  margin-top negativa para criar o efeito sobreposto.
+*/
+.card-date-badge {
+    position: absolute;
+    /* Posiciona ao final da imagem (height: 200px) - metade do badge */
+    top: 172px;
+    right: 20px;
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border-radius: 10px;
+    width: 52px;
+    text-align: center;
+    padding: 6px 0;
+    z-index: 3;                      /* Acima da imagem e do corpo do card */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    line-height: 1;
+}
+
+.date-day {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.date-month {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    margin-top: 2px;
+}
+
+/* --- Corpo do card --- */
+.card-body {
+    padding: 24px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;                         /* Ocupa o espaço restante → CTA alinhado ao fundo */
+    padding-top: 20px;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 14px;
+    line-height: 1.4;
+}
+
+/* --- Meta (horário + local) --- */
+.card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 14px;
+    list-style: none;
+    padding: 0;
+}
+
+.card-meta li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.card-meta li i {
+    color: var(--primary-blue);
+    font-size: 0.78rem;
+    width: 14px;                     /* Largura fixa para alinhar ícones verticalmente */
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* --- Descrição curta --- */
+.card-desc {
+    font-size: 0.88rem;
+    color: #495057;
+    line-height: 1.65;
+    margin-bottom: 20px;
+    flex: 1;                         /* Empurra o CTA para o fundo do card */
+
+    /* Limita a 3 linhas com ellipsis para uniformidade visual */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* --- CTA do card (reutiliza .btn-saiba-mais do global, com complemento) --- */
+.card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    align-self: flex-start;
+    font-size: 0.88rem;
+    padding: 10px 22px;
+}
+
+.card-cta i {
+    font-size: 0.75rem;
+    transition: transform 0.25s ease;
+}
+
+.card-cta:hover i {
+    transform: translateX(4px);
+}
+
+
+/* ================================================================
+   4. CTA — SUGERIR EVENTO
+   Fundo primary-blue escuro, contrastando com --light-gray
+================================================================ */
+
+.cta-sugerir {
+    position: relative;
+    background-color: var(--dark-blue);
+    padding: 90px 0;
+    overflow: hidden;
+    color: var(--white);
+    text-align: center;
+}
+
+/* Formas decorativas de fundo */
+.cta-sugerir-shapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cta-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--orange);
+}
+
+.cta-shape-1 {
+    width: 380px;
+    height: 380px;
+    top: -140px;
+    right: -80px;
+    opacity: 0.08;
+}
+
+.cta-shape-2 {
+    width: 250px;
+    height: 250px;
+    bottom: -100px;
+    left: -60px;
+    opacity: 0.06;
+}
+
+.cta-sugerir-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Ícone de lâmpada decorativo */
+.cta-icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    background-color: var(--orange);
+    border-radius: 50%;
+    margin-bottom: 28px;
+    box-shadow: 0 8px 24px rgba(245, 166, 35, 0.4);
+}
+
+.cta-icon-wrapper i {
+    font-size: 1.8rem;
+    color: var(--white);
+}
+
+.cta-sugerir-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+.cta-sugerir-text {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 40px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Grupo de botões CTA --- */
+.cta-sugerir-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Botão primário: laranja sólido */
+.btn-sugerir {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background-color: var(--orange);
+    color: var(--white);
+    padding: 14px 36px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 6px 18px rgba(245, 166, 35, 0.35);
+}
+
+.btn-sugerir:hover {
+    background-color: var(--orange-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(245, 166, 35, 0.45);
+}
+
+/* Botão secundário: contorno branco */
+.btn-sugerir-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    color: var(--white);
+    padding: 13px 32px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.btn-sugerir-outline:hover {
+    border-color: var(--white);
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+}
+
+
+/* ================================================================
+   5. RESPONSIVIDADE — Mobile-first complementar
+================================================================ */
+
+/* Telas muito pequenas (<360px) */
+@media (max-width: 360px) {
+    .eventos-hero-title {
+        font-size: 2.4rem;
+    }
+
+    .hero-stat {
+        padding: 0 16px;
+    }
+
+    .hero-stat strong {
+        font-size: 1.8rem;
+    }
+}
+
+/* Mobile (<576px) */
+@media (max-width: 575px) {
+    .eventos-hero {
+        padding-top: 70px;
+    }
+
+    .hero-stats {
+        gap: 0;
+    }
+
+    .hero-stat {
+        padding: 0 20px;
+    }
+
+    .cta-sugerir-actions {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 10px;
+    }
+
+    .btn-sugerir,
+    .btn-sugerir-outline {
+        justify-content: center;
+    }
+
+    /* Filtros — garantia de scroll suave no mobile */
+    .filtros-wrapper {
+        padding-bottom: 12px;
+    }
+}
+
+/* Tablet (577–991px) */
+@media (min-width: 577px) and (max-width: 991px) {
+    .eventos-hero-title {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+    }
+}
+
+/* Desktop (≥1200px) */
+@media (min-width: 1200px) {
+    .eventos-grid-section {
+        padding: 56px 0 100px;
+    }
+
+    /* No desktop os filtros podem centralizar */
+    .filtros-wrapper {
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow: visible;
+    }
+}
