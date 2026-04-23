@@ -1,170 +1,402 @@
-/* ================= Equipe Section ================= */
+/* ================================================================
+   equipe.css — Seção de Equipe e Carrossel
+   Projeto: HubSG — Hub de Inovação PUC Minas São Gabriel
+   Design: Cards 3D flip premium com carrossel nativo mobile-friendly
+================================================================ */
+
+
+/* ================================================================
+   KEYFRAMES
+================================================================ */
+
+/* Entrada suave dos cards quando visíveis */
+@keyframes cardReveal {
+    from {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* ================================================================
+   1. SEÇÃO WRAPPER
+================================================================ */
+
 .equipe {
-    background-color: var(--light-gray);
-    padding: 80px 0;
+    background: linear-gradient(180deg, #f0f4f8 0%, var(--light-gray) 100%);
+    padding: 100px 0 80px;
     text-align: center;
-    
-}
-
-.section-title {
-    font-size: 32px;
-    color: #4a4a4a;
-    margin-bottom: 50px;
-    font-weight: 700;
-}
-
-#team-grid {
-    display: flex;
-    gap: 30px;
-    scroll-behavior: smooth;
-        overflow: hidden;
-
-}
-
-/*
-#team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    justify-content: center;
-}
-
-.team-card {
-    background: var(--white);
-    padding: 40px 20px;
-    border-radius: 16px;
-    box-shadow: var(--card-shadow);
-    transition: var(--transition);
-}
-
-.team-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-}*/
-
-.team-photo {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 0 auto 20px;
-    border: 5px solid var(--light-gray);
-}
-
-.team-name {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--dark-text);
-    margin-bottom: 5px;
-}
-
-.team-name-back {
-    font-size: 20px;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 5px;
-}
-
-.team-role {
-    font-size: 14px;
-    color: #777;
-    font-weight: 600;
-}
-
-.team-card {
-    min-width: 280px;
-    max-width: 280px;
-    flex: 0 0 auto;
-    height: 340px;
-    perspective: 1200px;
-    flex: 0 0 calc((100% - 60px) / 3);
-    scroll-snap-align: start; /*new*/
-
-
-}
-
-.card-inner {
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s cubic-bezier(.4, 2, .3, 1);
-    transform-style:preserve-3d;
     position: relative;
+    overflow: hidden;
 }
 
-/* hover desktop */
-.team-card:hover .card-inner {
-    transform: rotateY(180deg);
-}
-
-/* mobile */
-.card-inner.flip {
-    transform: rotateY(180deg);
-}
-
-.card-front,
-.card-back {
+/* Detalhe decorativo superior */
+.equipe::before {
+    content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 16px;
-    backface-visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--orange), var(--primary-blue));
 }
 
-/* Frente */
-.card-front {
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    box-shadow: var(--card-shadow);
+/* Título da seção */
+.section-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    color: var(--dark-text);
+    margin-bottom: 12px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
 }
 
-/* Verso */
-.card-back {
-    transform: rotateY(180deg);
-    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue));
-    color: white;
+/* Subtítulo descritivo abaixo do título */
+.section-subtitle {
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin-bottom: 48px;
 }
 
-/* Glow ao passar mouse */
-.team-card:hover {
-    transform: translateY(-5px) scale(1.02);
-}
 
-/* ================= Carrossel Section ================= */
+/* ================================================================
+   2. CARROSSEL WRAPPER
+================================================================ */
 
 .carousel-wrapper {
     position: relative;
     display: flex;
     align-items: center;
-        
+    gap: 12px;
+    /* Fade nas bordas laterais para dar profundidade */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image:         linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
+/* A track é o scroll container nativo (mobile-friendly) */
 .carousel-track {
     display: flex;
-    gap: 30px;
+    gap: 28px;
+    /* Scroll nativo + snap para mobile fluido */
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 20px;
-    /*overflow: hidden;
-    scroll-behavior: smooth;
-    padding: 20px;*/
+    scrollbar-width: none;           /* Oculta scrollbar no Firefox */
+    padding: 28px 40px;
+    /* Faz o track crescer o suficiente para preencher o wrapper */
+    flex: 1;
 }
+
+/* Oculta scrollbar no Chrome/Safari */
 .carousel-track::-webkit-scrollbar {
     display: none;
 }
 
+/* Botões prev/next do carrossel */
 .carousel-btn {
-    background: var(--primary-blue);
-    color: white;
-    border: none;
-    font-size: 24px;
-    padding: 10px 15px;
+    background: var(--white);
+    color: var(--primary-blue);
+    border: 2px solid rgba(0, 71, 171, 0.15);
+    font-size: 20px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    border-radius: 8px;
-    z-index: 2;
+    border-radius: 50%;
+    z-index: 10;
+    flex-shrink: 0;
+    transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    box-shadow: 0 4px 16px rgba(0, 71, 171, 0.12);
+    /* Remove o mask dos botões para que apareçam sobre o fade */
+    position: relative;
+}
+
+.carousel-btn:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+    transform: scale(1.08);
+    box-shadow: 0 8px 24px rgba(0, 71, 171, 0.28);
+}
+
+.carousel-btn:active {
+    transform: scale(0.96);
+}
+
+
+/* ================================================================
+   3. CARD 3D FLIP
+================================================================ */
+
+.team-card {
+    /* Dimensões fixas para uniformidade */
+    min-width: 260px;
+    width: 260px;
+    height: 360px;
+    flex-shrink: 0;
+
+    /* Perspectiva 3D — essencial para o efeito flip */
+    perspective: 1000px;
+
+    /* Snap point para scroll nativo */
+    scroll-snap-align: start;
+
+    /* Animação de entrada */
+    animation: cardReveal 0.5s ease-out both;
+
+    /* Elevação suave no hover do card inteiro */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.team-card:hover {
+    /* Leve lift sem conflitar com o flip da .card-inner */
+    transform: translateY(-6px);
+}
+
+/* Container interno que rotaciona */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    /* Flip suave e elegante — cubic-bezier para desaceleração natural */
+    transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1.0);
+}
+
+/* Ativa o flip no hover do card (desktop) */
+.team-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Ativa o flip via classe JS (mobile tap) */
+.card-inner.flip {
+    transform: rotateY(180deg);
+}
+
+/* --- Faces do card: frente e verso --- */
+.card-front,
+.card-back {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;   /* Correção para Safari */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 28px 20px;
+}
+
+/* --- FRENTE: glassmorphism sobre fundo branco --- */
+.card-front {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* Sombra difusa e elegante */
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.04),
+        0 16px 40px rgba(0, 71, 171, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    gap: 8px;
+}
+
+/* --- VERSO: gradiente azul profundo --- */
+.card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(145deg, var(--primary-blue) 0%, #001e5a 100%);
+    color: var(--white);
+    /* Sombra profunda no verso */
+    box-shadow:
+        0 16px 48px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    gap: 10px;
+}
+
+/* Detalhe decorativo no verso (círculo laranja) */
+.card-back::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 140px;
+    height: 140px;
+    background: rgba(245, 166, 35, 0.15);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.card-back::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 100px;
+    height: 100px;
+    background: rgba(245, 166, 35, 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+
+/* ================================================================
+   4. ELEMENTOS INTERNOS DO CARD
+================================================================ */
+
+/* Foto circular com borda colorida */
+.team-photo {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--white);
+    /* Anel externo azul */
+    box-shadow: 0 0 0 4px rgba(0, 71, 171, 0.18), 0 8px 24px rgba(0, 0, 0, 0.15);
+    margin-bottom: 12px;
+}
+
+/* Nome — frente */
+.team-name {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--dark-text);
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Cargo — frente */
+.team-role {
+    font-size: 0.78rem;
+    color: var(--primary-blue);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: rgba(0, 71, 171, 0.08);
+    padding: 3px 10px;
+    border-radius: 100px;
+}
+
+/* Nome — verso */
+.team-name-back {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--white);
+    text-align: center;
+    line-height: 1.2;
+    position: relative;
+    z-index: 1;
+}
+
+/* Cargo — verso */
+.team-role-back {
+    font-size: 0.75rem;
+    color: var(--orange);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+
+/* Área de links sociais no verso */
+.team-socials {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Ícone social */
+.team-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.9rem;
+    transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
+}
+
+.team-socials a:hover {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: var(--white);
+    transform: scale(1.12);
+}
+
+/* Bio curta no verso */
+.team-bio {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    line-height: 1.6;
+    max-width: 200px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Imagens de social network no verso (suporte ao JS atual) */
+.social-img-link img {
+    height: 22px;
+    width: 22px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.social-img-link:hover img {
+    opacity: 1;
+    transform: scale(1.15);
+}
+
+
+/* ================================================================
+   5. RESPONSIVIDADE
+================================================================ */
+
+@media (max-width: 768px) {
+    .equipe {
+        padding: 72px 0 60px;
+    }
+
+    .carousel-wrapper {
+        /* Remove o fade lateral em mobile para não cortar os botões */
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .carousel-track {
+        padding: 20px 16px;
+        gap: 20px;
+    }
+
+    .team-card {
+        min-width: 230px;
+        width: 230px;
+        height: 320px;
+    }
+
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    /* Em mobile, hover não funciona — o flip é controlado via JS */
+    .team-card:hover .card-inner {
+        transform: none;
+    }
 }

@@ -31,75 +31,166 @@
     </header>
 
     <main>
+
+        <!-- =============================================
+             HERO SECTION
+        ============================================= -->
         <section id="inicio" class="hero">
+
+            <!-- Formas geométricas decorativas de fundo -->
+            <div class="hero-bg-shapes" aria-hidden="true">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+
             <div class="container">
-                <div class="hero-banner animate-on-scroll">
-                    <div class="hero-shape"></div>
-                    <div class="hero-content">
-                        <h1 class="hero-title">Seu projeto pode <span>virar negócio</span></h1>
-                        <div class="hero-logo-text">HubSG</div>
-                        <div class="hero-logo-year">2026</div>
-                    </div>
-                    <div class="hero-visual">
-                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800&q=80"
-                            alt="Alunos e professor na sala de aula">
-                        <div class="hero-overlay-logos">
-                            <strong>HubSG</strong>
+                <div class="hero-banner">
+
+                    <!-- Coluna esquerda: texto e CTAs -->
+                    <div class="hero-content animate-on-scroll">
+
+                        <!-- Pílula de categoria / eyebrow text -->
+                        <span class="hero-tag">
+                            <i class="fas fa-bolt"></i>
+                            Hub de Inovação · PUC Minas São Gabriel
+                        </span>
+
+                        <h1 class="hero-title">
+                            Seu projeto pode<br>
+                            <span class="highlight">virar negócio</span>
+                        </h1>
+
+                        <p class="hero-subtitle">
+                            O HubSG é o ecossistema de inovação da PUC Minas São Gabriel que conecta talentos,
+                            ideias e oportunidades reais no curso de Ciência da Computação.
+                        </p>
+
+                        <div class="hero-cta-group">
+                            <a href="pages/eventos.html" class="btn-hero-primary">
+                                <i class="fas fa-calendar-alt"></i>
+                                Ver Eventos
+                            </a>
+                            <a href="pages/sobre.html" class="btn-hero-secondary">
+                                Conheça o Hub
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
-                        <a href="#inscricao" class="btn-inscreva">INSCREVA-SE</a>
+                    </div>
+
+                    <!-- Coluna direita: imagem com overlays glassmorphism -->
+                    <div class="hero-visual">
+
+                        <img class="hero-visual__img"
+                             src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80"
+                             alt="Alunos e professores colaborando em projetos de inovação">
+
+                        <!-- Badge glassmorphism: nome do hub -->
+                        <div class="hero-glass-badge">
+                            <span class="badge-label">Hub de Inovação</span>
+                            <span class="badge-value">HubSG</span>
+                        </div>
+
+                        <!-- Selo flutuante com o ano — pulsante -->
+                        <div class="hero-year-badge">
+                            <div class="badge-year">2026</div>
+                            <div class="badge-tagline">Presente</div>
+                        </div>
+
                     </div>
                 </div>
             </div>
+
+            <!-- Divisor curvo SVG ligando com a próxima seção -->
+            <div class="hero-wave" aria-hidden="true">
+                <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f0f4f8"/>
+                </svg>
+            </div>
+
         </section>
 
-        <section id="projetos" class="equipe">
+
+        <!-- =============================================
+             EQUIPE SECTION (cards gerados via JS)
+        ============================================= -->
+        <section id="projetos" class="equipe animate-on-scroll">
             <div class="container">
-                <h2 class="section-title">Equipe</h2>
+                <h2 class="section-title">Nossa Equipe</h2>
+                <p class="section-subtitle">As pessoas que fazem o HubSG acontecer</p>
+
                 <div class="carousel-wrapper">
-                    <button class="carousel-btn prev">&#10094;</button>
-
+                    <button class="carousel-btn prev" aria-label="Card anterior">&#10094;</button>
                     <div class="carousel-track" id="team-grid"></div>
-
-                    <button class="carousel-btn next">&#10095;</button>
+                    <button class="carousel-btn next" aria-label="Próximo card">&#10095;</button>
                 </div>
             </div>
         </section>
 
+
+        <!-- =============================================
+             ECOSSISTEMA / SOBRE SECTION
+        ============================================= -->
         <section id="sobre" class="hubsg">
             <div class="container hubsg-container">
-                <div class="hubsg-visual">
-                    <div class="abstract-shape"></div>
+
+                <!-- Visual: imagens sobrepostas -->
+                <div class="hubsg-visual animate-on-scroll">
+                    <div class="abstract-shape" aria-hidden="true"></div>
                     <div class="hubsg-images">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"
-                            alt="Estudantes de computação programando">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80"
-                            alt="Equipe discutindo projeto">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=700&q=80"
+                             alt="Estudantes de Ciência da Computação programando em equipe">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=700&q=80"
+                             alt="Equipe do HubSG discutindo projeto de inovação">
                     </div>
                 </div>
+
+                <!-- Texto -->
                 <div class="hubsg-text slide-in-right">
-                    <h2>Conheça o HubSG</h2>
-                    <p><strong>O HubSG é um hub de inovação e tecnologia, fundado para impulsionar o protagonismo estudantil e conectar
-                            curso de Ciência da Computação.</strong> Criada com o objetivo de impulsionar o protagonismo
-                        estudantil, atua como um ecossistema colaborativo de inovação, aprendizado e impacto,
-                        conectando.</p>
-                    <a href="#saiba-mais" class="btn-saiba-mais">Saiba mais</a>
+                    <span class="section-tag">
+                        <i class="fas fa-rocket"></i>
+                        Ecossistema de Inovação
+                    </span>
+                    <h2>Conheça o <em>HubSG</em></h2>
+                    <p>
+                        O <strong>HubSG</strong> é um hub de inovação e tecnologia fundado para impulsionar o protagonismo
+                        estudantil e conectar talentos do curso de Ciência da Computação da PUC Minas São Gabriel.
+                        Atuamos como um ecossistema colaborativo de inovação, aprendizado e impacto — conectando
+                        estudantes, professores e oportunidades reais do mercado.
+                    </p>
+                    <a href="pages/sobre.html" class="btn-saiba-mais">
+                        Saiba mais
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section id="parceiros" class="parceiros">
+
+        <!-- =============================================
+             PARCEIROS SECTION
+        ============================================= -->
+        <section id="parceiros" class="parceiros animate-on-scroll">
             <div class="container">
                 <h2 class="section-title">Parceiros</h2>
-                <div class="logos-carousel">
-                    <div class="logos-track">
-                        <img src="src/assets/images/logos/Ford_Motor_Company_Logo.svg" alt="Logo Ford">
-                        <img src="src/assets/images/logos/LOGO_AZUL_LINHAS_AEREAS.png" alt="Logo Azul">
-                        <img src="src/assets/images/logos/Gol_Linhas_Aéreas_Inteligentes_logo_(2015,_without_the_slogan).svg.png"
-                            alt="Logo GOL">
-                    </div>
+                <p class="section-subtitle">Organizações que acreditam no potencial dos nossos estudantes</p>
+            </div>
+
+            <!-- A faixa de logos é full-width intencionalmente (fora do .container) -->
+            <div class="logos-carousel" aria-label="Carrossel de logos dos parceiros">
+                <div class="logos-track">
+                    <!-- Logos originais -->
+                    <img src="src/assets/images/logos/Ford_Motor_Company_Logo.svg" alt="Logo Ford">
+                    <img src="src/assets/images/logos/LOGO_AZUL_LINHAS_AEREAS.png" alt="Logo Azul">
+                    <img src="src/assets/images/logos/Gol_Linhas_Aéreas_Inteligentes_logo_(2015,_without_the_slogan).svg.png" alt="Logo GOL">
+                    <!-- Duplicados para o loop infinito funcionar sem salto -->
+                    <img src="src/assets/images/logos/Ford_Motor_Company_Logo.svg" alt="Logo Ford" aria-hidden="true">
+                    <img src="src/assets/images/logos/LOGO_AZUL_LINHAS_AEREAS.png" alt="Logo Azul" aria-hidden="true">
+                    <img src="src/assets/images/logos/Gol_Linhas_Aéreas_Inteligentes_logo_(2015,_without_the_slogan).svg.png" alt="Logo GOL" aria-hidden="true">
                 </div>
             </div>
         </section>
+
     </main>
 
     <section class="pre-footer">
