@@ -36,14 +36,19 @@ async function RenderizarCardsEquipe() {
         <div class="card-inner">
 
           <div class="card-front">
-            <img src="${d.img}" alt="${d.nome}" class="team-photo">
+            <img src="${d.img}" alt="${d.nome}" class="team-photo" onerror="this.onerror=null;this.src='src/assets/images/equipe/default-avatar.jpg';">
             <h3 class="team-name">${d.nome}</h3>
             <p class="team-role">${d.funcao}</p>
           </div>
 
           <div class="card-back">
-            <p>Conecte-se comigo</p>
-            <a href="${d.linkedin}" target="_blank">LinkedIn</a>
+            <img src="${d.img}" alt="${d.nome}" class="team-photo" onerror="this.onerror=null;this.src='src/assets/images/equipe/default-avatar.jpg';">
+            <h3 class="team-name-back">${d.nome}</h3>
+            <p class="team-role">${d.funcao}</p>
+            <div class="social-links">
+                <a href="${d.linkedin}" aria-label="linkedin"><i class="fab fa-linkedin"></i></a>
+                <a href="${d.github}" aria-label="github"><i class="fab fa-github"></i></a>
+            </div>
           </div>
 
         </div>
@@ -136,26 +141,27 @@ function getCardsPerView() {
 }
 
 function ativarDrag() {
-  const track = document.querySelector('.carousel-track');
+    const track = document.querySelector('.carousel-track');
 
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+    let isDown = false;
+    let startX;
+    let scrollLeft;
 
-  track.addEventListener('mousedown', (e) => {
-    isDown = true;
-    startX = e.pageX - track.offsetLeft;
-    scrollLeft = track.scrollLeft;
-  });
+    track.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+    });
 
-  track.addEventListener('mouseleave', () => isDown = false);
-  track.addEventListener('mouseup', () => isDown = false);
+    track.addEventListener('mouseleave', () => isDown = false);
+    track.addEventListener('mouseup', () => isDown = false);
 
-  track.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 1.5;
-    track.scrollLeft = scrollLeft - walk;
-  });
+    track.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        track.scrollLeft = scrollLeft - walk;
+    });
 }
+

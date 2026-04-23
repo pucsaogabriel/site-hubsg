@@ -3,42 +3,100 @@
         {
             "img": "src/assets/images/equipe/kaua.jpeg",
             "nome": "Kauã",
-            "funcao": "programador"
+            "funcao": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/kau%C3%A3-soares-12114b330/",
+            "github": "https://github.com/puckaua"
         },
         {
             "img": "src/assets/images/equipe/arthur.jpeg",
             "nome": "Arthur",
-            "funcao": "programador"
+            "funcao": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/arthur-emmanuel-oliveira-marinho/",
+            "github": "https://github.com/arthuremmanuel01"
         },
         {
             "img": "src/assets/images/equipe/marcos.jpeg",
             "nome": "Marcos",
-            "funcao": "programador"
+            "funcao": "Análise e Desenvolvimento de Sistemas",
+            "linkedin": "https://www.linkedin.com/in/marcosgomes93/",
+            "github": "https://github.com/marcosgomeslana"
         },
         {
             "img": "src/assets/images/equipe/evelyn.jpeg",
             "nome": "Evelyn",
-            "funcao": "programadora"
+            "funcao": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/evelyn-maestre",
+            "github": "https://github.com/izuky0820"
         },
         {
             "img": "src/assets/images/equipe/kaique.jpeg",
             "nome": "Kaique",
-            "funcao": "programador"
+            "funcao": "Análise e Desenvolvimento de Sistemas",
+            "linkedin": "https://www.linkedin.com/in/kaiquemaraujo/",
+            "github": "https://github.com/KaiqueMAraujo"
         },
         {
-            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
+            "img": "src/assets/images/equipe/.jpeg",
+            "nome": "Lilith",
+            "funcao": "Sistemas de Informação",
+            "linkedin": "",
+            "github": ""
+        },
+        {
+            "img": "src/assets/images/equipe/joaovitor.jpeg",
+            "nome": "João Vitor",
+            "funcao": "Análise e Desenvolvimento de Sistemas",
+            "linkedin": "",
+            "github": "https://github.com/JoaoVitorPaulaSantos"
+        },
+        {
+            "img": "src/assets/images/equipe/.jpeg",
+            "nome": "Filipe",
+            "funcao": "?",
+            "linkedin": "",
+            "github": ""
+        },
+        {
+            "img": "src/assets/images/equipe/.jpeg",
+            "nome": "João ?",
+            "funcao": "?",
+            "linkedin": "",
+            "github": ""
+        },
+        {
+            "img": "src/assets/images/equipe/.jpeg",
+            "nome": "Pedro",
+            "funcao": "Sistemas de Informação",
+            "linkedin": "",
+            "github": ""
+        },
+        {
+            "img": "src/assets/images/equipe/matheus.jpeg",
+            "nome": "Matheus",
+            "funcao": "Sistemas de Informação",
+            "linkedin": "https://www.linkedin.com/in/matheusdeus",
+            "github": "https://www.github.com/matheusdeuss"
+        },
+        {
+            "img": "src/assets/images/equipe/augusto.jpeg",
             "nome": "Augusto",
-            "funcao": "engenheiro aeronauta"
+            "funcao": "Engenharia Aeronáutica",
+            "linkedin": "",
+            "github": ""
         },
         {
-            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
+            "img": "src/assets/images/equipe/lucas.jpeg",
             "nome": "Lucas",
-            "funcao": "engenheiro aeronauta"
+            "funcao": "Engenharia Aeronáutica",
+            "linkedin": "https://www.linkedin.com/in/lucas-de-sa-moreira",
+            "github": "https://github.com/LucasdeSaMoreira"
         },
         {
-            "img": "https://www.canva.com/pt_br/fotos/s/floresta/",
+            "img": "src/assets/images/equipe/isaac.jpeg",
             "nome": "Isaac",
-            "funcao": "jurídico"
+            "funcao": "Direito",
+            "linkedin": "https://www.linkedin.com/in/isaac-cruz-3247822a/",
+            "github": "https://github.com/iCruz347"
         }
     ]
 }
