@@ -98,5 +98,47 @@
             "linkedin": "https://www.linkedin.com/in/isaac-cruz-3247822a/",
             "github": "https://github.com/iCruz347"
         }
+    ],
+    "eventos": [
+        {
+            "titulo": "Hackathon Varejo Inteligente",
+            "categoria": "hackathon",
+            "img": "../src/assets/images/eventos/hackathonVarejoInteligente.jpeg",
+            "dia": "29",
+            "mes": "ABR",
+            "horaInicio": "19:00",
+            "horaTermino": "21:00",
+            "local": "PUC Minas São Gabriel",
+            "descricao": "Em articulação com parceiros do setor produtivo, o evento tem como objetivo integrar estudantes, empreendedores e especialistas na análise de desafios do varejo contemporâneo e na construção de soluções inovadoras, a partir de metodologias de inovação e interdisciplinaridade. \nA iniciativa reforça o compromisso da PUC Minas com a articulação entre ensino, pesquisa e extensão, promovendo o desenvolvimento de soluções com impacto no setor produtivo. ",
+            "link": "https://bit.ly/hackathonpucsaogabriel",
+            "destaque": true
+        },
+        {
+            "titulo": "Hackathon Varejo Inteligente",
+            "categoria": "hackathon",
+            "img": "../src/assets/images/eventos/hackathonVarejoInteligente.jpeg",
+            "dia": "30",
+            "mes": "ABR",
+            "horaInicio": "19:00",
+            "horaTermino": "21:00",
+            "local": "PUC Minas São Gabriel",
+            "descricao": "Em articulação com parceiros do setor produtivo, o evento tem como objetivo integrar estudantes, empreendedores e especialistas na análise de desafios do varejo contemporâneo e na construção de soluções inovadoras, a partir de metodologias de inovação e interdisciplinaridade. \nA iniciativa reforça o compromisso da PUC Minas com a articulação entre ensino, pesquisa e extensão, promovendo o desenvolvimento de soluções com impacto no setor produtivo. ",
+            "link": "https://bit.ly/hackathonpucsaogabriel",
+            "destaque": false
+        },
+        {
+            "titulo": "GitHub Copilot Dev Days",
+            "categoria": "palestra",
+            "img": "../src/assets/images/eventos/devdays.gif",
+            "dia": "13",
+            "mes": "MAI",
+            "horaInicio": "19:00",
+            "horaTermino": "21:00",
+            "local": "PUC Minas São Gabriel",
+            "descricao": "Palestra sobre o uso do GitHub Copilot em parceria com a Microsoft",
+            "link": "https://",
+            "destaque": false
+        }
+        
     ]
 }
