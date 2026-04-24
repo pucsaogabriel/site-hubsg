@@ -1,164 +1,182 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre - HubSG</title>
-
+    <title>Sobre - HubSG | Hub de Inovação PUC Minas São Gabriel</title>
+    <meta name="description" content="Conheça o HubSG, o ecossistema de inovação e tecnologia da PUC Minas São Gabriel que conecta talentos estudantis às demandas reais do mercado.">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="../src/assets/css/global.css">
     <link rel="stylesheet" href="../src/assets/css/sobre.css">
 </head>
-
 <body>
-
     <header>
         <div class="container nav-container">
-            <a href="../index.html#inicio" class="logo"><img src="../src/assets/images/hero/image 34.png"
-                    alt="Logo HubSG"></a>
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fas fa-bars"></i>
+            <a href="../index.html#inicio" class="logo"><img src="../src/assets/images/hero/image 34.png" alt="Logo HubSG"></a>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Abrir menu de navegação" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </div>
-            <ul class="nav-links" id="nav-links">
+            <ul class="nav-links" id="nav-links" role="list">
                 <li><a href="../index.html#inicio">Início</a></li>
                 <li><a href="eventos.html">Eventos</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="sobre.html" class="active" aria-current="page">Sobre</a></li>
             </ul>
         </div>
     </header>
 
     <main>
-        <section class="sobre-hero">
-            <div class="container">
-                <h1 class="sobre-hero-title">HubSG: O hub<br>de inovação da<br>sua carreira.</h1>
+        <!-- HERO -->
+        <section class="sobre-hero" aria-label="Apresentação do HubSG">
+            <div class="hero-shapes" aria-hidden="true">
+                <span class="shape shape-circle-1"></span>
+                <span class="shape shape-circle-2"></span>
+                <span class="shape shape-ring"></span>
             </div>
-            <div class="hero-wave">
+            <div class="container">
+                <div class="hero-badge animate-hero">
+                    <i class="fas fa-rocket"></i>
+                    <span>Hub de Inovação · PUC Minas São Gabriel</span>
+                </div>
+                <h1 class="sobre-hero-title animate-hero delay-1">
+                    HubSG: O hub<br>de inovação da<br><span class="hero-highlight">sua carreira.</span>
+                </h1>
+                <p class="hero-sub animate-hero delay-2">Onde o aprendizado encontra o mercado, e o código vira solução real.</p>
+            </div>
+            <div class="hero-wave" aria-hidden="true">
                 <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                    <path d="M0,0 C320,100 420,120 720,80 C1020,40 1220,10 1440,60 L1440,120 L0,120 Z" fill="#F8F9FA">
-                    </path>
+                    <path d="M0,0 C320,100 420,120 720,80 C1020,40 1220,10 1440,60 L1440,120 L0,120 Z" fill="#F8F9FA"></path>
                 </svg>
             </div>
         </section>
 
-        <section class="sobre-intro">
+        <!-- INTRO -->
+        <section class="sobre-intro" aria-label="Sobre o HubSG">
             <div class="container">
-                <p class="intro-text">
-                    O HubSG é um hub de inovação e tecnologia fundado para impulsionar o protagonismo estudantil e conectar
-                    Ciência da Computação. Criada com o objetivo de impulsionar o protagonismo estudantil, atua como um
-                    ecossistema colaborativo de inovação, aprendizado e impacto conectando.
+                <p class="intro-text animate-on-scroll">
+                    O HubSG é um ecossistema colaborativo de inovação e tecnologia fundado na PUC Minas São Gabriel.
+                    Atuamos como uma ponte entre o talento estudantil de Ciência da Computação e as demandas reais do
+                    mercado — cultivando um ambiente onde aprendizado prático, colaboração e impacto genuíno se encontram
+                    para transformar estudantes em verdadeiros protagonistas.
                 </p>
             </div>
         </section>
 
-        <section class="essencia-section">
+        <!-- ESSÊNCIA -->
+        <section class="essencia-section" aria-labelledby="essencia-titulo">
             <div class="container">
-                <div class="essencia-images">
+                <div class="essencia-images animate-on-scroll">
                     <div class="img-principal">
-                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80"
-                            alt="Professor em laboratório">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Sessão de mentoria em laboratório de tecnologia">
                     </div>
                     <div class="img-secundarias">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80"
-                            alt="Alunos discutindo projeto">
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=80"
-                            alt="Planejamento em equipe">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=400&q=80" alt="Alunos colaborando em projeto de software">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=80" alt="Equipe em sessão de planejamento estratégico">
                     </div>
                 </div>
             </div>
-
             <div class="essencia-content">
                 <div class="container">
-                    <article class="essencia-text">
-                        <h2>Essência</h2>
-                        <p>No HubSG, a tecnologia não é apenas o que criamos, é o que nos impulsiona. Promovemos um
-                            espaço de aprendizado prático e colaboração intensiva para alunos dispostos a inovar.</p>
-                        <p>Acreditamos no código como uma ferramenta de transformação, mas o verdadeiro motor de
-                            inovação são as pessoas. Por isso, nossa equipe vem criando um ecossistema onde o
-                            aprendizado teórico se funde com a realidade do mercado, promovendo o desenvolvimento de
-                            habilidades que farão a diferença para profissionais que acabaram de nascer.</p>
+                    <article class="essencia-text slide-in-right">
+                        <h2 id="essencia-titulo">Essência</h2>
+                        <p>No HubSG, a tecnologia não é apenas o que criamos — é o que nos move. Promovemos
+                            um espaço de aprendizado prático e colaboração intensa para quem quer ir além da sala
+                            de aula e transformar conhecimento em impacto real.</p>
+                        <p>Acreditamos que o código é uma ferramenta de transformação, mas o verdadeiro motor
+                            da inovação são as pessoas. Por isso, construímos um ecossistema onde a teoria se
+                            funde com a realidade do mercado, formando profissionais prontos para os desafios que realmente importam.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="desafio-section">
+        <!-- DESAFIO -->
+        <section class="desafio-section" aria-labelledby="desafio-titulo">
             <div class="container wrapper-alternante">
-                <div class="col-media">
-                    <div class="info-card topo">
-                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=400&q=80"
-                            alt="Chamada Virtual">
+                <div class="col-media animate-on-scroll">
+                    <div class="info-card topo" id="card-virtual">
+                        <div class="card-icon-wrapper"><i class="fas fa-video"></i></div>
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=400&q=80" alt="Sessão de trabalho remoto e chamadas virtuais">
+                        </div>
                         <div class="card-texto">
                             <h3>Chamada Virtual</h3>
-                            <p>Algo virtual</p>
+                            <p>Colaboração sem fronteiras, resultado sem comprometer.</p>
                         </div>
                     </div>
-                    <div class="info-card laranja-vazando-esquerda">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&q=80"
-                            alt="Espaço de reuniões">
+                    <div class="info-card laranja-vazando-esquerda" id="card-reunioes">
+                        <div class="card-icon-wrapper laranja"><i class="fas fa-users"></i></div>
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&q=80" alt="Equipe em espaço de reuniões presenciais">
+                        </div>
                         <div class="card-texto dark-text">
-                            <h3>Espaço de reuniões</h3>
-                            <p>Conheça o espaço</p>
+                            <h3>Espaço de Reuniões</h3>
+                            <p>Ambiente propício para ideias que viram soluções.</p>
                         </div>
                     </div>
                 </div>
-                <article class="col-text text-right">
-                    <h2>Traga o seu desafio. Nós entregamos a solução.</h2>
-                    <p>Sua empresa busca o próximo nível de inovação? No HubSG, abrimos as portas da nossa inteligência
-                        para que você possa transformar desafios reais em soluções reais. Mais do que formar talentos,
-                        cocriamos o futuro junto com o mercado e com quem encontra aqui o maior tecnológico necessário
-                        para acontecer.</p>
+                <article class="col-text text-right animate-on-scroll delay-2" id="desafio-titulo">
+                    <span class="section-tag">Para o Mercado</span>
+                    <h2>Traga o seu desafio.<br>Nós entregamos a solução.</h2>
+                    <p>Sua empresa busca o próximo nível de inovação? No HubSG, conectamos inteligência estudantil às demandas mais complexas do mercado. Mais do que formar talentos, cocriamos o futuro — transformando desafios reais em entregas concretas, com agilidade e visão tecnológica.</p>
                 </article>
             </div>
         </section>
 
-        <section class="aluno-section">
+        <!-- ALUNO -->
+        <section class="aluno-section" aria-labelledby="aluno-titulo">
             <div class="container wrapper-alternante reverse">
-                <div class="col-media align-right">
-                    <div class="info-card topo">
-                        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=400&q=80"
-                            alt="Chamada Virtual">
+                <div class="col-media align-right animate-on-scroll delay-2">
+                    <div class="info-card topo" id="card-inovacao">
+                        <div class="card-icon-wrapper"><i class="fas fa-lightbulb"></i></div>
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=400&q=80" alt="Aluno desenvolvendo projeto de inovação">
+                        </div>
                         <div class="card-texto">
-                            <h3>Chamada Virtual</h3>
-                            <p>Algo virtual</p>
+                            <h3>Projetos Reais</h3>
+                            <p>Da ideia ao deploy — experiência que transforma currículos.</p>
                         </div>
                     </div>
-                    <div class="info-card laranja-vazando-direita align-self-end">
-                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&q=80"
-                            alt="Espaço de reuniões">
+                    <div class="info-card laranja-vazando-direita align-self-end" id="card-comunidade">
+                        <div class="card-icon-wrapper laranja"><i class="fas fa-network-wired"></i></div>
+                        <div class="card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=400&q=80" alt="Comunidade de alunos conectados">
+                        </div>
                         <div class="card-texto dark-text">
-                            <h3>Espaço de reuniões</h3>
-                            <p>Conheça o espaço</p>
+                            <h3>Comunidade Ativa</h3>
+                            <p>Networking que abre portas no mercado de tecnologia.</p>
                         </div>
                     </div>
                 </div>
-                <article class="col-text">
-                    <h2>Sou aluno e quero participar</h2>
-                    <p>Você não quer apenas aprender, você quer fazer história. No HubSG, nós conectamos sua
-                        curiosidade com as demandas reais das maiores empresas. Aqui, você mergulha em um ambiente de
-                        inovação prática, desenvolvendo as habilidades que o mercado busca e as conexões que sua
-                        carreira precisa. O futuro não se espera, se codifica.</p>
+                <article class="col-text animate-on-scroll" id="aluno-titulo">
+                    <span class="section-tag">Para o Estudante</span>
+                    <h2>Sou aluno e quero fazer história.</h2>
+                    <p>Você não quer apenas aprender — você quer construir, liderar e deixar sua marca. No HubSG, conectamos sua curiosidade às demandas reais das maiores empresas. Aqui, você desenvolve as habilidades que o mercado exige e as conexões que sua carreira precisa. O futuro não se espera: <strong>se codifica.</strong></p>
                 </article>
             </div>
         </section>
 
-        <section class="podcast-section">
+        <!-- PODCAST -->
+        <section class="podcast-section" aria-labelledby="podcast-titulo">
             <div class="container podcast-container">
-                <article class="podcast-text">
-                    <h2>HubSG Cast: A Voz da Inovação no YouTube</h2>
-                    <p>Mergulhe nos bastidores dos nossos projetos e conheça as mentes que impulsionam a inovação em
-                        nossa liga. Nosso podcast traz debates exclusivos sobre o mercado, transmitidos diretamente no
-                        nosso canal do YouTube.</p>
-                    <p>Quer acompanhar de perto? Nos siga no Instagram e receba oportunidades exclusivas em primeira mão
-                        através do nosso canal do Telegram.</p>
-                    <a href="#" class="btn-cta-laranja">Saiba mais</a>
+                <article class="podcast-text animate-on-scroll">
+                    <span class="section-tag">Conteúdo</span>
+                    <h2 id="podcast-titulo">HubSG Cast:<br>A Voz da Inovação</h2>
+                    <p>Mergulhe nos bastidores dos nossos projetos e conheça as mentes que impulsionam a inovação no HubSG. Debates exclusivos sobre mercado, tecnologia e carreira, transmitidos diretamente no nosso canal do YouTube.</p>
+                    <p>Quer estar sempre à frente? Siga-nos no <strong>Instagram</strong> e receba oportunidades exclusivas em primeira mão pelo nosso <strong>Telegram</strong>.</p>
+                    <div class="podcast-social">
+                        <a href="#" class="social-pill youtube" aria-label="Acesse nosso YouTube"><i class="fab fa-youtube"></i> YouTube</a>
+                        <a href="#" class="social-pill instagram" aria-label="Acesse nosso Instagram"><i class="fab fa-instagram"></i> Instagram</a>
+                        <a href="#" class="social-pill telegram" aria-label="Acesse nosso Telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                    </div>
+                    <a href="#" class="btn-cta-laranja" id="btn-podcast-saibamais">
+                        <span>Saiba mais</span><i class="fas fa-arrow-right"></i>
+                    </a>
                 </article>
-
-                <div class="podcast-video-wrapper">
-                    <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1000&q=80"
-                        alt="Gravando HubSG Cast" class="podcast-thumb">
+                <div class="podcast-video-wrapper slide-in-right">
+                    <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&w=1000&q=80" alt="Gravação do HubSG Cast" class="podcast-thumb">
+                    <a href="#" class="play-btn" aria-label="Assistir ao HubSG Cast no YouTube"><i class="fas fa-play"></i></a>
+                    <div class="thumb-glow" aria-hidden="true"></div>
                 </div>
             </div>
         </section>
@@ -186,12 +204,22 @@
     </section>
 
     <footer>
-        <div class="container">
-            © 2026 HubSG | Todos os direitos reservados
-        </div>
+        <div class="container">© 2026 HubSG | Todos os direitos reservados</div>
     </footer>
 
-    <script src="src/scripts/global.js" defer></script>
+    <script src="../src/scripts/global.js" defer></script>
+    <script>
+        const scrollTargets = document.querySelectorAll('.animate-on-scroll, .slide-in-right');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        scrollTargets.forEach(el => observer.observe(el));
+        document.querySelectorAll('.animate-hero').forEach(el => requestAnimationFrame(() => el.classList.add('visible')));
+    </script>
 </body>
-
 </html>

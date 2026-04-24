@@ -74,15 +74,31 @@ img {
     transform: translateX(0);
 }
 
-/* --- Cabeçalho (Header) --- */
+/* ──────────────────────────────────────────────────────────
+   CABEÇALHO (HEADER) — Premium Glassmorphism
+   ────────────────────────────────────────────────────────── */
+
+/*
+  Em vez de um bloco sólido, usamos uma cor azul translúcida
+  combinada com backdrop-filter: blur() para o efeito glass.
+  Isso garante que o conteúdo rolado por baixo apareça difuso,
+  mantendo o header legível e visualmente sofisticado.
+*/
 header {
-    background-color: var(--primary-blue);
+    background-color: rgba(0, 55, 130, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     color: var(--white);
-    padding: 20px 0;
+    padding: 16px 0;
     position: sticky;
     top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    /* Borda inferior sutil que separa header do conteúdo sem ser agressiva */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    /* Sombra difusa e suave — não a sombra dura anterior */
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
+    /* Transição para mudanças de scroll (usada opcionalmente via JS) */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-container {
@@ -92,45 +108,102 @@ header {
 }
 
 .logo img {
-    height: 70px;
+    height: 64px;
     width: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.logo:hover img {
+    transform: scale(1.04);
+    opacity: 0.9;
 }
 
+/* ── Links de navegação (desktop) ── */
 .nav-links {
     display: flex;
-    gap: 30px;
+    gap: 36px;
+    align-items: center;
 }
 
 .nav-links a {
+    color: rgba(255, 255, 255, 0.82);
     font-weight: 600;
-    font-size: 15px;
-    transition: var(--transition);
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
     position: relative;
+    padding-bottom: 4px;
+    transition: color 0.25s ease;
 }
 
+/*
+  Sublinhado animado do CENTRO para as PONTAS.
+  O truque: left: 50% + width: 0 + transform: translateX(-50%)
+  faz a linha crescer simetricamente a partir do centro.
+*/
 .nav-links a::after {
     content: '';
     position: absolute;
+    bottom: -2px;
+    left: 50%;
     width: 0;
     height: 2px;
-    bottom: -4px;
-    left: 0;
     background-color: var(--orange);
-    transition: var(--transition);
+    border-radius: 2px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
 }
 
+/* Hover: cor laranja + leve lift + linha cresce do centro */
+.nav-links a:hover {
+    color: var(--orange);
+    transform: translateY(-1px);
+}
 .nav-links a:hover::after {
     width: 100%;
 }
 
-.nav-links a:hover {
+/* ── Estado ATIVO (página atual) ── */
+/*
+  Adicione class="active" no <a> do link da página corrente.
+  O link ativo fica laranja e com a linha sempre visível.
+*/
+.nav-links a.active {
     color: var(--orange);
 }
+.nav-links a.active::after {
+    width: 100%;
+}
 
+/* ── Hambúrguer (mobile) ── */
 .menu-toggle {
     display: none;
-    font-size: 24px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: background 0.25s ease;
+    z-index: 1001;
+}
+.menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+/*
+  Ícone do hambúrguer como 3 barras puras em CSS
+  (sem depender de FontAwesome para o ícone em si).
+  Mantemos o <i class="fas fa-bars"> para quem já usa FA,
+  mas o botão em si tem o estilo próprio.
+*/
+.menu-toggle i {
+    font-size: 18px;
+    color: var(--white);
+    line-height: 1;
+    pointer-events: none;
 }
 
 
@@ -220,27 +293,89 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: var(--primary-blue);
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    }
 
-    .nav-links.active {
+    /* ── Menu hambúrguer visível ── */
+    .menu-toggle {
         display: flex;
     }
 
-    .menu-toggle {
-        display: block;
+    /*
+      Menu mobile: painel elegante com Glassmorphism.
+      Usamos opacity + transform (translateY) em vez de display:none/block
+      para que a transição CSS funcione corretamente.
+      O JS alterna a classe .active para disparar a animação.
+    */
+    .nav-links {
+        /* Estado FECHADO (invisível, deslocado para cima) */
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        position: absolute;
+        top: calc(100% + 8px); /* 8px abaixo do header */
+        left: 16px;
+        right: 16px;
+        width: auto;
+        /* Glassmorphism no painel mobile */
+        background: rgba(0, 38, 100, 0.96);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0 0 20px 20px;
+        padding: 12px 0 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        text-align: center;
+        /* Animação de entrada */
+        opacity: 0;
+        transform: translateY(-12px);
+        pointer-events: none;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        /* Sobrepõe o conteúdo abaixo do header */
+        z-index: 999;
     }
 
+    /* Estado ABERTO — disparado pelo JS via .active */
+    .nav-links.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    /* Links dentro do menu mobile */
+    .nav-links li {
+        width: 100%;
+    }
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 14px 24px;
+        font-size: 13px;
+        letter-spacing: 1px;
+        color: rgba(255, 255, 255, 0.85);
+        border-radius: 10px;
+        transition: background 0.2s ease, color 0.2s ease;
+        text-transform: uppercase;
+    }
+    /* Hover no mobile: destaque sutil */
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--orange);
+        transform: none; /* Remove o translateY do desktop no mobile */
+    }
+    /* Linha ativa no mobile */
+    .nav-links a::after {
+        display: none;
+    }
+    .nav-links a.active {
+        background: rgba(245, 166, 35, 0.12);
+        color: var(--orange);
+    }
+
+    /* Separador decorativo entre items */
+    .nav-links li + li {
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* ── Outros ajustes mobile ── */
     .hero-title {
         font-size: 26px;
     }
