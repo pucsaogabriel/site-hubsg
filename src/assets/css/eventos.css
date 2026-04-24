@@ -540,7 +540,7 @@
 
     /* Limita a 3 linhas com ellipsis para uniformidade visual */
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 11;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
