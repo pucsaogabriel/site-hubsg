@@ -36,21 +36,21 @@
             "github": "https://github.com/KaiqueMAraujo"
         },
         {
-            "img": "src/assets/images/equipe/.jpeg",
+            "img": "src/assets/images/equipe/lilith.jpeg",
             "nome": "Lilith",
             "funcao": "Sistemas de Informação",
-            "linkedin": "",
+            "linkedin": "https://www.linkedin.com/in/lilith-fernandes-44a36a362",
             "github": ""
         },
         {
             "img": "src/assets/images/equipe/joaovitor.jpeg",
             "nome": "João Vitor",
             "funcao": "Análise e Desenvolvimento de Sistemas",
-            "linkedin": "",
+            "linkedin": "https://www.linkedin.com/in/joao-vitor-paula-santos/",
             "github": "https://github.com/JoaoVitorPaulaSantos"
         },
         {
-            "img": "src/assets/images/equipe/.jpeg",
+            "img": "src/assets/images/equipe/filipe.jpeg",
             "nome": "Filipe",
             "funcao": "?",
             "linkedin": "",
@@ -64,7 +64,7 @@
             "github": ""
         },
         {
-            "img": "src/assets/images/equipe/.jpeg",
+            "img": "src/assets/images/equipe/pedro.jpeg",
             "nome": "Pedro",
             "funcao": "Sistemas de Informação",
             "linkedin": "",

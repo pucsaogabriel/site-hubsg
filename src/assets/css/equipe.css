@@ -296,8 +296,11 @@
 
 /* Cargo — verso */
 .team-role-back {
-    font-size: 0.75rem;
-    color: var(--orange);
+    font-size: 0.78rem;
+    color: rgb(238, 242, 247);
+    background: rgba(218, 223, 229, 0.397);
+    border-radius: 100px;
+    padding: 3px 10px;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;

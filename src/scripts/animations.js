@@ -44,7 +44,7 @@ async function RenderizarCardsEquipe() {
           <div class="card-back">
             <img src="${d.img}" alt="${d.nome}" class="team-photo" onerror="this.onerror=null;this.src='src/assets/images/equipe/default-avatar.jpg';">
             <h3 class="team-name-back">${d.nome}</h3>
-            <p class="team-role">${d.funcao}</p>
+            <p class="team-role-back">${d.funcao}</p>
             <div class="social-links">
                 <a href="${d.linkedin}" aria-label="linkedin"><i class="fab fa-linkedin"></i></a>
                 <a href="${d.github}" aria-label="github"><i class="fab fa-github"></i></a>
