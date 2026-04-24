@@ -500,15 +500,54 @@
     transition: var(--transition);
     border: 2px solid transparent;
 }
-.social-pill.youtube  { background:#FF0000; color:#fff; }
-.social-pill.instagram{ background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; }
-.social-pill.telegram  { background:#229ED9; color:#fff; }
 
-.social-pill:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-    opacity: 0.92;
+/* YouTube — vermelho sólido limpo */
+.social-pill.youtube {
+    background: #FF0000;
+    color: #fff;
 }
+.social-pill.youtube:hover {
+    background: #cc0000;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 0, 0, 0.28);
+}
+
+/*
+  Instagram — abordagem premium:
+  Fundo neutro semitransparente + gradiente aplicado APENAS ao ícone
+  via background-clip: text. Evita o gradiente berrante em toda a pill.
+*/
+.social-pill.instagram {
+    background: rgba(225, 48, 108, 0.1);
+    border-color: rgba(225, 48, 108, 0.25);
+    color: #c13584;                          /* Fallback para o texto */
+}
+.social-pill.instagram i {
+    /* Gradiente icônico do Instagram aplicado só ao ícone */
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1rem;
+}
+.social-pill.instagram:hover {
+    background: rgba(225, 48, 108, 0.16);
+    border-color: rgba(225, 48, 108, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(188, 24, 136, 0.2);
+}
+
+/* Telegram — azul sólido limpo */
+.social-pill.telegram {
+    background: #229ED9;
+    color: #fff;
+}
+.social-pill.telegram:hover {
+    background: #1a88c0;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(34, 158, 217, 0.28);
+}
+
 
 /* ── CTA Button — glow lift ── */
 .btn-cta-laranja {

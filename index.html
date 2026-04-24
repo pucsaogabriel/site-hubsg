@@ -54,21 +54,22 @@
                         <!-- Pílula de categoria / eyebrow text -->
                         <span class="hero-tag">
                             <i class="fas fa-bolt"></i>
-                            Hub de Inovação · PUC Minas São Gabriel
+                            Evento em Destaque · HubSG 2026
                         </span>
 
                         <h1 class="hero-title">
-                            Seu projeto pode<br>
-                            <span class="highlight">virar negócio</span>
+                            Ideias que<br>
+                            <span class="highlight">transformam o amanhã.</span>
                         </h1>
 
                         <p class="hero-subtitle">
-                            O HubSG é o ecossistema de inovação da PUC Minas São Gabriel que conecta talentos,
-                            ideias e oportunidades reais no curso de Ciência da Computação.
+                            O HubSG conecta estudantes da PUC Minas São Gabriel
+                            a eventos, mentorias e oportunidades reais. Participe,
+                            inove e acelere sua carreira.
                         </p>
 
                         <div class="hero-cta-group">
-                            <a href="pages/eventos.html" class="btn-hero-primary">
+                            <a href="pages/eventos.html" class="btn-hero-primary" id="btn-hero-destaque">
                                 <i class="fas fa-calendar-alt"></i>
                                 Ver Eventos
                             </a>
@@ -82,20 +83,22 @@
                     <!-- Coluna direita: imagem com overlays glassmorphism -->
                     <div class="hero-visual">
 
-                        <img class="hero-visual__img"
-                             src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80"
-                             alt="Alunos e professores colaborando em projetos de inovação">
+                        <img
+                            id="hero-destaque-img"
+                            class="hero-visual__img"
+                            src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80"
+                            alt="Alunos e professores colaborando em projetos de inovação">
 
-                        <!-- Badge glassmorphism: nome do hub -->
-                        <div class="hero-glass-badge">
-                            <span class="badge-label">Hub de Inovação</span>
-                            <span class="badge-value">HubSG</span>
+                        <!-- Badge glassmorphism: categoria + título do evento -->
+                        <div class="hero-glass-badge" id="hero-destaque-badge">
+                            <span class="badge-label" id="hero-badge-label">Hub de Inovação</span>
+                            <span class="badge-value" id="hero-badge-value">HubSG</span>
                         </div>
 
-                        <!-- Selo flutuante com o ano — pulsante -->
-                        <div class="hero-year-badge">
-                            <div class="badge-year">2026</div>
-                            <div class="badge-tagline">Presente</div>
+                        <!-- Selo flutuante pulsante: dia + mês do evento -->
+                        <div class="hero-year-badge" id="hero-destaque-data">
+                            <div class="badge-year" id="hero-badge-dia">2026</div>
+                            <div class="badge-tagline" id="hero-badge-mes">Presente</div>
                         </div>
 
                     </div>
@@ -232,6 +235,7 @@
     <script src="src/scripts/global.js" defer></script>
     <script src="src/scripts/animations.js" defer></script>
     <script src="src/scripts/carrossel.js" defer></script>
+    <script src="src/scripts/home-hero.js" defer></script>
 </body>
 
 </html>

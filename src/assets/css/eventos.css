@@ -1,9 +1,40 @@
 /* ================================================================
    eventos.css — Estilos exclusivos da página de Eventos
    Projeto: HubSG — Hub de Inovação PUC Minas São Gabriel
-   Autor: Desenvolvedor Front-end Sênior
    Padrão: Mobile-first, reutiliza variáveis e utilitários de global.css
 ================================================================ */
+
+
+/* ================================================================
+   0. ANIMAÇÕES DE ENTRADA
+   ─ .animate-hero: disparada via JS logo após o carregamento
+   ─ .animate-on-scroll: disparada via IntersectionObserver
+   ─ @keyframes cardEntrada: anima cards injetados via JS
+================================================================ */
+
+/* Hero — opacidade + translateY */
+.animate-hero {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.animate-hero.visible { opacity: 1; transform: translateY(0); }
+.animate-hero.delay-1 { transition-delay: 0.15s; }
+.animate-hero.delay-2 { transition-delay: 0.28s; }
+.animate-hero.delay-3 { transition-delay: 0.42s; }
+
+/* Cards de eventos — entrada suave ao serem injetados no DOM */
+@keyframes cardEntrada {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 
 
 /* ================================================================
@@ -16,6 +47,10 @@
     padding: 100px 0 0;
     overflow: hidden;
     color: var(--white);
+    /*
+      NÃO cria stacking context aqui.
+      z-index só é aplicado nos filhos que realmente precisam.
+    */
 }
 
 /* --- Formas decorativas de fundo (polígonos/circles abstratos) --- */
@@ -23,7 +58,11 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 1;
+    /*
+      z-index: 1 removido — era o causador do bug de stacking context.
+      As shapes ficam atrás do conteudo sem precisar de z-index explicitado
+      pois .eventos-hero-content tem z-index: 2 para emergir acima.
+    */
 }
 
 .shape {
@@ -277,27 +316,101 @@
 
 .eventos-grid-section {
     background-color: var(--light-gray);
-    padding: 48px 0 80px;
+    padding: 0 0 80px;
+    /*
+      isolation: isolate garante que nenhum filho desta seção
+      possa criar um stacking context que ultrapasse o header global.
+      É a defesa em profundidade além da correção do <header> → <div>.
+    */
+    isolation: isolate;
 }
 
-/* --- Cabeçalho da seção --- */
+/* --- Cabeçalho da seção — Banner Premium --- */
+/*
+  Antes: fundo cinza + texto azul/escuro ilegível.
+  Agora: banner com gradiente azul profundo, texto branco,
+  cantos arredondados na parte superior e sombra difusa.
+  Conect a esteticamente com o hero acima e a faixa de filtros.
+*/
 .section-header {
     text-align: center;
     margin-bottom: 48px;
+    /* Gradiente azul profundo — mesmo tom do hero e do CTA */
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+    padding: 56px 24px 48px;
+    /* Cantos arredondados na base para suavizar a transição para os cards */
+    border-radius: 0 0 32px 32px;
+    /* Sombra difusa para dar profundidade */
+    box-shadow: 0 8px 40px rgba(0, 38, 100, 0.22);
+    /* Linha decorativa superior — degradê laranja/azul */
+    border-top: 4px solid;
+    border-image: linear-gradient(90deg, var(--primary-blue), var(--orange), var(--primary-blue)) 1;
+    position: relative;
+    overflow: hidden;
+    /*
+      NÃO tem position: sticky, z-index elevado, transform ou opacity.
+      Permanece no fluxo normal do documento.
+    */
 }
 
+/* Detalhe decorativo: círculo translúcido no canto */
+.section-header::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+}
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: rgba(245, 166, 35, 0.08);
+    pointer-events: none;
+}
+
+/*
+  Título sobre fundo escuro: texto branco puro.
+  Removemos o background-clip: text que usava cor azul,
+  pois o contraste correto sobre gradiente azul é var(--white).
+*/
 .section-title-eventos {
     font-size: clamp(1.8rem, 3.5vw, 2.6rem);
     font-weight: 800;
-    color: var(--dark-text);
+    color: var(--white);
     margin-bottom: 10px;
     letter-spacing: -0.5px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Sublinhado decorativo laranja abaixo do título */
+.section-title-eventos::after {
+    content: '';
+    display: block;
+    width: 56px;
+    height: 4px;
+    background: var(--orange);
+    border-radius: 2px;
+    margin: 10px auto 0;
+    opacity: 0.8;
 }
 
 .section-subtitle {
     font-size: 1rem;
-    color: #6c757d;
+    /* Branco com leve opacidade para hierarquia visual */
+    color: rgba(255, 255, 255, 0.78);
     font-weight: 500;
+    position: relative;
+    z-index: 1;
 }
 
 /*
@@ -367,14 +480,20 @@
     background-color: var(--white);
     border-radius: 16px;
     box-shadow: var(--card-shadow);
-    overflow: hidden;                /* Imagem não vazará para fora do radius */
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;             /* Âncora para o badge de data sobreposto */
+    position: relative;
+    /*
+      Animação de entrada dos cards injetados via JS.
+      animation-fill-mode: both garante que o estado inicial
+      (opacity: 0) seja aplicado antes de animar.
+    */
+    animation: cardEntrada 0.5s ease-out both;
 }
 
-/* Efeito hover de elevação — transmite "clicabilidade" */
+/* Efeito hover de elevação */
 .evento-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.13);
@@ -449,13 +568,14 @@
 }
 
 /*
-  BADGE DE DATA — posicionado logo abaixo da imagem,
-  "flutuando" entre a imagem e o corpo do card com
-  margin-top negativa para criar o efeito sobreposto.
+  BADGE DE DATA — z-index: 3 dentro do .evento-card.
+  Como o card tem position: relative e overflow: hidden,
+  o stacking context do badge é contido dentro do card
+  e NÃO interfere com o header global (z-index: 1000).
+  Este é o comportamento correto e desejado.
 */
 .card-date-badge {
     position: absolute;
-    /* Posiciona ao final da imagem (height: 200px) - metade do badge */
     top: 172px;
     right: 20px;
     background-color: var(--primary-blue);
@@ -464,7 +584,7 @@
     width: 52px;
     text-align: center;
     padding: 6px 0;
-    z-index: 3;                      /* Acima da imagem e do corpo do card */
+    z-index: 3;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     line-height: 1;
 }
@@ -565,6 +685,19 @@
 }
 
 
+/*
+  Z-INDEX AUDIT — Stacking Contexts da página de Eventos:
+
+  header (global.css)          z-index: 1000  ← topo absoluto
+  .cta-sugerir-shapes          z-index: 1     ← shapes atrás do conteúdo CTA
+  .cta-sugerir-content         z-index: 2     ← conteúdo do CTA visível
+  .eventos-hero-content        z-index: 2     ← conteúdo do hero visível
+  .card-date-badge             z-index: 3     ← contido dentro de .evento-card
+
+  Nenhuma seção de página deve ter z-index ≥ 999.
+  O header vence por ter o maior z-index do documento.
+*/
+
 /* ================================================================
    4. CTA — SUGERIR EVENTO
    Fundo primary-blue escuro, contrastando com --light-gray
@@ -577,6 +710,7 @@
     overflow: hidden;
     color: var(--white);
     text-align: center;
+    /* Sem z-index aqui — não cria stacking context global */
 }
 
 /* Formas decorativas de fundo */
@@ -584,7 +718,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    z-index: 1;
+    z-index: 1;  /* Dentro do .cta-sugerir — não afeta o header global */
 }
 
 .cta-shape {
