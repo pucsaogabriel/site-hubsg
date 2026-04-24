@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipe - HubSG | Quem faz o Hub acontecer</title>
+    <meta name="description" content="Conheça as mentes por trás do HubSG — estudantes, líderes e inovadores da PUC Minas São Gabriel que transformam ideias em impacto real.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../src/assets/css/global.css">
+    <link rel="stylesheet" href="../src/assets/css/equipe.css">
+    <link rel="stylesheet" href="../src/assets/css/equipe-page.css">
+</head>
+
+<body>
+
+    <!-- ============================================================
+         HEADER GLOBAL — "Equipe" ativo
+    ============================================================ -->
+    <header>
+        <div class="container nav-container">
+            <a href="../index.html#inicio" class="logo">
+                <img src="../src/assets/images/hero/image 34.png" alt="Logo HubSG">
+            </a>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Abrir menu de navegação" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </div>
+            <ul class="nav-links" id="nav-links" role="list">
+                <li><a href="../index.html#inicio">Início</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="equipe.html" class="active" aria-current="page">Equipe</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============================================================
+             1. HERO SECTION
+        ============================================================ -->
+        <section class="equipe-page-hero" aria-label="Apresentação da equipe HubSG">
+
+            <!-- Formas geométricas decorativas -->
+            <div class="equipe-hero-shapes" aria-hidden="true">
+                <span class="eq-shape eq-circle-1"></span>
+                <span class="eq-shape eq-circle-2"></span>
+                <span class="eq-shape eq-ring"></span>
+            </div>
+
+            <div class="container equipe-hero-content">
+                <div class="hero-badge animate-hero">
+                    <i class="fas fa-users"></i>
+                    <span>Nossa Equipe · HubSG 2026</span>
+                </div>
+                <h1 class="equipe-hero-title animate-hero delay-1">
+                    Quem faz o<br>HubSG <span class="hero-accent">acontecer.</span>
+                </h1>
+                <p class="equipe-hero-sub animate-hero delay-2">
+                    Estudantes apaixonados por tecnologia, líderes por vocação e inovadores por essência.
+                    Conheça as pessoas que constroem o futuro da PUC Minas São Gabriel.
+                </p>
+            </div>
+
+            <!-- Wave SVG conectando com a próxima seção -->
+            <div class="hero-wave" aria-hidden="true">
+                <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                    <path d="M0,0 C320,100 420,120 720,80 C1020,40 1220,10 1440,60 L1440,120 L0,120 Z" fill="#F8F9FA"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             2. GRID DE CARDS — renderizado via JS
+        ============================================================ -->
+        <section class="equipe-grid-section" aria-labelledby="equipe-grid-titulo">
+            <div class="container">
+                <div class="equipe-section-header animate-on-scroll">
+                    <h2 id="equipe-grid-titulo" class="equipe-grid-title">Nossa Equipe</h2>
+                    <p class="equipe-grid-sub">
+                        Passe o mouse (ou toque) em cada card para conhecer quem está por trás do HubSG.
+                    </p>
+                </div>
+
+                <!-- Cards injetados pelo equipe-page.js -->
+                <div class="equipe-page-grid" id="equipe-page-grid" role="list" aria-label="Membros da equipe HubSG">
+                    <!-- Estado de carregamento -->
+                    <div class="equipe-loading" id="equipe-loading" aria-live="polite">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                        <span>Carregando equipe...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             3. CTA — Junte-se a nós
+        ============================================================ -->
+        <section class="equipe-cta-section" aria-labelledby="equipe-cta-titulo">
+            <div class="equipe-cta-shapes" aria-hidden="true">
+                <div class="cta-shape cta-s1"></div>
+                <div class="cta-shape cta-s2"></div>
+            </div>
+            <div class="container equipe-cta-content animate-on-scroll">
+                <div class="cta-icon-wrap" aria-hidden="true">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h2 id="equipe-cta-titulo">Quer fazer parte do HubSG?</h2>
+                <p>Estamos sempre em busca de mentes curiosas e apaixonadas por tecnologia e inovação.
+                    Se você é aluno da PUC Minas São Gabriel e quer deixar sua marca, esta é a sua chance.</p>
+                <a href="sobre.html" class="btn-equipe-cta" id="btn-conheca-hub">
+                    <span>Conheça o Hub</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pré-rodapé e Rodapé globais -->
+    <section class="pre-footer">
+        <div class="container pre-footer-grid">
+            <div class="pre-footer-col">
+                <h3>Fique por dentro!</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="YouTube do HubSG"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Instagram do HubSG"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Telegram do HubSG"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
+            <div class="pre-footer-col">
+                <h3>Unidade</h3>
+                <div class="address-text">
+                    <strong>São Gabriel</strong>
+                    R. Walter Ianni, 255<br>
+                    São Gabriel - Belo Horizonte - CEP 31980-110
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">© 2026 HubSG | Todos os direitos reservados</div>
+    </footer>
+
+    <script src="../src/scripts/global.js" defer></script>
+    <script src="../src/scripts/equipe-page.js" defer></script>
+
+</body>
+
+</html>

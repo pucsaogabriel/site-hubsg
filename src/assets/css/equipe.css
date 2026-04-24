@@ -400,3 +400,45 @@
         transform: none;
     }
 }
+
+
+/* ================================================================
+   6. BOTAO CTA — "Conheça toda a equipe" (Home Section)
+================================================================ */
+
+/*
+  Wrapper centralizado abaixo do carrossel.
+  Adiciona espaçamento superior para separar do track.
+*/
+.equipe-cta-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 44px;
+}
+
+/* Botão elegante com gradiente laranja e efeito lift */
+.btn-equipe-ver-todos {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--orange), #f7bc50);
+    color: var(--white);
+    padding: 14px 36px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(245, 166, 35, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    letter-spacing: 0.2px;
+}
+.btn-equipe-ver-todos i {
+    transition: transform 0.3s ease;
+}
+.btn-equipe-ver-todos:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(245, 166, 35, 0.52);
+}
+.btn-equipe-ver-todos:hover i {
+    transform: translateX(5px);
+}

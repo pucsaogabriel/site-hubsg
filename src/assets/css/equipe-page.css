@@ -1,0 +1,353 @@
+/* ============================================================
+   equipe-page.css — Página dedicada da Equipe | HubSG
+   Complementa equipe.css (cards 3D) com:
+   · Hero section da equipe
+   · CSS Grid de múltiplas linhas (substitui o track de carrossel)
+   · Seção CTA inferior
+   Mobile-first · Glassmorphism · Animações de entrada
+   ============================================================ */
+
+/* ──────────────────────────────────────────────────────────
+   0. ANIMAÇÕES DE ENTRADA (hero)
+   ────────────────────────────────────────────────────────── */
+.animate-hero {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s ease-out, transform 0.75s ease-out;
+}
+.animate-hero.visible  { opacity: 1; transform: translateY(0); }
+.animate-hero.delay-1  { transition-delay: 0.18s; }
+.animate-hero.delay-2  { transition-delay: 0.34s; }
+
+/* ──────────────────────────────────────────────────────────
+   1. HERO SECTION
+   ────────────────────────────────────────────────────────── */
+.equipe-page-hero {
+    /* Gradiente azul profundo — consistente com o hero de Eventos */
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 60%, #1a6fd4 100%);
+    padding: 100px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ── Formas geométricas decorativas ── */
+.equipe-hero-shapes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.eq-shape {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.eq-circle-1 {
+    width: 480px; height: 480px;
+    top: -160px; right: -120px;
+    background: rgba(255, 255, 255, 0.05);
+    animation: eqFloat 9s ease-in-out infinite alternate;
+}
+
+.eq-circle-2 {
+    width: 240px; height: 240px;
+    bottom: 40px; left: -70px;
+    background: rgba(0, 0, 0, 0.06);
+    animation: eqFloat 12s ease-in-out infinite alternate-reverse;
+}
+
+.eq-ring {
+    width: 180px; height: 180px;
+    top: 45%; right: 22%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 26px solid rgba(245, 166, 35, 0.12);
+    animation: eqFloat 15s ease-in-out infinite alternate;
+}
+
+@keyframes eqFloat {
+    from { transform: translateY(0) rotate(0deg); }
+    to   { transform: translateY(-18px) rotate(6deg); }
+}
+
+/* ── Hero Content ── */
+.equipe-hero-content {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 60px;
+}
+
+/* Badge topo — Glassmorphism */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: var(--white);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border-radius: 50px;
+    margin-bottom: 28px;
+}
+.hero-badge i { font-size: 0.85rem; }
+
+/* Título principal */
+.equipe-hero-title {
+    color: var(--white);
+    font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+    line-height: 1.08;
+    font-weight: 800;
+    max-width: 680px;
+    margin-bottom: 24px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    letter-spacing: -1px;
+}
+
+/* Destaque laranja no título */
+.hero-accent {
+    color: var(--orange);
+    position: relative;
+}
+
+/* Subtítulo */
+.equipe-hero-sub {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    font-weight: 500;
+    max-width: 560px;
+    line-height: 1.7;
+}
+
+/* Wave SVG — mesma curva das outras páginas */
+.hero-wave {
+    position: relative;
+    bottom: -5px;
+    width: 100%;
+    line-height: 0;
+    z-index: 2;
+}
+.hero-wave svg {
+    display: block;
+    width: 100%;
+    height: clamp(60px, 10vw, 120px);
+}
+
+/* ──────────────────────────────────────────────────────────
+   2. SECTION HEADER (título + subtítulo do grid)
+   ────────────────────────────────────────────────────────── */
+.equipe-grid-section {
+    background-color: var(--light-gray);
+    padding: 80px 0 100px;
+}
+
+.equipe-section-header {
+    text-align: center;
+    margin-bottom: 56px;
+}
+
+.equipe-grid-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-weight: 800;
+    color: var(--dark-text);
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.equipe-grid-sub {
+    font-size: 0.95rem;
+    color: #6c757d;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ──────────────────────────────────────────────────────────
+   3. CSS GRID — Substitui o layout de carrossel
+   ────────────────────────────────────────────────────────── */
+
+/*
+  O contêiner usa CSS Grid com auto-fit e minmax para ser
+  naturalmente responsivo: colunas se ajustam ao espaço disponível
+  sem precisar de media queries específicas para cada breakpoint.
+*/
+.equipe-page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 36px;
+    justify-items: center;  /* Cards centralizados na célula */
+}
+
+/*
+  Na página de grid, os cards não têm min-width/width fixos
+  (que existem no equipe.css para o carrossel horizontal).
+  Sobrescrevemos apenas o que precisa mudar para o grid.
+*/
+.equipe-page-grid .team-card {
+    /* Remove a largura fixa do carrossel — o grid controla o tamanho */
+    min-width: unset;
+    width: 100%;
+    max-width: 300px;          /* Teto para não ficarem gigantes em telas largas */
+    /* Altura mantida para o flip funcionar corretamente */
+    height: 360px;
+    /* Remove o scroll-snap (não há track) */
+    scroll-snap-align: unset;
+}
+
+/* ──────────────────────────────────────────────────────────
+   4. ESTADO DE CARREGAMENTO
+   ────────────────────────────────────────────────────────── */
+.equipe-loading {
+    grid-column: 1 / -1;   /* Ocupa todas as colunas */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 60px 0;
+    color: var(--primary-blue);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.equipe-loading i {
+    font-size: 2rem;
+    opacity: 0.7;
+}
+
+/* Oculta o loading após injeção dos cards */
+.equipe-loading.hidden { display: none; }
+
+/* ──────────────────────────────────────────────────────────
+   5. CTA INFERIOR
+   ────────────────────────────────────────────────────────── */
+.equipe-cta-section {
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+    padding: 90px 0;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Shapes decorativos do CTA */
+.equipe-cta-shapes { position: absolute; inset: 0; pointer-events: none; }
+
+.cta-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+}
+.cta-s1 { width: 380px; height: 380px; top: -120px; right: -100px; }
+.cta-s2 { width: 220px; height: 220px; bottom: -60px; left: -60px; }
+
+/* Ícone central */
+.cta-icon-wrap {
+    width: 72px; height: 72px;
+    background: rgba(245, 166, 35, 0.15);
+    border: 2px solid rgba(245, 166, 35, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    font-size: 1.6rem;
+    color: var(--orange);
+}
+
+.equipe-cta-content { position: relative; z-index: 2; }
+
+.equipe-cta-content h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 18px;
+    letter-spacing: -0.5px;
+}
+
+.equipe-cta-content p {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1.05rem;
+    line-height: 1.75;
+    max-width: 560px;
+    margin: 0 auto 36px;
+}
+
+/* Botão CTA — glow lift laranja */
+.btn-equipe-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--orange), #f7bc50);
+    color: var(--white);
+    padding: 16px 38px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 24px rgba(245, 166, 35, 0.38);
+}
+.btn-equipe-cta i { transition: transform 0.3s ease; }
+.btn-equipe-cta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(245, 166, 35, 0.55);
+}
+.btn-equipe-cta:hover i { transform: translateX(4px); }
+
+/* ──────────────────────────────────────────────────────────
+   6. RESPONSIVIDADE
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 992px) {
+    .equipe-page-hero { padding-top: 80px; }
+
+    /* Grid: mantém auto-fill mas com coluna mínima menor */
+    .equipe-page-grid {
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 28px;
+    }
+
+    .equipe-page-grid .team-card {
+        height: 340px;
+    }
+}
+
+@media (max-width: 768px) {
+    .equipe-grid-section { padding: 60px 0 80px; }
+
+    /* Em mobile, 2 colunas fixas quando couber */
+    .equipe-page-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+    }
+
+    .equipe-page-grid .team-card {
+        max-width: 100%;
+        height: 320px;
+    }
+
+    /* Em mobile, flip ativado apenas pelo JS (tap), não hover */
+    .equipe-page-grid .team-card:hover .card-inner {
+        transform: none;
+    }
+
+    .equipe-cta-section { padding: 70px 0; }
+}
+
+@media (max-width: 480px) {
+    /* Em telas muito pequenas, 1 coluna centralizada */
+    .equipe-page-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .equipe-page-grid .team-card {
+        max-width: 100%;
+    }
+}
