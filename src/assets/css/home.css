@@ -9,6 +9,8 @@
    KEYFRAMES GLOBAIS DA HOME
 ================================================================ */
 
+
+
 /* Surgimento suave de baixo para cima */
 @keyframes fadeInUp {
     from {
@@ -43,6 +45,7 @@
 /* ================================================================
    1. HERO SECTION
 ================================================================ */
+
 
 .hero {
     background: linear-gradient(135deg, var(--primary-blue) 0%, #002d7a 100%);
