@@ -1,17 +1,13 @@
 /* ================================================================
-   home.css — Estilos exclusivos da Home
-   Projeto: HubSG — Hub de Inovação PUC Minas São Gabriel
-   Padrão: Mobile-first · Reusa variáveis e utilitários de global.css
+   home.css — Estilos exclusivos da Home | HubSG
+   Depende de variáveis e utilitários definidos em global.css
 ================================================================ */
 
 
 /* ================================================================
-   KEYFRAMES GLOBAIS DA HOME
+   KEYFRAMES
 ================================================================ */
 
-
-
-/* Surgimento suave de baixo para cima */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -23,19 +19,16 @@
     }
 }
 
-/* Pulso suave no selo flutuante */
 @keyframes pulse-glow {
     0%, 100% { box-shadow: 0 8px 32px rgba(245, 166, 35, 0.35); }
     50%       { box-shadow: 0 12px 48px rgba(245, 166, 35, 0.65); }
 }
 
-/* Floating suave para formas decorativas */
 @keyframes float {
     0%, 100% { transform: translateY(0) rotate(0deg); }
     50%       { transform: translateY(-18px) rotate(3deg); }
 }
 
-/* Scroll do carrossel de logos */
 @keyframes scroll-carousel {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -46,19 +39,16 @@
    1. HERO SECTION
 ================================================================ */
 
-
 .hero {
     background: linear-gradient(135deg, var(--primary-blue) 0%, #002d7a 100%);
     padding: 80px 0 0;
     position: relative;
     overflow: hidden;
-    /* altura mínima generosa para a hero respirar */
     min-height: 88vh;
     display: flex;
     align-items: center;
 }
 
-/* --- Formas de fundo decorativas --- */
 .hero-bg-shapes {
     position: absolute;
     inset: 0;
@@ -97,16 +87,16 @@
     background: rgba(245, 166, 35, 0.07);
 }
 
-/* --- Container principal da hero --- */
 .hero > .container {
     position: relative;
     z-index: 2;
     width: 100%;
 }
 
-/* Layout em duas colunas: conteúdo | visual
-   Rebalanceado: texto ganha mais espaço (1.15fr),
-   imagem fica proporcional como "card de destaque" (1fr) */
+/*
+  Layout em duas colunas: texto (1.15fr) e imagem (1fr).
+  O texto recebe mais espaço para equilibrar o peso visual do card.
+*/
 .hero-banner {
     display: grid;
     grid-template-columns: 1.15fr 1fr;
@@ -115,7 +105,6 @@
     animation: fadeInUp 0.9s ease-out both;
 }
 
-/* --- Coluna esquerda: texto --- */
 .hero-content {
     display: flex;
     flex-direction: column;
@@ -123,7 +112,6 @@
     padding: 48px 0 80px;
 }
 
-/* Pílula de categoria acima do título */
 .hero-tag {
     display: inline-flex;
     align-items: center;
@@ -144,7 +132,6 @@
     font-size: 0.7rem;
 }
 
-/* Título principal */
 .hero-title {
     color: var(--white);
     font-size: clamp(2rem, 4.5vw, 3.2rem);
@@ -153,7 +140,6 @@
     letter-spacing: -0.02em;
 }
 
-/* Destaque laranja com sublinhado decorativo */
 .hero-title .highlight {
     color: var(--orange);
     position: relative;
@@ -172,7 +158,6 @@
     border-radius: 2px;
 }
 
-/* Subtítulo */
 .hero-subtitle {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.72);
@@ -180,7 +165,6 @@
     max-width: 480px;
 }
 
-/* Grupo de CTAs */
 .hero-cta-group {
     display: flex;
     gap: 16px;
@@ -188,7 +172,6 @@
     align-items: center;
 }
 
-/* Botão primário — laranja sólido com glow */
 .btn-hero-primary {
     display: inline-flex;
     align-items: center;
@@ -211,7 +194,6 @@
     box-shadow: 0 12px 32px rgba(245, 166, 35, 0.55);
 }
 
-/* Botão secundário — contorno translúcido */
 .btn-hero-secondary {
     display: inline-flex;
     align-items: center;
@@ -232,19 +214,12 @@
     transform: translateY(-2px);
 }
 
-/* --- Coluna direita: imagem com overlays --- */
 .hero-visual {
     position: relative;
-    /* A imagem principal extravasa ligeiramente a hero */
     height: 100%;
     min-height: 480px;
 }
 
-/* Imagem principal da hero
-   Tratada como "card de destaque" sofisticado:
-   altura máxima controlada + aspect-ratio para consistência
-   entre imagens e GIFs com proporções diferentes.
-   Clip-path sutil apenas no canto inferior esquerdo. */
 .hero-visual__img {
     width: 100%;
     max-height: 440px;
@@ -252,19 +227,16 @@
     object-fit: cover;
     border-radius: 24px;
     display: block;
-    /* Sombra difusa profunda — transmite profundidade sem clip */
     box-shadow:
         0 20px 60px rgba(0, 0, 0, 0.35),
         0 4px 16px rgba(0, 0, 0, 0.18);
-    /* Transição suave para o crossfade do home-hero.js */
     transition: opacity 0.3s ease;
 }
 
-/* Overlay glassmorphism com o nome do hub */
 .hero-glass-badge {
     position: absolute;
     top: 28px;
-    left: -24px;                            /* sobrepõe a imagem */
+    left: -24px; /* Sobrepõe a borda esquerda da imagem no layout desktop */
     background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -293,11 +265,10 @@
     line-height: 1;
 }
 
-/* Selo flutuante com o ano — pulsante */
 .hero-year-badge {
     position: absolute;
     bottom: 80px;
-    right: -20px;
+    right: -20px; /* Sobrepõe a borda direita da imagem no layout desktop */
     background: var(--orange);
     color: var(--white);
     border-radius: 14px;
@@ -322,7 +293,6 @@
     margin-top: 3px;
 }
 
-/* --- Divisor curvo SVG na base da Hero --- */
 .hero-wave {
     position: absolute;
     bottom: -1px;
@@ -339,7 +309,7 @@
 
 
 /* ================================================================
-   2. SEÇÃO ECOSSISTEMA (Sobre / HubSG)
+   2. SEÇÃO ECOSSISTEMA
 ================================================================ */
 
 .hubsg {
@@ -350,7 +320,6 @@
     overflow: hidden;
 }
 
-/* Padrão de pontos decorativo no fundo */
 .hubsg::before {
     content: '';
     position: absolute;
@@ -368,14 +337,12 @@
     z-index: 2;
 }
 
-/* --- Bloco visual (imagens sobrepostas) --- */
 .hubsg-visual {
     flex: 1;
     position: relative;
     min-height: 460px;
 }
 
-/* Forma abstrata geométrica laranja ao fundo */
 .abstract-shape {
     position: absolute;
     background: linear-gradient(135deg, var(--orange) 0%, #c8790a 100%);
@@ -389,7 +356,6 @@
     clip-path: polygon(0 0, 100% 0, 100% 75%, 70% 100%, 0 100%);
 }
 
-/* Imagens empilhadas com offset (efeito masonry) */
 .hubsg-images {
     position: relative;
     z-index: 2;
@@ -397,7 +363,6 @@
     min-height: 460px;
 }
 
-/* Imagem de cima — alinhada à esquerda */
 .hubsg-images img:nth-child(1) {
     position: absolute;
     top: 0;
@@ -410,7 +375,6 @@
     aspect-ratio: 4 / 3;
 }
 
-/* Imagem de baixo — deslocada para a direita, sobrepõe */
 .hubsg-images img:nth-child(2) {
     position: absolute;
     bottom: 0;
@@ -424,19 +388,16 @@
     aspect-ratio: 4 / 3;
 }
 
-/* Hover nas imagens: leve zoom + sombra profunda */
 .hubsg-images img:hover {
     transform: scale(1.04) translateY(-4px);
     box-shadow: 0 28px 72px rgba(0, 0, 0, 0.5);
     z-index: 3;
 }
 
-/* --- Bloco de texto --- */
 .hubsg-text {
     flex: 1;
 }
 
-/* Pílula de categoria */
 .hubsg-text .section-tag {
     display: inline-flex;
     align-items: center;
@@ -473,7 +434,6 @@
     margin-bottom: 36px;
 }
 
-/* Botão "Saiba mais" com micro-animação */
 .btn-saiba-mais {
     display: inline-flex;
     align-items: center;
@@ -515,7 +475,6 @@
     overflow: hidden;
 }
 
-/* Subtítulo descritivo abaixo do título da seção */
 .parceiros .section-subtitle {
     font-size: 0.95rem;
     color: #6c757d;
@@ -523,50 +482,54 @@
     margin-bottom: 0;
 }
 
-/* Faixa de logos infinita */
 .logos-carousel {
     margin-top: 48px;
     overflow: hidden;
     position: relative;
-    /* Fade nas bordas para um look mais premium */
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
     mask-image:         linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
 }
 
-/* A track contém os logos duplicados para o loop infinito */
 .logos-track {
     display: flex;
     align-items: center;
-    /* A animação agora percorre -50% porque a track tem o conteúdo duplicado */
     animation: scroll-carousel 28s linear infinite;
     width: max-content;
+    /*
+      overflow: visible garante que getBoundingClientRect() nos filhos
+      retorne coordenadas corretas mesmo com overflow: hidden no pai.
+    */
+    overflow: visible;
 }
 
-/* Pausa ao passar o mouse na área do carrossel */
-.logos-carousel:hover .logos-track {
-    animation-play-state: paused;
-}
-
-/* Cada logo: começa cinza, ganha cor no hover */
 .logos-track img {
     height: 56px;
     width: auto;
     flex-shrink: 0;
     margin-right: 72px;
-    /* Filtro grayscale + opacidade reduzida para look clean */
     filter: grayscale(100%) opacity(0.45);
-    transition: filter 0.4s ease, transform 0.3s ease;
+    transform: scale(1);
+    transition: filter 0.35s ease, opacity 0.35s ease, transform 0.3s ease;
+    /*
+      will-change cria camada de compositing independente no browser,
+      eliminando repaints a cada frame do rAF do carrossel.js.
+    */
+    will-change: transform, filter, opacity;
+    transform-origin: center center;
+    display: block;
 }
 
-/* Exceção: logo da Azul é maior */
 .logos-track img[alt="Logo Azul"] {
     height: 100px;
 }
 
-/* No hover, o logo ganha cor e destaque */
-.logos-track img:hover {
+/*
+  Classe auxiliar adicionada pelo carrossel.js quando o logo
+  está no centro da viewport. Usada para debug via DevTools.
+*/
+.logos-track img.logo-in-focus {
     filter: grayscale(0%) opacity(1);
-    transform: scale(1.1);
+    transform: scale(1.22);
 }
 
 
@@ -574,14 +537,7 @@
    RESPONSIVIDADE
 ================================================================ */
 
-/* ── TABLET (≤ 1024px) ────────────────────────────────────────
-   Layout passa a ser uma coluna:
-   texto acima, imagem de evento abaixo.
-   CORREÇÃO CRÍTICA: display:none removido do .hero-visual —
-   o usuário mobile via o evento em destaque que é a feature
-   principal da home.
-─────────────────────────────────────────────────────────────── */
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
     .hero-banner {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -605,19 +561,12 @@
         justify-content: center;
     }
 
-    /*
-      ANTES: display: none — usuário mobile perdia a feature!
-      AGORA: imagem aparece abaixo do texto, com altura limitada
-      para não dominar a tela em dispositivos menores.
-    */
     .hero-visual {
         min-height: unset;
         height: auto;
-        /* Limita a largura para parecer um card centralizado */
         max-width: 560px;
         margin: 0 auto;
         width: 100%;
-        /* Padding inferior para que a wave SVG não sobreponha */
         padding-bottom: 40px;
     }
 
@@ -628,9 +577,9 @@
     }
 
     /*
-      Badges reposicionados para não saírem da tela em tablet.
-      Removemos os offsets negativos (left: -24px, right: -20px)
-      que funcionam apenas no desktop.
+      Offsets negativos (left: -24px, right: -20px) funcionam apenas
+      no layout desktop de duas colunas. Em tablet+, os badges são
+      reposicionados para não vazarem da tela.
     */
     .hero-glass-badge {
         left: 12px;
@@ -645,9 +594,13 @@
         padding: 10px 14px;
     }
 
+    .hubsg {
+        padding: 80px 0;
+    }
+
     .hubsg-container {
         flex-direction: column;
-        gap: 60px;
+        gap: 48px;
     }
 
     .hubsg-visual {
@@ -656,40 +609,48 @@
     }
 }
 
-/* ── MOBILE (≤ 768px) ─────────────────────────────────────────
-   Refinamentos adicionais para telas pequenas.
-─────────────────────────────────────────────────────────────── */
+
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
     .hero {
         min-height: auto;
-        padding: 60px 0 0;
+        padding: 56px 0 0;
     }
 
     .hero-content {
-        padding: 40px 0 24px;
+        padding: 32px 0 20px;
+        gap: 20px;
     }
 
     .hero-title {
-        font-size: 1.9rem;
+        font-size: clamp(1.6rem, 6vw, 1.9rem);
     }
 
-    /* Imagem ainda menor em mobile para não empurrar demais o scroll */
+    .hero-subtitle {
+        font-size: 0.92rem;
+        line-height: 1.65;
+    }
+
+    .btn-hero-primary,
+    .btn-hero-secondary {
+        font-size: 0.9rem;
+        padding: 13px 24px;
+    }
+
     .hero-visual {
         max-width: 100%;
-        padding-bottom: 32px;
+        padding-bottom: 28px;
     }
 
     .hero-visual__img {
-        max-height: 260px;
+        max-height: 240px;
         aspect-ratio: 3 / 2;
-        border-radius: 16px;
+        border-radius: 14px;
     }
 
-    /*
-      Badges menores e totalmente dentro da imagem.
-      Em mobile muito pequeno, usamos % ao invés de px
-      para os posicionamentos.
-    */
     .hero-glass-badge {
         left: 10px;
         top: 10px;
@@ -707,7 +668,7 @@
 
     .hero-year-badge {
         right: 10px;
-        bottom: 42px;
+        bottom: 38px;
         padding: 8px 11px;
         border-radius: 10px;
     }
@@ -721,33 +682,176 @@
     }
 
     .hubsg {
-        padding: 80px 0;
+        padding: 70px 0;
     }
 
-    .hubsg-images img:nth-child(1) {
-        position: relative;
-        width: 80%;
-        margin-bottom: 20px;
-    }
-
-    .hubsg-images img:nth-child(2) {
-        position: relative;
-        width: 70%;
-        margin-left: auto;
-    }
-
-    .hubsg-images {
-        display: flex;
-        flex-direction: column;
+    .hubsg-visual {
         min-height: auto;
     }
 
+    /*
+      Em mobile, desfaz o posicionamento absoluto sobreposto das imagens
+      e as empilha com flex para preservar a proporção sem vazar da tela.
+    */
+    .hubsg-images {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        min-height: auto;
+    }
+
+    .hubsg-images img:nth-child(1),
+    .hubsg-images img:nth-child(2) {
+        position: relative;
+        width: 100%;
+        right: auto;
+        bottom: auto;
+        top: auto;
+        left: auto;
+        border: none;
+    }
+
+    .hubsg-images img:nth-child(1) {
+        border-radius: 14px;
+    }
+
+    .hubsg-images img:nth-child(2) {
+        border-radius: 14px;
+        border: 3px solid rgba(255,255,255,0.12);
+    }
+
+    .abstract-shape {
+        display: none;
+    }
+
+    .btn-saiba-mais {
+        min-height: 48px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .parceiros {
+        padding: 60px 0;
+        /*
+          --depth-radius como custom property permite ao carrossel.js
+          ler o raio correto por breakpoint sem alterar o JS.
+        */
+        --depth-radius: 180;
+    }
+
     .logos-track img {
-        height: 44px;
-        margin-right: 48px;
+        height: 38px;
+        margin-right: 44px;
     }
 
     .logos-track img[alt="Logo Azul"] {
-        height: 80px;
+        height: 68px;
+    }
+
+    .logos-carousel {
+        margin-top: 36px;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 16%, black 84%, transparent 100%);
+        mask-image:         linear-gradient(to right, transparent 0%, black 16%, black 84%, transparent 100%);
+    }
+}
+
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 48px 0 0;
+    }
+
+    .hero-content {
+        padding: 24px 0 16px;
+        gap: 16px;
+    }
+
+    .hero-title {
+        font-size: clamp(1.4rem, 7vw, 1.7rem);
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .hero-cta-group {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .btn-hero-primary,
+    .btn-hero-secondary {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.88rem;
+        padding: 14px 20px;
+    }
+
+    .hero-visual__img {
+        max-height: 200px;
+        aspect-ratio: 4 / 3;
+        border-radius: 12px;
+    }
+
+    .hero-glass-badge {
+        left: 8px;
+        top: 8px;
+        padding: 6px 10px;
+        border-radius: 8px;
+        gap: 1px;
+    }
+
+    .hero-glass-badge .badge-label {
+        font-size: 0.5rem;
+    }
+
+    .hero-glass-badge .badge-value {
+        font-size: 0.85rem;
+    }
+
+    .hero-year-badge {
+        right: 8px;
+        bottom: 30px;
+        padding: 6px 9px;
+        border-radius: 8px;
+    }
+
+    .hero-year-badge .badge-year {
+        font-size: 1rem;
+    }
+
+    .hero-year-badge .badge-tagline {
+        font-size: 0.48rem;
+    }
+
+    .hubsg {
+        padding: 60px 0;
+    }
+
+    .hubsg-container {
+        gap: 36px;
+    }
+
+    .hubsg-text h2 {
+        font-size: clamp(1.4rem, 6vw, 1.8rem);
+    }
+
+    .hubsg-text p {
+        font-size: 0.92rem;
+        line-height: 1.75;
+        margin-bottom: 28px;
+    }
+
+    .parceiros {
+        padding: 52px 0;
+        --depth-radius: 120;
+    }
+
+    .logos-track img {
+        height: 32px;
+        margin-right: 32px;
+    }
+
+    .logos-track img[alt="Logo Azul"] {
+        height: 56px;
     }
 }

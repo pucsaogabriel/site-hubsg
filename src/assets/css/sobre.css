@@ -641,9 +641,9 @@
     pointer-events: none;
 }
 
-/* ──────────────────────────────────────────────────────────
+/* ─────────────────────────────────────────────────────────────
    7. RESPONSIVIDADE — TABLET (≤ 992px)
-   ────────────────────────────────────────────────────────── */
+───────────────────────────────────────────────────────────── */
 @media (max-width: 992px) {
 
     /* Hero */
@@ -662,48 +662,227 @@
     .col-media.align-right { align-items: flex-start; }
     .info-card { max-width: 100%; }
 
+    /* Seções — padding vertical reduzido no tablet */
+    .desafio-section,
+    .aluno-section {
+        padding: 72px 0;
+    }
+
+    .podcast-section {
+        padding: 72px 0 100px;
+    }
+
     /* Podcast */
     .podcast-container { flex-direction: column; gap: 50px; }
     .podcast-video-wrapper { max-width: 100%; }
 }
 
-/* ──────────────────────────────────────────────────────────
+
+/* ─────────────────────────────────────────────────────────────
    8. RESPONSIVIDADE — MOBILE (≤ 768px)
-   ────────────────────────────────────────────────────────── */
+────────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
 
     /* Hero */
-    .sobre-hero { padding-top: 70px; }
-    .hero-sub   { margin-bottom: 40px; }
+    .sobre-hero { padding-top: 64px; }
+    .hero-sub   { margin-bottom: 32px; font-size: 0.95rem; }
     .shape-circle-2 { display: none; }
+    .sobre-hero-title {
+        font-size: clamp(2rem, 7vw, 3rem);
+        letter-spacing: -0.5px;
+    }
+
+    /* Intro */
+    .sobre-intro {
+        padding: 16px 0 52px;
+    }
+    .intro-text {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
 
     /* Essência — imagens empilhadas */
-    .essencia-images    { flex-direction: column; }
+    .essencia-images    { flex-direction: column; margin-bottom: 20px; }
     .img-secundarias    { flex-direction: row; }
-    .img-secundarias img { width: 50%; height: 150px; }
+    .img-secundarias img { width: 50%; height: 140px; }
+    .essencia-content {
+        padding-top: 60px;
+        padding-bottom: 64px;
+    }
+    /* Painel azul ocupa 100% da largura no mobile */
+    .essencia-content::before {
+        width: 100%;
+        border-radius: 0;
+    }
 
     /* Cards — empilhados verticalmente */
     .info-card { flex-direction: column; }
     .card-img-wrapper { width: 100%; height: 180px; }
     .card-icon-wrapper { top: 12px; left: 12px; }
 
-    /* Fundo vazado mobile */
-    .laranja-vazando-esquerda { margin-left: 0; }
-    .laranja-vazando-esquerda::before { border-radius: 0 20px 20px 0; right: -8px; }
-    .laranja-vazando-direita  { margin-right: 0; }
-    .laranja-vazando-direita::before  { border-radius: 20px 0 0 20px; left: -8px; }
+    /*
+      Fundo laranja "vazado" — CORREÇÃO CRÍTICA DE OVERFLOW:
+      Os pseudo-elementos usam left: -50vw / right: -50vw no desktop,
+      o que faz o fundo vazar além de 100vw em mobile.
+      Aqui redefinimos para conter dentro da viewport.
+    */
+    .laranja-vazando-esquerda {
+        margin-left: 0;
+        overflow: hidden;
+    }
+    .laranja-vazando-esquerda::before {
+        left: -16px;
+        right: -16px;
+        border-radius: 12px;
+    }
+    .laranja-vazando-direita {
+        margin-right: 0;
+        overflow: hidden;
+    }
+    .laranja-vazando-direita::before {
+        left: -16px;
+        right: -16px;
+        border-radius: 12px;
+    }
+
+    /* Seções — padding vertical reduzido */
+    .desafio-section,
+    .aluno-section {
+        padding: 60px 0;
+    }
+
+    .podcast-section {
+        padding: 60px 0 80px;
+    }
+
+    /* Tipografia nos blocos alternados */
+    .col-text h2 {
+        font-size: clamp(1.5rem, 5vw, 1.9rem);
+    }
+
+    .podcast-text h2 {
+        font-size: clamp(1.6rem, 5.5vw, 2rem);
+    }
+
+    /* Podcast social pills */
+    .podcast-social {
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+    /* Touch target mínimo nas pills: 44px */
+    .social-pill {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        min-height: 44px;
+    }
+    .play-btn { width: 60px; height: 60px; font-size: 1.1rem; }
+
+    /* Botão CTA: touch target e largura confortável */
+    .btn-cta-laranja {
+        min-height: 48px;
+        padding: 14px 28px;
+    }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   9. MOBILE PEQUENO (≤ 480px)
+────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    /* Hero */
+    .sobre-hero { padding-top: 52px; }
+    .sobre-hero-title {
+        font-size: clamp(1.7rem, 8vw, 2.2rem);
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+    .hero-sub {
+        font-size: 0.9rem;
+        margin-bottom: 24px;
+    }
+    .hero-badge {
+        font-size: 0.72rem;
+        padding: 6px 14px;
+        margin-bottom: 20px;
+    }
+
+    /* Essência */
+    .essencia-content::before { width: 100%; border-radius: 0; }
+    .essencia-text h2 {
+        font-size: clamp(1.5rem, 6.5vw, 2rem);
+    }
+    .essencia-text p { font-size: 0.95rem; }
+
+    /* Imagens secundárias empilhadas */
+    .img-secundarias {
+        flex-direction: column;
+    }
+    .img-secundarias img {
+        width: 100%;
+        height: 180px;
+    }
+
+    /* Alternados */
+    .wrapper-alternante { gap: 28px; }
 
     /* Podcast */
-    .podcast-social { gap: 8px; }
-    .social-pill { padding: 6px 14px; font-size: 0.78rem; }
-    .play-btn { width: 58px; height: 58px; font-size: 1.1rem; }
+    .podcast-section { padding-bottom: 64px; }
+    .podcast-social {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .social-pill {
+        justify-content: center;
+        width: 100%;
+    }
 }
 
-/* ──────────────────────────────────────────────────────────
-   9. MOBILE PEQUENO (≤ 480px)
-   ────────────────────────────────────────────────────────── */
-@media (max-width: 480px) {
-    .essencia-content::before { width: 100%; border-radius: 0; }
-    .wrapper-alternante { gap: 36px; }
-    .podcast-section { padding-bottom: 80px; }
-}
+
+/*
+  Isola hovers de imagens, cards e botões para dispositivos com mouse.
+  Em touch, transform: scale() fica "preso" após o toque.
+*/
+@media (hover: hover) and (pointer: fine) {
+    .img-principal img:hover {
+        transform: scale(1.025);
+        box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+    }
+    .img-secundarias img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+    }
+    .info-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.14);
+    }
+    .info-card:hover .card-img-wrapper img { transform: scale(1.07); }
+    .social-pill.youtube:hover {
+        background: #cc0000;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 0, 0, 0.28);
+    }
+    .social-pill.instagram:hover {
+        background: rgba(225, 48, 108, 0.16);
+        border-color: rgba(225, 48, 108, 0.5);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(188, 24, 136, 0.2);
+    }
+    .social-pill.telegram:hover {
+        background: #1a88c0;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(34, 158, 217, 0.28);
+    }
+    .btn-cta-laranja:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 36px rgba(245, 166, 35, 0.5);
+    }
+    .podcast-video-wrapper:hover .podcast-thumb {
+        transform: scale(1.02);
+        box-shadow: 0 30px 80px rgba(0, 71, 171, 0.28);
+    }
+    .play-btn:hover {
+        background: rgba(255,255,255,0.35);
+        transform: translate(-50%, -50%) scale(1.1);
+        box-shadow: 0 12px 48px rgba(0,0,0,0.3);
+    }
+}

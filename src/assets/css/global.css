@@ -1,4 +1,13 @@
-/* --- Variáveis --- */
+/* ================================================================
+   global.css — Design Tokens, Reset, Header e Utilitários Globais
+   HubSG — Hub de Inovação PUC Minas São Gabriel
+================================================================ */
+
+
+/* ================================================================
+   1. DESIGN TOKENS
+================================================================ */
+
 :root {
     --primary-blue: #0047AB;
     --dark-blue: #003380;
@@ -11,7 +20,11 @@
     --transition: all 0.3s ease;
 }
 
-/* --- Reset e Estilos Globais --- */
+
+/* ================================================================
+   2. RESET
+================================================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -51,7 +64,11 @@ img {
     margin: 0 auto;
 }
 
-/* --- Animações --- */
+
+/* ================================================================
+   3. ANIMAÇÕES DE SCROLL
+================================================================ */
+
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
@@ -74,16 +91,11 @@ img {
     transform: translateX(0);
 }
 
-/* ──────────────────────────────────────────────────────────
-   CABEÇALHO (HEADER) — Premium Glassmorphism
-   ────────────────────────────────────────────────────────── */
 
-/*
-  Em vez de um bloco sólido, usamos uma cor azul translúcida
-  combinada com backdrop-filter: blur() para o efeito glass.
-  Isso garante que o conteúdo rolado por baixo apareça difuso,
-  mantendo o header legível e visualmente sofisticado.
-*/
+/* ================================================================
+   4. HEADER
+================================================================ */
+
 header {
     background-color: rgba(0, 55, 130, 0.92);
     backdrop-filter: blur(14px);
@@ -92,12 +104,9 @@ header {
     padding: 16px 0;
     position: sticky;
     top: 0;
-    z-index: 1000;
-    /* Borda inferior sutil que separa header do conteúdo sem ser agressiva */
+    z-index: 1000; /* Topo absoluto — sobrepõe todos os conteúdos da página */
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    /* Sombra difusa e suave — não a sombra dura anterior */
     box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18);
-    /* Transição para mudanças de scroll (usada opcionalmente via JS) */
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -117,7 +126,9 @@ header {
     opacity: 0.9;
 }
 
+
 /* ── Links de navegação (desktop) ── */
+
 .nav-links {
     display: flex;
     gap: 36px;
@@ -136,9 +147,8 @@ header {
 }
 
 /*
-  Sublinhado animado do CENTRO para as PONTAS.
-  O truque: left: 50% + width: 0 + transform: translateX(-50%)
-  faz a linha crescer simetricamente a partir do centro.
+  Sublinhado animado: expande simetricamente a partir do centro
+  via left: 50% + transform: translateX(-50%) + width: 0 → 100%.
 */
 .nav-links a::after {
     content: '';
@@ -153,7 +163,6 @@ header {
     transition: width 0.3s ease;
 }
 
-/* Hover: cor laranja + leve lift + linha cresce do centro */
 .nav-links a:hover {
     color: var(--orange);
     transform: translateY(-1px);
@@ -162,11 +171,6 @@ header {
     width: 100%;
 }
 
-/* ── Estado ATIVO (página atual) ── */
-/*
-  Adicione class="active" no <a> do link da página corrente.
-  O link ativo fica laranja e com a linha sempre visível.
-*/
 .nav-links a.active {
     color: var(--orange);
 }
@@ -174,7 +178,9 @@ header {
     width: 100%;
 }
 
+
 /* ── Hambúrguer (mobile) ── */
+
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -193,12 +199,6 @@ header {
     background: rgba(255, 255, 255, 0.18);
 }
 
-/*
-  Ícone do hambúrguer como 3 barras puras em CSS
-  (sem depender de FontAwesome para o ícone em si).
-  Mantemos o <i class="fas fa-bars"> para quem já usa FA,
-  mas o botão em si tem o estilo próprio.
-*/
 .menu-toggle i {
     font-size: 18px;
     color: var(--white);
@@ -207,7 +207,10 @@ header {
 }
 
 
-/* --- Pré-rodapé --- */
+/* ================================================================
+   5. PRÉ-RODAPÉ
+================================================================ */
+
 .pre-footer {
     background-color: var(--orange);
     color: var(--white);
@@ -258,7 +261,11 @@ header {
     margin-bottom: 5px;
 }
 
-/* --- Rodapé --- */
+
+/* ================================================================
+   6. RODAPÉ
+================================================================ */
+
 footer {
     background-color: var(--primary-blue);
     color: rgba(255, 255, 255, 0.7);
@@ -267,7 +274,34 @@ footer {
     font-size: 13px;
 }
 
-/* --- Responsividade --- */
+
+/* ================================================================
+   7. RESPONSIVIDADE
+================================================================ */
+
+/*
+  Isola efeitos :hover para dispositivos com ponteiro preciso.
+  Em touch, :hover fica retido após o toque — este bloco evita
+  que os estilos de hover sejam aplicados incorretamente.
+*/
+@media (hover: hover) and (pointer: fine) {
+    .nav-links a:hover {
+        color: var(--orange);
+        transform: translateY(-1px);
+    }
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+    .logo:hover img {
+        transform: scale(1.04);
+        opacity: 0.9;
+    }
+    .social-links a:hover {
+        background-color: var(--white);
+        color: var(--orange);
+    }
+}
+
 @media (max-width: 992px) {
     .hero-banner {
         flex-direction: column;
@@ -294,28 +328,31 @@ footer {
 
 @media (max-width: 768px) {
 
-    /* ── Menu hambúrguer visível ── */
+    .logo img {
+        height: 48px;
+    }
+
     .menu-toggle {
         display: flex;
+        min-width: 44px;
+        min-height: 44px;
     }
 
     /*
-      Menu mobile: painel elegante com Glassmorphism.
-      Usamos opacity + transform (translateY) em vez de display:none/block
+      Menu mobile com glassmorphism.
+      Usa opacity + transform em vez de display:none/block
       para que a transição CSS funcione corretamente.
       O JS alterna a classe .active para disparar a animação.
     */
     .nav-links {
-        /* Estado FECHADO (invisível, deslocado para cima) */
         flex-direction: column;
         align-items: center;
         gap: 4px;
         position: absolute;
-        top: calc(100% + 8px); /* 8px abaixo do header */
+        top: calc(100% + 8px);
         left: 16px;
         right: 16px;
         width: auto;
-        /* Glassmorphism no painel mobile */
         background: rgba(0, 38, 100, 0.96);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
@@ -324,23 +361,19 @@ footer {
         padding: 12px 0 20px;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
         text-align: center;
-        /* Animação de entrada */
         opacity: 0;
         transform: translateY(-12px);
         pointer-events: none;
         transition: opacity 0.3s ease, transform 0.3s ease;
-        /* Sobrepõe o conteúdo abaixo do header */
         z-index: 999;
     }
 
-    /* Estado ABERTO — disparado pelo JS via .active */
     .nav-links.active {
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
     }
 
-    /* Links dentro do menu mobile */
     .nav-links li {
         width: 100%;
     }
@@ -348,6 +381,10 @@ footer {
         display: block;
         width: 100%;
         padding: 14px 24px;
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 13px;
         letter-spacing: 1px;
         color: rgba(255, 255, 255, 0.85);
@@ -355,13 +392,11 @@ footer {
         transition: background 0.2s ease, color 0.2s ease;
         text-transform: uppercase;
     }
-    /* Hover no mobile: destaque sutil */
     .nav-links a:hover {
         background: rgba(255, 255, 255, 0.08);
         color: var(--orange);
-        transform: none; /* Remove o translateY do desktop no mobile */
+        transform: none;
     }
-    /* Linha ativa no mobile */
     .nav-links a::after {
         display: none;
     }
@@ -370,22 +405,57 @@ footer {
         color: var(--orange);
     }
 
-    /* Separador decorativo entre items */
     .nav-links li + li {
         border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    /* ── Outros ajustes mobile ── */
     .hero-title {
         font-size: 26px;
+    }
+
+    .pre-footer {
+        padding: 48px 0;
     }
 
     .pre-footer-grid {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: 32px;
     }
 
     .social-links {
         justify-content: center;
+    }
+
+    .social-links a {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 12px 0;
+    }
+
+    .logo img {
+        height: 42px;
+    }
+
+    .pre-footer {
+        padding: 40px 0;
+    }
+
+    .pre-footer h3 {
+        font-size: 20px;
+    }
+
+    .address-text {
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 16px 0;
+        font-size: 12px;
     }
 }

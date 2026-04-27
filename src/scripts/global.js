@@ -1,27 +1,23 @@
 // ============================================================
-//  global.js — HubSG | Comportamento global do Header
+//  global.js — Comportamento global do Header | HubSG
 // ============================================================
 
 const menuToggle = document.getElementById('mobile-menu');
 const navLinks   = document.getElementById('nav-links');
 
-// ── Abre / fecha o menu mobile com animação CSS ──────────────
-// O CSS usa opacity + translateY (não display:none), então
-// basta alternar a classe .active para disparar a transição.
+// Abre/fecha o menu mobile
 menuToggle.addEventListener('click', () => {
     const isOpen = navLinks.classList.toggle('active');
 
-    // Atualiza aria-expanded para acessibilidade
     menuToggle.setAttribute('aria-expanded', isOpen);
 
-    // Troca o ícone: bars ↔ xmark
     const icon = menuToggle.querySelector('i');
     if (icon) {
         icon.className = isOpen ? 'fas fa-xmark' : 'fas fa-bars';
     }
 });
 
-// ── Fecha o menu ao clicar em um link (UX mobile) ───────────
+// Fecha ao clicar em um link de navegação
 navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active');
@@ -31,7 +27,7 @@ navLinks.querySelectorAll('a').forEach(link => {
     });
 });
 
-// ── Fecha o menu ao clicar fora dele ────────────────────────
+// Fecha ao clicar fora do menu
 document.addEventListener('click', (e) => {
     if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
         navLinks.classList.remove('active');
@@ -41,9 +37,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// ── Header compacto ao rolar (scroll shrink) ────────────────
-// Adiciona a classe .scrolled ao header quando o usuário
-// rola mais de 60px, permitindo ajuste visual via CSS se desejado.
+// Adiciona .scrolled ao header após 60px de scroll
 const header = document.querySelector('header');
 window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 60);

@@ -16,6 +16,7 @@
 
 <body>
 
+    <!-- Header -->
     <header>
         <div class="container nav-container">
             <a href="#inicio" class="logo"><img src="src/assets/images/hero/image 34.png" alt="Logo HubSG"></a>
@@ -33,12 +34,9 @@
 
     <main>
 
-        <!-- =============================================
-             HERO SECTION
-        ============================================= -->
+        <!-- Hero Section -->
         <section id="inicio" class="hero">
 
-            <!-- Formas geométricas decorativas de fundo -->
             <div class="hero-bg-shapes" aria-hidden="true">
                 <div class="shape shape-1"></div>
                 <div class="shape shape-2"></div>
@@ -48,10 +46,8 @@
             <div class="container">
                 <div class="hero-banner">
 
-                    <!-- Coluna esquerda: texto e CTAs -->
                     <div class="hero-content animate-on-scroll">
 
-                        <!-- Pílula de categoria / eyebrow text -->
                         <span class="hero-tag">
                             <i class="fas fa-bolt"></i>
                             Evento em Destaque · HubSG 2026
@@ -78,20 +74,17 @@
                         </div>
                     </div>
 
-                    <!-- Coluna direita: imagem com overlays glassmorphism -->
                     <div class="hero-visual">
 
                         <img id="hero-destaque-img" class="hero-visual__img"
                             src="src/assets/images/eventos/hackathonVarejoInteligente.jpeg"
                             alt="Alunos e professores colaborando em projetos de inovação">
 
-                        <!-- Badge glassmorphism: categoria + título do evento -->
                         <div class="hero-glass-badge" id="hero-destaque-badge">
                             <span class="badge-label" id="hero-badge-label">Hub de Inovação</span>
                             <span class="badge-value" id="hero-badge-value">HubSG</span>
                         </div>
 
-                        <!-- Selo flutuante pulsante: dia + mês do evento -->
                         <div class="hero-year-badge" id="hero-destaque-data">
                             <div class="badge-year" id="hero-badge-dia">2026</div>
                             <div class="badge-tagline" id="hero-badge-mes">Presente</div>
@@ -101,7 +94,6 @@
                 </div>
             </div>
 
-            <!-- Divisor curvo SVG ligando com a próxima seção -->
             <div class="hero-wave" aria-hidden="true">
                 <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
                     <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f0f4f8" />
@@ -111,9 +103,7 @@
         </section>
 
 
-        <!-- =============================================
-             EQUIPE SECTION (cards gerados via JS)
-        ============================================= -->
+        <!-- Equipe Section -->
         <section id="projetos" class="equipe animate-on-scroll">
             <div class="container">
                 <h2 class="section-title">Nossa Equipe</h2>
@@ -125,7 +115,6 @@
                     <button class="carousel-btn next" aria-label="Próximo card">&#10095;</button>
                 </div>
 
-                <!-- CTA: link para a página completa da equipe -->
                 <div class="equipe-cta-wrapper">
                     <a href="pages/equipe.html" class="btn-equipe-ver-todos" id="btn-ver-toda-equipe">
                         <span>Conheça toda a equipe</span>
@@ -136,13 +125,10 @@
         </section>
 
 
-        <!-- =============================================
-             ECOSSISTEMA / SOBRE SECTION
-        ============================================= -->
+        <!-- Ecossistema / Sobre Section -->
         <section id="sobre" class="hubsg">
             <div class="container hubsg-container">
 
-                <!-- Visual: imagens sobrepostas -->
                 <div class="hubsg-visual animate-on-scroll">
                     <div class="abstract-shape" aria-hidden="true"></div>
                     <div class="hubsg-images">
@@ -153,7 +139,6 @@
                     </div>
                 </div>
 
-                <!-- Texto -->
                 <div class="hubsg-text slide-in-right">
                     <span class="section-tag">
                         <i class="fas fa-rocket"></i>
@@ -172,24 +157,21 @@
         </section>
 
 
-        <!-- =============================================
-             PARCEIROS SECTION
-        ============================================= -->
+        <!-- Parceiros Section -->
         <section id="parceiros" class="parceiros animate-on-scroll">
             <div class="container">
                 <h2 class="section-title">Nossos Parceiros</h2>
                 <p class="section-subtitle">Organizações que acreditam no potencial dos nossos estudantes</p>
             </div>
 
-            <!-- A faixa de logos é full-width intencionalmente (fora do .container) -->
+            <!-- Faixa full-width intencional (fora do .container) -->
             <div class="logos-carousel" aria-label="Carrossel de logos dos parceiros">
                 <div class="logos-track">
-                    <!-- Logos originais -->
                     <img src="src/assets/images/logos/Ford_Motor_Company_Logo.svg" alt="Logo Ford">
                     <img src="src/assets/images/logos/LOGO_AZUL_LINHAS_AEREAS.png" alt="Logo Azul">
                     <img src="src/assets/images/logos/Gol_Linhas_Aéreas_Inteligentes_logo_(2015,_without_the_slogan).svg.png"
                         alt="Logo GOL">
-                    <!-- Duplicados para o loop infinito funcionar sem salto -->
+                    <!-- Duplicados para o loop infinito sem salto visual -->
                     <img src="src/assets/images/logos/Ford_Motor_Company_Logo.svg" alt="Logo Ford" aria-hidden="true">
                     <img src="src/assets/images/logos/LOGO_AZUL_LINHAS_AEREAS.png" alt="Logo Azul" aria-hidden="true">
                     <img src="src/assets/images/logos/Gol_Linhas_Aéreas_Inteligentes_logo_(2015,_without_the_slogan).svg.png"
@@ -200,6 +182,7 @@
 
     </main>
 
+    <!-- Pré-rodapé -->
     <section class="pre-footer">
         <div class="container pre-footer-grid">
             <div class="pre-footer-col">
@@ -221,6 +204,7 @@
         </div>
     </section>
 
+    <!-- Rodapé -->
     <footer>
         <div class="container">
             © 2026 HubSG | Todos os direitos reservados

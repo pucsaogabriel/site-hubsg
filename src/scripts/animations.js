@@ -1,25 +1,43 @@
-// Animações de scroll: revela elementos gradualmente conforme o usuário rola a página.
+/**
+ * animations.js — Animações de scroll e renderização do carrossel da Home | HubSG
+ *
+ * Inicializa o IntersectionObserver para `.animate-on-scroll`,
+ * busca os dados da equipe em data.json e monta os cards no
+ * carrossel da home com suporte a flip 3D, drag e navegação por botões.
+ */
+
+// ================================================================
+//  INTERSECTION OBSERVER GLOBAL
+// ================================================================
+
 const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.15 // O elemento é considerado visível quando 15% dele está na tela.
+    threshold: 0.15,
 };
 
 const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            // A animação só precisa ocorrer uma vez. Desativar o observer melhora a performance.
             observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Seleciona todos os elementos que devem ser animados ao aparecer na tela.
 document.querySelectorAll('.animate-on-scroll, .slide-in-right').forEach((el) => {
     observer.observe(el);
 });
 
+
+// ================================================================
+//  RENDERIZAÇÃO DOS CARDS DA EQUIPE
+// ================================================================
+
+/**
+ * Busca a lista de membros em data.json e injeta os cards
+ * do carrossel da home. Após o render, inicializa as interações.
+ */
 async function RenderizarCardsEquipe() {
     const container = document.getElementById('team-grid');
 
@@ -67,7 +85,13 @@ async function RenderizarCardsEquipe() {
 RenderizarCardsEquipe();
 
 
-// ================= ANIMAÇÃO SCROLL =================
+// ================================================================
+//  INTERAÇÕES
+// ================================================================
+
+/**
+ * Re-registra o IntersectionObserver nos cards injetados via JS.
+ */
 function ativarAnimacaoScroll() {
     const elements = document.querySelectorAll('.animate-on-scroll');
 
@@ -83,25 +107,31 @@ function ativarAnimacaoScroll() {
 }
 
 
-// ================= FLIP MOBILE =================
+/**
+ * Habilita o flip 3D por clique/tap nos cards do carrossel.
+ * Cliques em links sociais são ignorados.
+ */
 function ativarFlipMobile() {
     document.querySelectorAll('.team-card').forEach(card => {
-        card.addEventListener('click', () => {
+        card.addEventListener('click', (e) => {
+            if (e.target.closest('a')) return;
             card.querySelector('.card-inner').classList.toggle('flip');
         });
     });
 }
 
 
-// ================= CARROSSEL =================
+/**
+ * Inicializa a navegação por botões prev/next do carrossel.
+ */
 function ativarCarousel() {
     const track = document.querySelector('.carousel-track');
-    const next = document.querySelector('.next');
-    const prev = document.querySelector('.prev');
+    const next  = document.querySelector('.next');
+    const prev  = document.querySelector('.prev');
 
     function getCardWidth() {
         const card = track.querySelector('.team-card');
-        const gap = 30; // igual ao CSS
+        const gap = 30;
         return card.offsetWidth + gap;
     }
 
@@ -118,50 +148,58 @@ function ativarCarousel() {
             behavior: 'smooth'
         });
     });
-
-    /*FUNCIONAL, CARROSSEL V1.0
-    const cardWidth = 320; // largura + gap
-    let scrollAmount = 0;
-  
-    next.addEventListener('click', () => {
-      scrollAmount += cardWidth * 3;
-      track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-    });
-  
-    prev.addEventListener('click', () => {
-      scrollAmount -= cardWidth * 3;
-      track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-    });*/
 }
 
+/**
+ * Retorna o número de cards visíveis por breakpoint.
+ * @returns {number}
+ */
 function getCardsPerView() {
     if (window.innerWidth < 600) return 1;
     if (window.innerWidth < 900) return 2;
     return 3;
 }
 
+/**
+ * Habilita scroll por drag (mouse) no carousel-track.
+ * Distingue drag de clique simples via DRAG_THRESHOLD para não
+ * acionar o flip dos cards ao arrastar.
+ */
 function ativarDrag() {
     const track = document.querySelector('.carousel-track');
 
-    let isDown = false;
+    let isDown    = false;
+    let hasDragged = false;
     let startX;
     let scrollLeft;
+    const DRAG_THRESHOLD = 5; // px mínimos para considerar como drag
 
     track.addEventListener('mousedown', (e) => {
-        isDown = true;
-        startX = e.pageX - track.offsetLeft;
+        isDown     = true;
+        hasDragged = false;
+        startX     = e.pageX - track.offsetLeft;
         scrollLeft = track.scrollLeft;
     });
 
     track.addEventListener('mouseleave', () => isDown = false);
-    track.addEventListener('mouseup', () => isDown = false);
+    track.addEventListener('mouseup',    () => isDown = false);
 
     track.addEventListener('mousemove', (e) => {
         if (!isDown) return;
         e.preventDefault();
-        const x = e.pageX - track.offsetLeft;
+        const x    = e.pageX - track.offsetLeft;
         const walk = (x - startX) * 1.5;
+        if (Math.abs(x - startX) > DRAG_THRESHOLD) {
+            hasDragged = true;
+        }
         track.scrollLeft = scrollLeft - walk;
     });
-}
 
+    // Intercepta na fase de captura para cancelar o flip após drag
+    track.addEventListener('click', (e) => {
+        if (hasDragged) {
+            e.stopPropagation();
+            hasDragged = false;
+        }
+    }, true);
+}

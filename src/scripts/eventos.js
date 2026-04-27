@@ -1,29 +1,40 @@
-/* ================================================================
-   eventos.js — Renderização e filtro de eventos | HubSG
-   Projeto: HubSG — Hub de Inovação PUC Minas São Gabriel
-
-   CORREÇÃO CRÍTICA:
-   A versão anterior capturava `const cards = querySelectorAll()`
-   ANTES do fetch/render assíncrono, resultando em NodeList vazia.
-   Agora toda a lógica de filtro é inicializada APÓS o await,
-   garantindo que os cards já existam no DOM ao ser capturados.
-================================================================ */
+/**
+ * eventos.js — Renderização e filtro de eventos | HubSG
+ *
+ * Busca os eventos em data.json, injeta os cards no grid e
+ * inicializa os filtros por categoria após o render assíncrono.
+ */
 
 'use strict';
 
-// ── Utilitários de template ──────────────────────────────────
-const categorias      = ['workshop', 'palestra', 'hackathon', 'networking'];
+// Mapeamento de categorias para ícones Font Awesome
+const categorias       = ['workshop', 'palestra', 'hackathon', 'networking'];
 const iconesCategorias = ['tools', 'microphone-alt', 'code', 'users'];
 
+/**
+ * Retorna o ícone Font Awesome correspondente à categoria do evento.
+ * @param {string} cat - Slug da categoria
+ * @returns {string} Nome do ícone (sem prefixo "fa-")
+ */
 function iconeCategoria(cat) {
     const idx = categorias.indexOf(cat);
     return idx >= 0 ? iconesCategorias[idx] : 'calendar';
 }
 
+/**
+ * Retorna a classe CSS de destaque do card, se aplicável.
+ * @param {Object} evento
+ * @returns {string}
+ */
 function classeDestaque(evento) {
     return evento.destaque ? 'card-destaque' : '';
 }
 
+/**
+ * Retorna o HTML da tag de destaque do card, se aplicável.
+ * @param {Object} evento
+ * @returns {string}
+ */
 function tagDestaque(evento) {
     if (!evento.destaque) return '';
     return `<div class="card-destaque-tag" aria-label="Evento em destaque">
@@ -31,7 +42,12 @@ function tagDestaque(evento) {
             </div>`;
 }
 
-// ── Renderização dos cards via fetch ─────────────────────────
+/**
+ * Busca os eventos em data.json, renderiza os cards no grid
+ * e inicializa os filtros por categoria.
+ * Os filtros são inicializados após o render para garantir que
+ * querySelectorAll retorne os cards já presentes no DOM.
+ */
 async function RenderizarCardsEventos() {
     const container = document.getElementById('eventos-grid');
     if (!container) return;
@@ -51,7 +67,6 @@ async function RenderizarCardsEventos() {
         return;
     }
 
-    // Monta o HTML de todos os cards
     const cardsHTML = eventos.map((d, i) => `
         <article
             class="evento-card ${classeDestaque(d)}"
@@ -100,29 +115,26 @@ async function RenderizarCardsEventos() {
 
     container.innerHTML = cardsHTML;
 
-    /*
-      CORREÇÃO DO BUG DE FILTRO:
-      Só inicializamos o filtro AQUI, depois do innerHTML ser preenchido.
-      Agora querySelectorAll('.evento-card') retorna os cards reais, não
-      uma NodeList vazia como acontecia quando era chamada no topo do arquivo.
-    */
     inicializarFiltros();
 
-    // Dispara animação do hero (aguarda um frame para garantir render)
     requestAnimationFrame(() => {
         document.querySelectorAll('.animate-hero').forEach(el => el.classList.add('visible'));
     });
 }
 
-// ── Lógica de filtro por categoria ──────────────────────────
+/**
+ * Inicializa os filtros por categoria.
+ * Deve ser chamado após o render dos cards para que
+ * querySelectorAll retorne os nós corretos.
+ */
 function inicializarFiltros() {
     const pills    = document.querySelectorAll('.filtro-pill');
-    const cards    = document.querySelectorAll('.evento-card');   // ← Capturado APÓS render
+    const cards    = document.querySelectorAll('.evento-card');
     const noResult = document.getElementById('no-results');
 
     /**
-     * Mostra/oculta cards conforme o filtro ativo.
-     * Usa CSS transition via classe para animar a saída de forma suave.
+     * Exibe ou oculta cards conforme o filtro selecionado.
+     * @param {string} filtro - Slug da categoria ou "todos"
      */
     function filtrarEventos(filtro) {
         let visiveis = 0;
@@ -146,7 +158,8 @@ function inicializarFiltros() {
     }
 
     /**
-     * Atualiza o estado visual e aria dos pills.
+     * Atualiza estado visual e aria-pressed das pills de filtro.
+     * @param {HTMLElement} pillAtivo - Pill que foi clicada
      */
     function atualizarPills(pillAtivo) {
         pills.forEach(pill => {
@@ -156,7 +169,6 @@ function inicializarFiltros() {
         });
     }
 
-    // Adiciona listener em cada pill
     pills.forEach(pill => {
         pill.addEventListener('click', () => {
             atualizarPills(pill);
@@ -165,5 +177,4 @@ function inicializarFiltros() {
     });
 }
 
-// ── Inicializa tudo ──────────────────────────────────────────
 RenderizarCardsEventos();
