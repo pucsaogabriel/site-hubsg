@@ -61,7 +61,7 @@ async function RenderizarCardsEventos() {
             style="animation-delay: ${i * 0.08}s;">
 
             <div class="card-img-wrapper">
-                <img src="${d.img}" alt="${d.titulo}" loading="lazy">
+                <img src="../${d.img}" alt="${d.titulo}" loading="lazy">
                 <span class="card-categoria-badge badge-${d.categoria}"
                       aria-label="Categoria: ${d.categoria}">
                     <i class="fas fa-${iconeCategoria(d.categoria)}"></i>
