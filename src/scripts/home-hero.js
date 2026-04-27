@@ -12,12 +12,12 @@
     'use strict';
 
     // ── 1. Referências aos elementos do DOM ─────────────────
-    const elImg     = document.getElementById('hero-destaque-img');
-    const elLabel   = document.getElementById('hero-badge-label');
-    const elValue   = document.getElementById('hero-badge-value');
-    const elDia     = document.getElementById('hero-badge-dia');
-    const elMes     = document.getElementById('hero-badge-mes');
-    const elBtnCta  = document.getElementById('btn-hero-destaque');
+    const elImg = document.getElementById('hero-destaque-img');
+    const elLabel = document.getElementById('hero-badge-label');
+    const elValue = document.getElementById('hero-badge-value');
+    const elDia = document.getElementById('hero-badge-dia');
+    const elMes = document.getElementById('hero-badge-mes');
+    const elBtnCta = document.getElementById('btn-hero-destaque');
 
     // Verifica se estamos na home (elementos devem existir)
     if (!elImg || !elLabel || !elValue) return;
@@ -53,12 +53,12 @@
       3. Fade in com os novos dados (opacity: 1)
     */
     const elementos = [elImg, elLabel, elValue, elDia, elMes];
-    const FADE_MS   = 300; // duração do fade em ms
+    const FADE_MS = 300; // duração do fade em ms
 
     // Aplica transição de opacity em todos os elementos
     elementos.forEach(el => {
         el.style.transition = `opacity ${FADE_MS}ms ease`;
-        el.style.opacity    = '0';
+        el.style.opacity = '0';
     });
 
     // Aguarda o fade out terminar antes de trocar os dados
@@ -71,13 +71,6 @@
     */
     elImg.src = destaque.img;
     elImg.alt = `Imagem do evento: ${destaque.titulo}`;
-
-    // Fallback se a imagem do evento não carregar
-    elImg.onerror = function () {
-        this.onerror = null;
-        this.src = 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80';
-        this.alt = 'Alunos e professores colaborando em projetos de inovação';
-    };
 
     // ── 4b. Badge Glassmorphism ──────────────────────────────
     elLabel.textContent = categoriaLabel;  // Ex: "Hackathon"
@@ -96,9 +89,9 @@
       Caso contrário, mantém o href para pages/eventos.html.
     */
     if (elBtnCta && destaque.link && destaque.link.length > 4) {
-        elBtnCta.href   = destaque.link;
+        elBtnCta.href = destaque.link;
         elBtnCta.target = '_blank';
-        elBtnCta.rel    = 'noopener noreferrer';
+        elBtnCta.rel = 'noopener noreferrer';
         // Atualiza o texto e ícone do botão
         elBtnCta.innerHTML = `
             <i class="fas fa-ticket-alt" aria-hidden="true"></i>
