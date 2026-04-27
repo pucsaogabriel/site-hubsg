@@ -103,7 +103,7 @@
         {
             "titulo": "Hackathon Varejo Inteligente",
             "categoria": "hackathon",
-            "img": "../src/assets/images/eventos/hackathonVarejoInteligente.jpeg",
+            "img": "src/assets/images/eventos/hackathonVarejoInteligente.jpeg",
             "dia": "29",
             "mes": "ABR",
             "horaInicio": "19:00",
@@ -116,7 +116,7 @@
         {
             "titulo": "Hackathon Varejo Inteligente",
             "categoria": "hackathon",
-            "img": "../src/assets/images/eventos/hackathonVarejoInteligente.jpeg",
+            "img": "src/assets/images/eventos/hackathonVarejoInteligente.jpeg",
             "dia": "30",
             "mes": "ABR",
             "horaInicio": "19:00",
@@ -129,7 +129,7 @@
         {
             "titulo": "GitHub Copilot Dev Days",
             "categoria": "palestra",
-            "img": "../src/assets/images/eventos/devdays.gif",
+            "img": "src/assets/images/eventos/devdays.gif",
             "dia": "13",
             "mes": "MAI",
             "horaInicio": "19:00",
