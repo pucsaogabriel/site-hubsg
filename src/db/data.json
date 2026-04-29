@@ -146,5 +146,16 @@
             "link": "https://",
             "destaque": false
         }
+    ],
+    "projetos": [
+        {
+            "titulo": "",
+            "descricao": "",
+            "area": "",
+            "img": "src/assets/images/projetos/",
+            "objetivo": "",
+            "link": "",
+            "destaque": false
+        }
     ]
 }
