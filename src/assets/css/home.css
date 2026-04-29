@@ -320,6 +320,144 @@
 
 
 /* ================================================================
+   2.5 PROJETOS TEASER
+================================================================ */
+
+.projetos-teaser {
+    background-color: var(--white);
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.teaser-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.teaser-header .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245, 166, 35, 0.18);
+    color: var(--orange);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(245, 166, 35, 0.3);
+    margin-bottom: 16px;
+}
+
+.teaser-header .section-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: var(--dark-blue);
+    margin-bottom: 12px;
+}
+
+.teaser-header .section-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.teaser-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.teaser-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--dark-text);
+    margin-bottom: 24px;
+}
+
+.teaser-text .btn-saiba-mais {
+    margin-top: 12px;
+}
+
+.teaser-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+}
+
+.visual-circle {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, var(--orange) 0%, #ff8c00 100%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 16px 40px rgba(245, 166, 35, 0.3);
+    position: relative;
+    z-index: 2;
+    animation: float 6s ease-in-out infinite;
+}
+
+.visual-circle i {
+    font-size: 80px;
+    color: var(--white);
+}
+
+.visual-dots {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    background-image: radial-gradient(var(--primary-blue) 2px, transparent 2px);
+    background-size: 20px 20px;
+    opacity: 0.15;
+    top: 50%;
+    left: 50%;
+    transform: translate(-30%, -30%);
+    z-index: 1;
+    border-radius: 50%;
+}
+
+@media (max-width: 992px) {
+    .teaser-content {
+        gap: 40px;
+    }
+    
+    .visual-circle {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .visual-circle i {
+        font-size: 64px;
+    }
+}
+
+@media (max-width: 768px) {
+    .projetos-teaser {
+        padding: 60px 0;
+    }
+    
+    .teaser-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 48px;
+    }
+    
+    .teaser-text .btn-saiba-mais {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .visual-dots {
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* ================================================================
    2. SEÇÃO ECOSSISTEMA
 ================================================================ */
 
