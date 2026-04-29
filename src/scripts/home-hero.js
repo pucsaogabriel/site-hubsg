@@ -27,8 +27,9 @@
         const res = await fetch('src/db/data.json');
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-
-        destaque = (data.eventos ?? []).find(e => e.destaque === true) ?? null;
+        let eventos = data.eventos ?? [];
+        eventos = marcarEventoMaisProximo(eventos);
+        destaque = (eventos ?? []).find(e => e.destaque === true) ?? null;
     } catch (err) {
         console.warn('[home-hero.js] Não foi possível carregar o evento em destaque:', err.message);
         return;
@@ -99,3 +100,48 @@
     }
 
 })();
+
+function marcarEventoMaisProximo(eventos) {
+    if (!Array.isArray(eventos) || eventos.length === 0) return eventos;
+
+    // Data atual no fuso do Brasil
+    const agoraBR = new Date(
+        new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })
+    );
+
+    let eventoMaisProximo = null;
+    let menorDiff = Infinity;
+
+    eventos.forEach(evento => {
+        // Monta data completa (ajuste aqui se seu JSON tiver outro formato)
+        // Exemplo assumido: evento.data = "2026-05-02"
+        const [ano, mes, dia] = evento.dataCompleta.split('-').map(Number);
+        const dataEvento = new Date(ano, mes - 1, dia);
+        
+        // Zera horário para incluir eventos de hoje
+        const dataEventoZerada = new Date(dataEvento);
+        dataEventoZerada.setHours(0, 0, 0, 0);
+
+        const hojeZerado = new Date(agoraBR);
+        hojeZerado.setHours(0, 0, 0, 0);
+
+        const diff = dataEventoZerada - hojeZerado;
+
+        // Ignora eventos passados
+        if (diff < 0) return;
+
+        if (diff < menorDiff) {
+            menorDiff = diff;
+            eventoMaisProximo = evento;
+        }
+    });
+
+    // Limpa destaques antigos (garante consistência)
+    eventos.forEach(e => e.destaque = false);
+
+    if (eventoMaisProximo) {
+        eventoMaisProximo.destaque = true;
+    }
+
+    return eventos;
+}
