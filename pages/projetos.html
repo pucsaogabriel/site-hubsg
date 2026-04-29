@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HubSG - Projetos</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../src/assets/css/global.css">
+    <link rel="stylesheet" href="../src/assets/css/projetos.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="../index.html" class="logo"><img src="../src/assets/images/hero/Logo - Hub Sg - Azul - GrafosV1.svg"
+                    alt="Logo HubSG"></a>
+            <div class="menu-toggle" id="mobile-menu" aria-label="Abrir menu de navegação" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </div>
+            <ul class="nav-links" id="nav-links" role="list">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="projetos.html" class="active" aria-current="page">Projetos</a></li>
+                <li><a href="equipe.html">Equipe</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. HERO SECTION -->
+        <section class="projetos-hero">
+            <div class="hero-bg-shapes" aria-hidden="true">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            
+            <div class="container projetos-hero-container">
+                <div class="hero-content animate-hero delay-1">
+                    <h1 class="hero-title">
+                        Inovação transformada em <span class="highlight">código.</span>
+                    </h1>
+                    <p class="hero-subtitle delay-2">
+                        Conheça as soluções criativas e os projetos desenvolvidos pelos talentos do nosso ecossistema para desafios reais.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="hero-wave" aria-hidden="true">
+                <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                    <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#F8F9FA" />
+                </svg>
+            </div>
+        </section>
+
+        <!-- 2. GRID DE PROJETOS -->
+        <section class="projetos-grid-section">
+            <div class="container">
+                <div id="projetos-loading" class="loading-state">
+                    <div class="spinner"></div>
+                    <p>Carregando projetos incríveis...</p>
+                </div>
+                
+                <div id="projetos-error" class="error-state" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Não foi possível carregar os projetos no momento.</p>
+                    <button id="btn-retry" class="btn-primary">Tentar Novamente</button>
+                </div>
+
+                <div class="projetos-grid" id="projetos-grid" style="display: none;">
+                    <!-- Cards de projetos serão injetados aqui -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. CTA INFERIOR -->
+        <section class="projetos-cta">
+            <div class="container cta-container animate-on-scroll">
+                <div class="cta-content">
+                    <h2>Tem uma ideia e quer tirá-la do papel?</h2>
+                    <p>Traga seu projeto para o HubSG e encontre o apoio necessário para desenvolver a próxima grande inovação.</p>
+                </div>
+                <a href="sobre.html" class="btn-cta">
+                    Traga seu projeto
+                    <i class="fas fa-rocket"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pré-rodapé -->
+    <section class="pre-footer">
+        <div class="container pre-footer-grid">
+            <div class="pre-footer-col">
+                <h3>Fique por dentro!</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
+            <div class="pre-footer-col">
+                <h3>Unidade</h3>
+                <div class="address-text">
+                    <strong>São Gabriel</strong>
+                    R. Walter Ianni, 255<br>
+                    São Gabriel - Belo Horizonte - CEP 31980-110
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            © 2026 HubSG | Todos os direitos reservados
+        </div>
+    </footer>
+
+    <script src="../src/scripts/global.js" defer></script>
+    <script src="../src/scripts/animations.js" defer></script>
+    <script src="../src/scripts/projetos.js" defer></script>
+</body>
+
+</html>
