@@ -7,7 +7,6 @@
  * Graceful fallback: se o fetch falhar ou não houver evento em
  * destaque, o conteúdo estático do HTML é mantido intacto.
  */
-
 (async function carregarEventoDestaque() {
     'use strict';
 
@@ -18,6 +17,8 @@
     const elDia    = document.getElementById('hero-badge-dia');
     const elMes    = document.getElementById('hero-badge-mes');
     const elBtnCta = document.getElementById('btn-hero-destaque');
+    const elTag    = document.querySelector('.hero-tag');
+    const classVisual = document.querySelector('.hero-visual');
 
     if (!elImg || !elLabel || !elValue) return;
 
@@ -30,12 +31,13 @@
         let eventos = data.eventos ?? [];
         eventos = marcarEventoMaisProximo(eventos);
         destaque = (eventos ?? []).find(e => e.destaque === true) ?? null;
+        
     } catch (err) {
         console.warn('[home-hero.js] Não foi possível carregar o evento em destaque:', err.message);
         return;
     }
-
-    if (!destaque) return;
+    console.log(destaque);
+    if (!destaque || destaque === null) return;
 
     // Capitaliza a categoria (ex: "hackathon" → "Hackathon")
     const categoriaLabel = destaque.categoria
@@ -53,6 +55,8 @@
 
     await new Promise(r => setTimeout(r, FADE_MS));
 
+    elTag.style.display = 'inline-flex';
+    classVisual.style.display = 'flex';
     // Atualiza imagem
     elImg.src = destaque.img;
     elImg.alt = `Imagem do evento: ${destaque.titulo}`;
