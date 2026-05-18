@@ -8,7 +8,7 @@
 'use strict';
 
 // Mapeamento de categorias para ícones Font Awesome
-const categorias       = ['workshop', 'palestra', 'hackathon', 'networking'];
+const categorias = ['workshop', 'palestra', 'hackathon', 'networking'];
 const iconesCategorias = ['tools', 'microphone-alt', 'code', 'users'];
 
 /**
@@ -87,6 +87,68 @@ function marcarEventoMaisProximo(eventos) {
     return eventos;
 }
 
+function getEventosFuturos(eventos) {
+    const eventosFuturos = [];
+    for (let i = 0; i < eventos.length; i++) {
+        // Data atual no fuso do Brasil
+        const agoraBR = new Date(
+            new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })
+        );
+        const [ano, mes, dia] = eventos[i].dataCompleta.split('-').map(Number);
+        const dataEvento = new Date(ano, mes - 1, dia);
+
+        // Zera horário para incluir eventos de hoje
+        const dataEventoZerada = new Date(dataEvento);
+        dataEventoZerada.setHours(0, 0, 0, 0);
+
+        const hojeZerado = new Date(agoraBR);
+        hojeZerado.setHours(0, 0, 0, 0);
+
+        const diff = dataEventoZerada - hojeZerado;
+
+        // Adiciona somente eventos futuros ou de hoje
+        if (diff >= 0){
+            eventosFuturos.push(eventos[i]);
+        console.log('teste dif>=0');}
+
+    }
+
+    return eventosFuturos;
+}
+
+function getEventosPassados(eventos) {
+    const eventosPassados = [];
+    for (let i = 0; i < eventos.length; i++) {
+        // Data atual no fuso do Brasil
+        const agoraBR = new Date(
+            new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })
+        );
+        const [ano, mes, dia] = eventos[i].dataCompleta.split('-').map(Number);
+        const dataEvento = new Date(ano, mes - 1, dia);
+
+        // Zera horário para incluir eventos de hoje
+        const dataEventoZerada = new Date(dataEvento);
+        dataEventoZerada.setHours(0, 0, 0, 0);
+
+        const hojeZerado = new Date(agoraBR);
+        hojeZerado.setHours(0, 0, 0, 0);
+
+        const diff = dataEventoZerada - hojeZerado;
+
+        // Ignora eventos passados
+        if (diff < 0){
+            eventosPassados.push(eventos[i]);
+                    console.log('teste dif<0');}
+
+
+        
+
+    }
+
+    return eventosPassados;
+}
+
+
 /**
  * Busca os eventos em data.json, renderiza os cards no grid
  * e inicializa os filtros por categoria.
@@ -104,6 +166,10 @@ async function RenderizarCardsEventos() {
         const data = await res.json();
         eventos = data.eventos ?? [];
         eventos = marcarEventoMaisProximo(eventos);
+        const eventosPassados = getEventosPassados(eventos) ?? [];
+        const eventosFuturos = getEventosFuturos(eventos) ?? [];
+
+
     } catch (err) {
         console.error('[eventos.js] Erro ao carregar data.json:', err);
         container.innerHTML = `
@@ -113,7 +179,17 @@ async function RenderizarCardsEventos() {
         return;
     }
 
-    const cardsHTML = eventos.map((d, i) => `
+    
+    const eventosFuturos = getEventosFuturos(eventos) ?? [];
+
+    if(eventosFuturos.length === 0){
+        container.innerHTML = `
+            <p style="grid-column:1/-1;text-align:center;color:#6c757d;padding:40px 0;">
+                Mais eventos estão a caminho! Enquanto isso, confira nossos conteúdos no blog e redes sociais.
+            </p>`;
+
+    }
+    const cardsHTML = eventosFuturos.map((d, i) => `
         <article
             class="evento-card ${classeDestaque(d)}"
             data-categoria="${d.categoria}"
@@ -159,7 +235,10 @@ async function RenderizarCardsEventos() {
         </article>
     `).join('');
 
-    container.innerHTML = cardsHTML;
+    container.innerHTML += cardsHTML;
+    const eventosPassados = getEventosPassados(eventos) ?? [];
+    RenderizarCardsEventosPassados(eventosPassados);
+
 
     inicializarFiltros();
 
@@ -168,14 +247,67 @@ async function RenderizarCardsEventos() {
     });
 }
 
+function RenderizarCardsEventosPassados(eventosPassados) {
+    const container = document.getElementById('eventos-passados-grid');
+    if (!container) return;
+
+    const cardsHTML = eventosPassados.map((d, i) => `
+        <article
+            class="evento-card ${classeDestaque(d)}"
+            data-categoria="${d.categoria}"
+            role="listitem"
+            aria-label="${d.categoria}: ${d.titulo}"
+            style="animation-delay: ${i * 0.08}s;">
+
+            <div class="card-img-wrapper">
+                <img src="../${d.img}" alt="${d.titulo}" loading="lazy"">
+                <span class="card-categoria-badge badge-${d.categoria}"
+                      aria-label="Categoria: ${d.categoria}">
+                    <i class="fas fa-${iconeCategoria(d.categoria)}"></i>
+                    ${d.categoria}
+                </span>
+                ${tagDestaque(d)}
+            </div>
+
+            <div class="card-date-badge" aria-label="Data: ${d.dia} de ${d.mes}">
+                <span class="date-day">${d.dia}</span>
+                <span class="date-month">${d.mes}</span>
+            </div>
+
+            <div class="card-body">
+                <h3 class="card-title">${d.titulo}</h3>
+                <ul class="card-meta" aria-label="Detalhes do evento">
+                    <li>
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                        <time>${d.horaInicio} – ${d.horaTermino}</time>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span>${d.local}</span>
+                    </li>
+                </ul>
+                <p class="card-desc">${d.descricao}</p>
+                <a href="${d.link}" target="_blank" rel="noopener noreferrer"
+                   class="btn-saiba-mais card-cta"
+                   aria-label="Inscreva-se em: ${d.titulo}">
+                    Inscreva-se
+                    <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </a>
+            </div>
+        </article>
+    `).join('');
+
+    container.innerHTML = cardsHTML;
+}
+
 /**
  * Inicializa os filtros por categoria.
  * Deve ser chamado após o render dos cards para que
  * querySelectorAll retorne os nós corretos.
  */
 function inicializarFiltros() {
-    const pills    = document.querySelectorAll('.filtro-pill');
-    const cards    = document.querySelectorAll('.evento-card');
+    const pills = document.querySelectorAll('.filtro-pill');
+    const cards = document.querySelectorAll('.evento-card');
     const noResult = document.getElementById('no-results');
 
     /**

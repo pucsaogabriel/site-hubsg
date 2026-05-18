@@ -99,13 +99,6 @@
             "github": "https://github.com/LucasdeSaMoreira"
         },
         {
-            "img": "src/assets/images/equipe/malu.jpeg",
-            "nome": "Malu",
-            "funcao": "Engenharia Aeronáutica",
-            "linkedin": "https://www.linkedin.com/in/malucrs/",
-            "github": "https://github.com/MaluCruz"
-        },
-        {
             "img": "src/assets/images/equipe/isaac.jpeg",
             "nome": "Isaac",
             "funcao": "Direito",
@@ -156,6 +149,7 @@
             "link": "https://",
             "destaque": null
         }
+
     ],
     "projetos": [
         {
